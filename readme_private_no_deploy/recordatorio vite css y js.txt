@@ -2,4 +2,3 @@
  @vite('resources/css/app.css', 'resources/js/app.js')
 
 Si no usamos estas directivas no funciona tailwind con vite. Si no habría de usar un CDN para importarlo directo.
-Seguimos
