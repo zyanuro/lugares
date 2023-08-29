@@ -2,15 +2,15 @@
 
 @section('titulo')
 
-Página de bienvenida 
+Welcome Page
 
 @endsection
 
 @section('contenido')
 
 <div class="md:flex justify-center md:gap-10 md:items-center">
-    <div class="md:w-6/12 p-5 shadow-2xl">
-        <img src="{{asset('img/registrar.jpg')}}" alt='Imagen de registro'>
+    <div class="md:w-auto shadow-2xl">
+        <img src="{{asset('img/big_moon.webp')}}" alt='welcome image' class="p-4 border-2 border-black  rounded-full">
         <hr/>
     </div>
    

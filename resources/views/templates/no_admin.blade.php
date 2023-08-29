@@ -1,26 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Haunted Places - @yield('titulo')</title>
+        @vite('resources/css/app.css', 'resources/js/app.js')
+              
+    </head>
+
+    <body class=" bg-black">         
+           
     
-        <header class="p-5 border-b bg-white shadow">
+        <header class="p-5 border-b bg-black shadow">
             <div class=" container mx-auto flex justify-between items-center">
 
-                <h1 class="text-3xl font-extrabold">DevStagram</h1>
+                <div class=" w-auto ">
+                   <img src="{{asset('img/logo_lugares_encantados.png')}}" alt='logo image'>
+                </div>
 
-                <nav class="flex gap-2 items-center">
-                    <a class="p-2 bg-slate-400 hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                    uppercase font-bold  text-back border-zinc-950 rounded-lg" href="{{url('admin')}}">Admin</a>
-                    <a href="{{url('trabajadores')}}" class="p-2 bg-slate-400 hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                    uppercase font-bold  text-back border-zinc-950 rounded-lg" ">Menu</a></div>
-                    <a href="{{url('dashboard')}}" class="p-2 bg-slate-400 hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                <h1 class=" w-auto text-3xl text-red-600 md:text-6xl font-extrabold">Haunted Places</h1>
+
+                <nav class=" w-auto flex items-center gap-2 ">    
+
+                    <div><a href="{{url('dashboard')}}" class="p-1 bg-slate-400 hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                     uppercase font-bold  text-back border-zinc-950 rounded-lg" ">Usuario</a></div>
-                   @auth
-                       
-                  
-                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <div>@auth  
+                    <a class="dropdown-item p-1 bg-slate-400 hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                    uppercase font-bold  text-back border-zinc-950 rounded-lg" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                    @endauth
+                    @endauth</div>                   
                        
                 </nav>
 
@@ -28,7 +41,7 @@
         </header>    
         
         <main class="container mx-auto mt-10">
-            <h2 class="text-3xl text-center p-5 text-gray-500 font-bold">
+            <h2 class="text-3xl text-center p-5 text-gray-300 font-bold">
                 @yield('titulo')
             </h2>
 
@@ -38,7 +51,7 @@
         </main>
     </body>
 
-    <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+    <footer class="text-center p-5 text-gray-400 font-bold uppercase">
         DevStagram - Todos los derechos reservados - {{now()->year}}
               
     </footer>
