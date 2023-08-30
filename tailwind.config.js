@@ -18,6 +18,10 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                header: ['Luckiest Guy'],
+                peitri: ['Creepster'],
+                caro: ['Homemade Apple']
+
             },
         },
     },
