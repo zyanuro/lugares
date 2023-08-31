@@ -2,6 +2,12 @@
 
 @section('titulo')
 
+Welcome to the mistery... 
+
+@endsection
+
+@section('titulo2')
+
 <p class=" font-caro">Welcome to the mistery... </p>
 
 @endsection
