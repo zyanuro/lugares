@@ -93,20 +93,21 @@
                     </div>
                 </div>                
             </nav>
-        </header> -->
+        </header> 
+        
         <header class="bg-blue-500  border-t-4 border-red-600">
-            <nav class="relative px-4 py-4 flex justify-between items-center bg-black">
+            <nav class="relative p-4 flex justify-between items-center bg-black">
                 <a class="text-3xl font-bold leading-none" href="#">
                     <div class="w-auto">
                         <img src="{{asset('img/logo_lugares_encantados.png')}}" alt='logo image'>
                      </div>
                 </a>
-                <div class="grid grid-cols-1 grid-rows-2 items-center">
+                <div class="flex flex-row lg:grid lg:grid-cols-1 lg:grid-rows-2 items-center">
                     <div>
-                        <h1 class="text-center w-auto mb-5 text-3xl text-red-600 md:text-8xl uppercase font-extrabold font-header">Haunted Places</h1>
+                        <h1 class="text-center w-auto mb-5 text-4xl text-red-600 md:text-8xl uppercase font-extrabold font-header">Haunted Places</h1>
                    </div>
-                    <div class="lg:hidden">
-                        <button class="navbar-burger flex items-center text-red-600 p-3">
+                    <div class="lg:hidden bg-gray-300 rounded-full ">
+                        <button class="navbar-burger flex  text-red-600 p-3">
                             <svg class="block h-9 w-9 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <title>Mobile menu</title>
                                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -114,14 +115,14 @@
                         </button>
                     </div>
                     <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 font-header mt-5">
-                        <li><a class=" shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <li><a class=" shadow-lg shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                             uppercase font-bold text-lg text-red-600 hover:text-black border border-white rounded-md" href="#">Last</a></li>
                         <li class="text-gray-300">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                             </svg>
                         </li>
-                        <li><a class=" shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <li><a class=" shadow-lg shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                             uppercase font-bold text-lg text-red-600 hover:text-black border border-white rounded-md" href="#">Ranking</a></li>
                         <li class="text-gray-300">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
@@ -205,7 +206,50 @@
                     </div>
                 </nav>
             </div>
-        </header>
+        </header> -->
+        <!-- Navbar goes here -->
+		<nav class="bg-black shadow border-t-4 border-t-red-600 fixed-top-0 sticky">
+            <div class="container px-6 py-3 mx-auto">
+                <div class="md:flex justify-between items-center">
+                    <!-- left section -->
+                    <div class="flex justify-between items-center">
+                        <div class="w-auto">
+                            <img src="{{asset('img/logo_lugares_encantados.png')}}" alt='logo image'>
+                        </div>
+                        <a href="#" class="text-red-600 text-4xl md:text-8xl font-bold hover:text-red-800 font-header text-center w-full">Haunted Places</a>
+                        <div class="lg:hidden">
+                            <button id="nav-button" type="button" class="p-1 rounded-2xl bg-white hover:bg-orange-200 text-red-600 hover:text-gray-600 focus:text-gray-600 focus:outline-none">
+                                <svg viewBox="0 0 24 24" class="h-8 w-8 fill-current">
+                                    <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                                </svg>  
+                            </button>
+                        </div>
+                    </div>
+                    <!-- right section -->
+                    <div id="nav-menu" class=" font-header  flex flex-col mt-3 hidden lg:flex-row-4 lg:mt-0 md:block">
+                        <a href="#" class="text-gray-200 text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
+                        <a href="#" class="text-gray-200 text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
+                        <a href="#" class="text-gray-200 text-sm hover:font-medium md:mx-4 hover:text-red-600 mb-3 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Contact</a>
+                     
+                            @if(!Auth::check())                       
+                        <a href="{{url('dashboard')}}" class="font-header shadow-lg shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        uppercase font-bold text-lg text-amber-400 hover:text-black border border-white rounded-md">Login</a>
+                        @endif
+                           
+                        @auth  
+                        <a class=" font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        uppercase font-bold text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                        </form>
+                        @endauth
+                          
+                    </div>
+                </div>
+            </div>
+        </nav>
                 
         <main class="container mx-auto">
             <h2 class="text-3xl text-center p-5 text-gray-300 font-bold">
@@ -218,7 +262,7 @@
 
     </body>
 
-    <footer class="bg-inherit w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase  fixed bottom-0">
+    <footer class="bg-inherit w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">
        <div class="p-10 bg-black border-t-2 border-b-4 border-red-600"><span class=" text-red-600">Haunted Places</span> - All rights reserved - {{now()->year}}</div>
               
     </footer> 
