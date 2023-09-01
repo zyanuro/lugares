@@ -216,9 +216,9 @@
                         <div class="w-auto">
                             <img src="{{asset('img/logo_lugares_encantados.png')}}" alt='logo image'>
                         </div>
-                        <a href="#" class="text-red-600 text-4xl md:text-8xl font-bold hover:text-red-800 font-header text-center w-full">Haunted Places</a>
-                        <div class="lg:hidden">
-                            <button id="nav-button" type="button" class="p-1 rounded-2xl bg-white hover:bg-orange-200 text-red-600 hover:text-gray-600 focus:text-gray-600 focus:outline-none">
+                        <a href="#" class="  text-red-600 text-4xl md:text-8xl font-bold hover:text-red-800 font-header text-center w-full">Haunted Places</a>
+                        <div class="md:hidden">
+                            <button id="nav-button" type="button" class="p-1 rounded-2xl text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
                                 <svg viewBox="0 0 24 24" class="h-8 w-8 fill-current">
                                     <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
                                 </svg>  
@@ -226,10 +226,10 @@
                         </div>
                     </div>
                     <!-- right section -->
-                    <div id="nav-menu" class=" font-header  flex flex-col mt-3 hidden lg:flex-row-4 lg:mt-0 md:block">
+                    <div id="nav-menu" class=" font-header  flex flex-col mt-3 hidden md:grid md:grid-cols-1 lg:flex lg:flex-row :mt-0 md:block items-center">
                         <a href="#" class="text-gray-200 text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
                         <a href="#" class="text-gray-200 text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
-                        <a href="#" class="text-gray-200 text-sm hover:font-medium md:mx-4 hover:text-red-600 mb-3 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Contact</a>
+                        <a href="#" class="text-gray-200 text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Contact</a>
                      
                             @if(!Auth::check())                       
                         <a href="{{url('dashboard')}}" class="font-header shadow-lg shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 

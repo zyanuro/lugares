@@ -16,7 +16,7 @@ Welcome to the mistery...
 
 <div class="md:flex justify-center md:items-center">
     <div class="md:w-auto shadow-2xl">
-        <img src="{{asset('img/big_moon.webp')}}" alt='welcome image' class="p-10 rounded-full">       
+        <img src="{{asset('img/big_moon.webp')}}" alt='welcome image' class="shadow-red-600 shadow-2xl  rounded-full">       
     </div> 
 </div>
 
