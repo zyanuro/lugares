@@ -28,7 +28,7 @@
                         </div>                          
                     </div>
                     <div class=" text-center">
-                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl font-bold hover:text-red-800 font-header text-center w-auto">Haunted Places</a>
+                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl font-bold hover:text-red-800 font-header text-center w-auto">Enchanted Places</a>
                     </div>
                     <div class="md:hidden">
                         <button id="nav-button" type="button" class=" text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
@@ -41,7 +41,7 @@
                     <!-- right section -->
                     <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block items-center">
                         <a href="{{route('last')}}" class="{{request()-> is('last') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
-                        <a href="{{route('ranking')}}" class={{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
+                        <a href="{{route('ranking')}}" class="{{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
                         <a href="{{route('contact')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Contact</a>
                         <a href="{{route('instructions')}}" class="{{request()-> is('instructions') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Instructions</a>
                             @if(!Auth::check())                       
@@ -63,6 +63,9 @@
                
             </div>
         </nav>
+        @auth
+        <p class="mr-10 font-peitri text-right text-3xl text-teal-700">Welcome <span class="uppercase">{{ Auth::user()->name }}</span></p>        
+        @endauth
                 
         <main class="container mx-auto">
             <h2 class="text-3xl text-center p-5 text-gray-300 font-bold">
@@ -76,7 +79,7 @@
     </body>
 
     <footer class="bg-inherit w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">
-       <div class="p-3 bg-black border-t-2 border-b-4 border-red-600"><span class=" text-red-600">Haunted Places</span> - All rights reserved - {{now()->year}}</div>
+       <div class="p-3 bg-black border-t-2 border-b-4 border-red-600"><span class=" text-red-600">Enchanted Places</span> - All rights reserved - {{now()->year}}</div>
               
     </footer> 
 
