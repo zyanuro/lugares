@@ -16,11 +16,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/prueba', function () {
-    return view('prueba');
-});
+Route::get('/last', function () {
+    return view('userzone/last');
+})->name('last');
+
+Route::get('/ranking', function () {
+    return view('userzone/ranking');
+})->name('ranking');
+
+Route::get('/contact', function () {
+    return view('userzone/contact');
+})->name('contact');
+
+Route::get('/instructions', function () {
+    return view('userzone/instructions');
+})->name('instructions');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
