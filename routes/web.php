@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PlaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::get('/contact', function () {
 Route::get('/instructions', function () {
     return view('userzone/instructions');
 })->name('instructions');
+
+Route::resource('/places', PlaceController::class);
 
 
 Route::get('/dashboard', function () {
