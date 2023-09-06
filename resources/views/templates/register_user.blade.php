@@ -29,7 +29,7 @@
                     </div>
                     <div class=" text-center">
                         <a href="{{route('welcome')}}" class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase font-bold text-lg text-amber-400 hover:text-black border border-white rounded-md">Return Home</a>
+                        uppercase font-bold text-lg text-amber-400 hover:text-black border border-white rounded-md">Home</a>
                     </div>
                     <div class="md:hidden">
                         <button id="nav-button" type="button" class=" text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
@@ -63,10 +63,11 @@
                
             </div>
         </nav>
+        <p class=" font-header text-white text-right mr-32 text-2xl items-center">Hello again <span class=" text-red-600">{{ Auth::user()->name }}</span></p>
        
                 
         <main class="container mx-auto">
-            <h2 class="text-3xl text-center p-5 text-gray-300 font-bold">
+            <h2 class="text-3xl text-center p-5 text-gray-300 font-bold font-header">
                 @yield('titulo2')
             </h2>
 
