@@ -25,8 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('theme_id', 200);
             $table->timestamps();            
            
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('theme_id')->references('id')->on('themes');      
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade')->onUpdate('cascade');      
         });
     }
 
