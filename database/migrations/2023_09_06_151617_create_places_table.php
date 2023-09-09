@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 150);            
+            $table->string('photo_theme', 150);
+            $table->decimal('latitude', 100,2)->nullable();
+            $table->decimal('length', 100.2)->nullable();
+            $table->string('address', 250);
+            $table->string('description', 250);
+            $table->string('puntuation', 25);
+            $table->decimal('control', 2);
+            $table->unsignedBigInteger('user_id', 200);
+            $table->unsignedBigInteger('theme_id', 200);
+            $table->timestamps();            
+           
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('theme_id')->references('id')->on('themes');      
         });
     }
 

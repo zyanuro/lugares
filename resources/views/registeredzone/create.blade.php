@@ -22,7 +22,7 @@ Create a new Enchanted Place
         <hr/>
     </div>
     
-    <div class="md:w-4/12 bg-black p-5 border border-red-600 rounded-lg shadow-xl">
+    <div class="md:w-4/12 bg-black">
        
         @if ($errors->any())
         <div class=" bg-red-300 transition-colors cursor-pointer  font-bold w-auto p-3 text-white">
@@ -37,7 +37,7 @@ Create a new Enchanted Place
         </div>        
         @endif
 
-        <form action="{{url('registeredzone')}}" method="POST">
+        <form action="{{url('registeredzone')}}" method="POST" class="border border-red-600 rounded-lg p-5">
             @csrf
 
             <div class="mb-5">
@@ -53,19 +53,19 @@ Create a new Enchanted Place
                    value="{{old('name')}}"              
                 />
             </div>
-
             <div class="mb-5">
-                 <label for="theme" class="mb-2 block uppercase text-gray-500 font-bold">
-                    Theme
-                 </label>
-                 <input 
-                    id="theme"
-                    name="theme"
-                    type="text"
-                    placeholder="The Theme"
-                    class="border p-3 w-full rounded-lg"     
-                    value="{{old('theme')}}"            
-                    />
+                <label for="theme" class="mb-2 block uppercase text-gray-500 font-bold">
+                    Theme 
+                </label>
+                <select
+                 name="theme" 
+                 id="theme" 
+                 class="border border-red-600 p-3 w-full rounded-lg"
+                 value="{{old('theme')}}"> 
+                 
+                 <option value="" class="mb-2 block  text-gray-500 font-bold">Select Theme</option>          
+
+                </select>
             </div>
 
             <div class="mb-5">
@@ -73,11 +73,12 @@ Create a new Enchanted Place
                    Latitude
                 </label>
                 <input 
+                
                 id="latitude"
                 name="latitude"
                 type="text"
                 placeholder="Latitude"
-                class="border p-3 w-full rounded-lg"  
+                class="border border-red-600 p-3 w-full rounded-lg"  
                 value="{{old('latitude')}}"                    
                 />
             </div>
@@ -90,8 +91,34 @@ Create a new Enchanted Place
                 name="length"
                 type="text"
                 placeholder="Length"
-                class="border p-3 w-full rounded-lg"  
+                class="border border-red-600 p-3 w-full rounded-lg"  
                 value="{{old('length')}}"                   
+                />
+            </div>
+            <div class="mb-5">
+                <label for="address" class="mb-2 block uppercase text-gray-500 font-bold">
+                    Address
+                </label>
+                <input 
+                id="address"
+                name="address"
+                type="text"
+                placeholder="Explanation of the address"
+                class="border border-red-600 p-3 w-full rounded-lg"  
+                value="{{old('address')}}"                   
+                />
+            </div>
+            <div class="mb-5">
+                <label for="description" class="mb-2 block uppercase text-gray-500 font-bold">
+                    Description of the phenomenon
+                </label>
+                <input 
+                id="description"
+                name="description"
+                type="text"
+                placeholder="Explanation of the phenomenon"
+                class="border border-red-600 p-3 w-full rounded-lg"  
+                value="{{old('description')}}"                   
                 />
             </div>
            
@@ -107,10 +134,15 @@ Create a new Enchanted Place
             </div>
                 
         </form>
-    </div>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>    
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+        
+    </div>    
+    
 </div>
-
-
-
 
 @endsection
