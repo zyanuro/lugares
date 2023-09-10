@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Place;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
@@ -12,8 +13,8 @@ class PlaceController extends Controller
      */
     public function index()
     {
-      // $place = Place::all();
-        return view('registeredzone.index'/*, ['place'=>$place]*/);
+        $place = Place::all();
+        return view('registeredzone.index', ['place'=>$place]);
     }
 
     /**
@@ -21,9 +22,10 @@ class PlaceController extends Controller
      */
     public function create()
     {
-       // $place=Place::all();
+        $place=Place::all();
+        $theme=Theme::all();
        
-    return view('registeredzone.create'/*, ['place'=>$place]*/);
+    return view('registeredzone.create', ['place'=>$place, 'theme'=>$theme]);
     }
 
     /**
@@ -31,15 +33,43 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     
+        $request->validate ([
+            
+            'name'=>'required|max:250',
+            'theme'=>'required|max:50',
+            'latitude'=>'decimal:2,5|nullable',
+            'length'=>'decimal:2,5|nullable',
+            'address'=>'required|max:250',
+            'description'=>'required|max:250',
+        ]);
+
+        $place = new Place();
+        $place->name = $request->input('name');
+        $place->theme_id = $request->input('theme'); 
+        $place->latitude = $request->input('latitude');
+        $place->length = $request->input('length');
+        $place->address = $request->input('address');  
+        $place->description = $request->input('description');          
+        $place->photo_theme = $request->input('theme');
+        $place->user_id = $request->input('user');
+        $place->control = 0;        
+        $place->puntuation = 0;  
+
+
+
+        $place->save();
+
+        return view("registeredzone.msg", ['msg'=> "Saved Succesfully..."]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $place = Place::all();
+        return view('registeredzone.show', ['place'=>$place,'mobile_place'=>$place]);
     }
 
     /**
@@ -47,7 +77,7 @@ class PlaceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       //
     }
 
     /**

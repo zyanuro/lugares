@@ -25,7 +25,7 @@ Create a new Enchanted Place
     <div class="md:w-4/12 bg-black">
        
         @if ($errors->any())
-        <div class=" bg-red-300 transition-colors cursor-pointer  font-bold w-auto p-3 text-white">
+        <div class=" bg-red-400 transition-colors cursor-pointer  font-bold w-auto p-3 text-white mb-3 rounded-lg">
 
         <ul>
             @foreach ($errors->all() as $error)
@@ -37,7 +37,7 @@ Create a new Enchanted Place
         </div>        
         @endif
 
-        <form action="{{url('registeredzone')}}" method="POST" class="border border-red-600 rounded-lg p-5">
+        <form action="{{url('places')}}" method="POST" class="border border-red-600 rounded-lg p-5">
             @csrf
 
             <div class="mb-5">
@@ -60,10 +60,13 @@ Create a new Enchanted Place
                 <select
                  name="theme" 
                  id="theme" 
-                 class="border border-red-600 p-3 w-full rounded-lg"
+                 class="border border-red-600 p-3 w-full rounded-lg bg-red-200"
                  value="{{old('theme')}}"> 
                  
-                 <option value="" class="mb-2 block  text-gray-500 font-bold">Select Theme</option>          
+                 <option value="" class="mb-2 block  text-gray-500 font-bold">Select Theme</option>       
+                 @foreach ($theme as $theme)
+                 <option value="{{$theme->id}}" class="mb-2 block  text-gray-500 font-bold">{{$theme->name}}</option>                 
+                 @endforeach             
 
                 </select>
             </div>
@@ -119,6 +122,19 @@ Create a new Enchanted Place
                 placeholder="Explanation of the phenomenon"
                 class="border border-red-600 p-3 w-full rounded-lg"  
                 value="{{old('description')}}"                   
+                />
+            </div>
+            <div class=" mb-5">
+                <label for="user" class="mb-2 block  text-gray-500 font-bold text-center">
+                    <p class=" text-teal-600 border border-red-600 p-3 w-full rounded-lg">User : {{ Auth::user()->email }}</p>
+                </label>
+                <input 
+                id="user"
+                name="user"
+                type="text"
+                placeholder=""
+                class="hidden border border-red-600 p-3 w-full rounded-lg"  
+                value="{{ Auth::user()->id }}"                   
                 />
             </div>
            

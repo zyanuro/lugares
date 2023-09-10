@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Haunted Places - @yield('titulo')</title>
+        <title>Enchanted Places - @yield('titulo')</title>
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
 
@@ -41,8 +41,8 @@
                 </div>
                     <!-- right section -->
                     <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block items-center">
-                        <a href="{{route('last')}}" class="{{request()-> is('last') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">MyPlaces</a>
-                        <a href="{{route('places.create')}}" class="{{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">New</a>                        
+                        <a href="{{route('places.show',['$place'])}}" class="{{request()-> is('this') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">MyPlaces</a>
+                        <a href="{{route('places.create')}}" class="{{request()-> is('create') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">New</a>                        
                         
                             @if(!Auth::check())                       
                         <a href="{{url('dashboard')}}" class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
@@ -50,7 +50,7 @@
                         @endif
                            
                         @auth  
-                        <a class=" font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <a class="mb-3 font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                         uppercase font-bold text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Log-out') }}
                         </a>
@@ -63,7 +63,7 @@
                
             </div>
         </nav>
-        <p class=" font-header text-white text-right mr-32 text-2xl items-center">Hello again <span class=" text-red-600">{{ Auth::user()->name }}</span></p>
+        <p class=" font-header text-teal-700 md:text-white text-right mr-32 md:text-2xl items-center">Hello again <span class=" text-red-600">{{ Auth::user()->name }}</span></p>
        
                 
         <main class="container mx-auto">

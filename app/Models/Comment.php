@@ -13,4 +13,9 @@ class Coment extends Model
 
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function Places(){
+
+        return $this->belongsToMany('App\Models\Place');
+    }
 }
