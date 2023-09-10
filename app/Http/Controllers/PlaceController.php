@@ -77,7 +77,8 @@ class PlaceController extends Controller
      */
     public function edit(string $id)
     {
-       //
+        $place = Place::find($id);
+        return view('registeredzone.edit',['place'=>$place, 'theme'=>Theme::all()]);
     }
 
     /**
@@ -85,7 +86,33 @@ class PlaceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate ([
+            
+            'name'=>'required|max:250',
+            'theme'=>'required|max:50',
+            'latitude'=>'decimal:2,5|nullable',
+            'length'=>'decimal:2,5|nullable',
+            'address'=>'required|max:250',
+            'description'=>'required|max:250',
+        ]);
+
+        $place = Place::find($id);
+        $place->name = $request->input('name');
+        $place->theme_id = $request->input('theme'); 
+        $place->latitude = $request->input('latitude');
+        $place->length = $request->input('length');
+        $place->address = $request->input('address');  
+        $place->description = $request->input('description');          
+        $place->photo_theme = $request->input('theme');
+        $place->user_id = $request->input('user');
+        $place->control = 0;        
+        $place->puntuation = 0;  
+
+
+
+        $place->save();
+
+        return view("registeredzone.msg", ['msg'=> "Updated Succesfully..."]);
     }
 
     /**
@@ -93,6 +120,8 @@ class PlaceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $place = Place::find($id);
+        $place->delete();
+        return view("registeredzone.msg", ['msg'=> "Deleted Succesfully..."]);
     }
 }

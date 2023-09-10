@@ -44,12 +44,12 @@ List of Places:
                     <td class="p-5">{{ $place->length }}</td>
                     <td class="p-5">{{ $place->address }}</td>
                     <td class="p-5">{{ $place->description }}</td>
-                    <td class="p-5"><a href="{{url('places/'.$place->id.'/edit')}}" class=" bg-amber-400 hover:bg-sky-700 transition-colors cursor-pointer   w-full p-1 text-white rounded-lg">Editar</a></td>
+                    <td class="p-5"><a href="{{url('places/'.$place->id.'/edit')}}" class=" shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-amber-400 rounded-lg">Editar</a></td>
                     <td class="p-5">
                         <form action="{{url('places/'.$place->id)}}" method="post">
                         @method("DELETE")
                         @csrf
-                        <button type="submit" class=" bg-red-600 hover:bg-sky-700 transition-colors cursor-pointer   w-full p-1 text-white rounded-lg">Delete</button>
+                        <button type="submit" class=" shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer w-full p-1 text-red-600 rounded-lg">Delete</button>
     
                         </form>
                     </td>
@@ -85,12 +85,12 @@ List of Places:
                     
                     <td class="p-5">{{ $place->name }}</td>
                     
-                    <td class="p-5"><a href="{{url('places/'.$place->id.'/edit')}}" class=" bg-amber-400 hover:bg-sky-700 transition-colors cursor-pointer   w-full p-1 text-white rounded-lg">Editar</a></td>
+                    <td class="p-5"><a href="{{url('places/'.$place->id.'/edit')}}" class="shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-amber-400 rounded-lg">Editar</a></td>
                     <td class="p-5">
                         <form action="{{url('places/'.$place->id)}}" method="post">
                         @method("DELETE")
                         @csrf
-                        <button type="submit" class=" bg-red-600 hover:bg-sky-700 transition-colors cursor-pointer   w-full p-1 text-white rounded-lg">Delete</button>
+                        <button type="submit" id="btnDelete" class=" shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer   w-full p-1 text-red-600 rounded-lg " >Delete</button>
     
                         </form>
                     </td>
@@ -111,6 +111,6 @@ List of Places:
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>
-    
+
 
 @endsection

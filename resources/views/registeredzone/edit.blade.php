@@ -2,13 +2,13 @@
 
 @section('titulo')
 
-Enchanted Places - User Management
+Enchanted Places - Edit
 
 @endsection
 
 @section('titulo2')
 
-Create a new Enchanted Place
+Edit a Enchanted Place
 
 
 @endsection
@@ -37,8 +37,10 @@ Create a new Enchanted Place
         </div>        
         @endif
 
-        <form action="{{url('places')}}" method="POST" class="border border-red-600 rounded-lg p-5">
+        <form action="{{url('places/'.$place->id.'edit/')}}" method="POST" class="border border-red-600 rounded-lg p-5">
+            @method("PUT")
             @csrf
+            
 
             <div class="mb-5">
                 <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -50,7 +52,7 @@ Create a new Enchanted Place
                    type="text"
                    placeholder="Name of the place"
                    class="border border-red-600 p-3 w-full rounded-lg"   
-                   value="{{old('name')}}"              
+                   value="{{$place->name}}"              
                 />
             </div>
             <div class="mb-5">
@@ -61,14 +63,16 @@ Create a new Enchanted Place
                  name="theme" 
                  id="theme" 
                  class="border border-red-600 p-3 w-full rounded-lg bg-red-200"
-                 value="{{old('theme')}}"> 
+                 value="{{$place->theme->name}}"> 
                  
-                 <option value="" class="mb-2 block  text-gray-500 font-bold">Select Theme</option>       
                  @foreach ($theme as $theme)
-                 <option value="{{$theme->id}}" class="mb-2 block  text-gray-500 font-bold">{{$theme->name}}</option>                 
-                 @endforeach             
+                 <option value="{{$theme->id}}" class="mb-2 block uppercase text-gray-500 font-bold" 
+                    @if ($theme->id == $place->theme_id) {{'selected'}}                      
+                 @endif>{{$theme->name}}</option>                 
+                 @endforeach   
 
                 </select>
+
             </div>
 
             <div class="mb-5">
@@ -82,7 +86,7 @@ Create a new Enchanted Place
                 type="text"
                 placeholder="Latitude"
                 class="border border-red-600 p-3 w-full rounded-lg"  
-                value="{{old('latitude')}}"                    
+                value="{{$place->latitude}}"                    
                 />
             </div>
             <div class="mb-5">
@@ -95,7 +99,7 @@ Create a new Enchanted Place
                 type="text"
                 placeholder="Length"
                 class="border border-red-600 p-3 w-full rounded-lg"  
-                value="{{old('length')}}"                   
+                value="{{$place->length}}"                   
                 />
             </div>
             <div class="mb-5">
@@ -108,7 +112,7 @@ Create a new Enchanted Place
                 type="text"
                 placeholder="Explanation of the address"
                 class="border border-red-600 p-3 w-full rounded-lg"  
-                value="{{old('address')}}"                   
+                value="{{$place->address}}"                   
                 />
             </div>
             <div class="mb-5">
@@ -121,7 +125,7 @@ Create a new Enchanted Place
                 type="text"
                 placeholder="Explanation of the phenomenon"
                 class="border border-red-600 p-3 w-full rounded-lg"  
-                value="{{old('description')}}"                   
+                value="{{$place->description}}"                   
                 />
             </div>
             <div class=" mb-5">
@@ -140,11 +144,11 @@ Create a new Enchanted Place
            
             <div><button 
                 type="submit"                
-                class="bg-red-600  hover:bg-red-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-lg"> 
+                class=" bg-red-600  hover:bg-red-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-lg"> 
                 Grabar
                 </button>
 
-                <a href="{{url('places')}}" class=" bg-slate-600  hover:bg-slate-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-xl">
+                <a href="{{url('places/show')}}" class=" bg-slate-600  hover:bg-slate-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-xl">
                 Volver
                 </a>
             </div>
