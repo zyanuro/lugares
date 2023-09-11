@@ -8,7 +8,7 @@
         <title>Enchanted Places - @yield('titulo')</title>
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
-
+        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Homemade+Apple&family=Luckiest+Guy&display=swap" rel="stylesheet">       
@@ -74,7 +74,7 @@
             @yield('contenido') 
 
         </main>
-
+        
     </body>
 
     <footer class="bg-inherit w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">

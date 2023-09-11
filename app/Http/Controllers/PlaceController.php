@@ -120,8 +120,10 @@ class PlaceController extends Controller
      */
     public function destroy(string $id)
     {
-        $place = Place::find($id);
-        $place->delete();
-        return view("registeredzone.msg", ['msg'=> "Deleted Succesfully..."]);
+        $placeToDelete = Place::find($id);
+        $placeToDelete->delete();
+        $place = Place::all();
+        $mobile_place = Place::all();
+        return view("registeredzone.show", ['place'=>$place, 'mobile_place'=>$mobile_place]);
     }
 }

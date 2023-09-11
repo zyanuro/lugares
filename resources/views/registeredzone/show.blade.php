@@ -14,6 +14,8 @@ List of Places:
 
 @section('contenido')
 
+<button  class="shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-auto mb-4 p-2 text-amber-400 rounded-lg">Back</button>
+
 <div class="hidden md:flex justify-center  bg-black place-content-center">
     
     <table class=" text-white text-center">
@@ -33,8 +35,9 @@ List of Places:
         </thead>
     </div>
         <div>
-        <tbody>
-            
+        <tbody>           
+
+                </form>
                 @foreach ($place as $place)
                 <tr class="border-b-red-600 border-b">
                     
@@ -46,10 +49,10 @@ List of Places:
                     <td class="p-5">{{ $place->description }}</td>
                     <td class="p-5"><a href="{{url('places/'.$place->id.'/edit')}}" class=" shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-amber-400 rounded-lg">Editar</a></td>
                     <td class="p-5">
-                        <form action="{{url('places/'.$place->id)}}" method="post">
+                        <form action="{{url('places/'.$place->id)}}" method="post" name="delete">
                         @method("DELETE")
                         @csrf
-                        <button type="submit" class=" shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer w-full p-1 text-red-600 rounded-lg">Delete</button>
+                        <button   type="submit" class="btnDelete shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer w-full p-1 text-red-600 rounded-lg">Delete</button>
     
                         </form>
                     </td>
@@ -90,7 +93,7 @@ List of Places:
                         <form action="{{url('places/'.$place->id)}}" method="post">
                         @method("DELETE")
                         @csrf
-                        <button type="submit" id="btnDelete" class=" shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer   w-full p-1 text-red-600 rounded-lg " >Delete</button>
+                        <button id="btnDelete" type="submit" class=" shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer   w-full p-1 text-red-600 rounded-lg " >Delete</button>
     
                         </form>
                     </td>
