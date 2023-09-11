@@ -68,6 +68,7 @@ class PlaceController extends Controller
      */
     public function show()
     {
+         
         $place = Place::all();
         return view('registeredzone.show', ['place'=>$place,'mobile_place'=>$place]);
     }

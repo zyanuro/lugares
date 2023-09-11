@@ -41,7 +41,7 @@
                 </div>
                     <!-- right section -->
                     <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block items-center">
-                        <a href="{{route('places.show',['$place'])}}" class="{{request()-> is('this') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">MyPlaces</a>
+                        <a href="{{url('registeredzone.show/'.Auth::user()->id)}}" class="{{request()-> is('this') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">MyPlaces</a>
                         <a href="{{route('places.create')}}" class="{{request()-> is('create') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">New</a>                        
                         
                             @if(!Auth::check())                       
@@ -74,7 +74,7 @@
             @yield('contenido') 
 
         </main>
-        
+       
     </body>
 
     <footer class="bg-inherit w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">

@@ -33,14 +33,14 @@ btnDeleteElements.forEach(function (element) {
 
     // Muestra la primera confirmación SweetAlert2 antes de eliminar el elemento
     Swal.fire({
-      title: '¿Estás seguro?',
-      text: 'No podrás revertir esto',
+      title: '¿Are yo sure?',
+      text: 'You wont be able to reverse this',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminarlo',
-      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Yes, delete it',
+      cancelButtonText: 'Cancel',
       showLoaderOnConfirm: true, // Muestra un indicador de carga
       preConfirm: () => {
         return new Promise((resolve) => {
@@ -55,11 +55,11 @@ btnDeleteElements.forEach(function (element) {
       if (result.isConfirmed) {
         // Muestra la segunda ventana modal
         Swal.fire({
-          title: 'Eliminado',
-          text: 'El elemento ha sido eliminado',
+          title: 'Deleted',
+          text: 'The placed has been deleted',
           icon: 'success',
           showCancelButton: false,
-          confirmButtonText: 'Aceptar',
+          confirmButtonText: 'OK',
         }).then(() => {
           // En este punto, la segunda ventana modal se ha mostrado
           // Puedes enviar el formulario de eliminación aquí

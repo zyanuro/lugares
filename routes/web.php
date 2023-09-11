@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlaceController;
+use App\Models\Place;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,13 @@ Route::get('/instructions', function () {
 
 Route::resource('/places', PlaceController::class);
 
+// Ruta para mostrar los lugares por usuario
+Route::get('/registeredzone.show/{id}', function($id) { 
+       
+    $place = Place::all()->where('user_id', $id);                 
+  
+    return view('registeredzone.show', ['place'=>$place, 'mobile_place'=>$place]);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
