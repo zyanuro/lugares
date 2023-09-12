@@ -28,7 +28,7 @@
                         </div>                          
                     </div>
                     <div class=" text-center">
-                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl font-bold hover:text-red-800 font-header text-center w-auto">Enchanted Places</a>
+                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl font-bold hover:text-red-400 font-header text-center w-auto">Enchanted Places</a>
                     </div>
                     <div class="md:hidden">
                         <button id="nav-button" type="button" class=" text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
@@ -71,7 +71,7 @@
             </div>
         </nav>
         @auth
-        <a href="{{route('profile.edit')}}"><p class="mr-10 font-header text-right text-3xl text-teal-700">Hello <span class="uppercase">{{ Auth::user()->name }}</span></p></a>     
+        <a href="{{route('profile.edit')}}"><p class="mr-10 font-header text-right text-3xl text-white">Hello <span class="uppercase">{{ Auth::user()->name }}</span></p></a>     
         @endauth
                 
         <main class="container mx-auto">

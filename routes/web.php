@@ -21,7 +21,8 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/last', function () {
-    return view('userzone/last');
+    $place = Place::all();
+    return view('userzone.last', ['place'=>$place, 'mobile_place'=>$place]);
 })->name('last');
 
 Route::get('/ranking', function () {

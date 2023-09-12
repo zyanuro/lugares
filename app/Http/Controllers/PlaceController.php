@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Place;
 use App\Models\Theme;
+use Auth;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
@@ -70,7 +71,7 @@ class PlaceController extends Controller
     {
          
         $place = Place::all();
-        return view('registeredzone.show', ['place'=>$place,'mobile_place'=>$place]);
+        return view('registeredzone.show', ['place'=>$place, 'mobile_place'=>$place]);
     }
 
     /**
@@ -125,6 +126,6 @@ class PlaceController extends Controller
         $placeToDelete->delete();
         $place = Place::all();
         $mobile_place = Place::all();
-        return view("registeredzone.show", ['place'=>$place, 'mobile_place'=>$mobile_place]);
+        return view("registeredzone.msg", ['msg'=> "Deleted Succesfully..."]);
     }
 }

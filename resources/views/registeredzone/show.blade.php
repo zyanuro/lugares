@@ -14,7 +14,6 @@ List of Places:
 
 @section('contenido')
 
-<button  class="shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-auto mb-4 p-2 text-amber-400 rounded-lg">Back</button>
 
 <div class="hidden md:flex justify-center  bg-black place-content-center">
     
