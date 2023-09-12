@@ -20,9 +20,15 @@ The Last...
 
         @foreach ($place as $place) 
         <a href="#" class="hover:bg-gray-600 hover:rounded-full hover:shadow-white hover:shadow-2xl">
-            <div class="max-w-sm rounded-xl overflow-hidden mx-auto my-4 bg-red-400 font-header shadow-white shadow-md border-2 border-red-800">
+            <div class="max-w-sm rounded-xl overflow-hidden mx-auto my-4
+             @if ($place->theme->id == 5)
+              bg-pink-400 
+              @else 
+              bg-red-400
+             @endif              
+              font-header shadow-white shadow-md border-2 border-red-800">
             <!-- Imagen -->
-            <img src="{{asset('img/logo_lugares_encantados.png')}}" alt="Imagen de contenido" class=" w-full p-1 rounded-xl ">
+            <img src="{{asset('img/'.$place->theme->name.'.jpg')}}" alt="image card" class="lowercase w-full p-1 rounded-xl ">
     
             <!-- Contenido de la tarjeta -->
             <div class="px-10 py-4">
@@ -40,7 +46,7 @@ The Last...
                 <p class=" text-gray-700 text-base mb-2">Created at: <span class="text-gray-300">{{$place->created_at}}</span></p>
     
                 <!-- Temática -->
-                <p class="text-gray-700 text-base mb-2">Theme: <span class="text-cyan-700">{{$place->theme->name}}</span></p>
+                <p class="text-gray-700 text-base mb-2">Theme: <span class="text-cyan-700 border border-black p-1 rounded-md bg-gray-300">{{$place->theme->name}}</span></p>
     
                 <!-- Autor -->
                 <p class="text-gray-700 text-base">Author: <span class=" text-slate-300">{{$place->user->name}}</span></p>
