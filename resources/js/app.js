@@ -75,6 +75,13 @@ btnDeleteElements.forEach(function (element) {
   });
 });
 
+// Maps burtton
+let btnMap = document.getElementById('btnMap');
+let map_content = document.getElementById('map_content');
+
+btnMap.addEventListener('click', () => {
+    map_content.classList.toggle("hidden");
+});
 
 
 

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\VotationController;
 use App\Models\Place;
+use App\Models\Theme;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +48,15 @@ Route::get('/registeredzone.show/{id}', function($id) {
   
     return view('registeredzone.show', ['place'=>$place, 'mobile_place'=>$place]);
 });
+
+Route::get('/place/{id}', function ($id) {
+    $place = Place::find($id);
+    $theme = Theme::all();
+    return view('userzone.place', ['place'=>$place]);
+})->name('place');
+
+//Ruta para votaciones
+Route::resource('/votes', VotationController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

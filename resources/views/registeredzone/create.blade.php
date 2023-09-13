@@ -138,14 +138,14 @@ Create a new Enchanted Place
                 />
             </div>
            
-            <div><button 
+            <div class="flex gap-3 text-center p-4 font-header text-2xl"><button 
                 type="submit"                
-                class="bg-red-600  hover:bg-red-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-lg"> 
-                Grabar
+                class=" shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-full p-2 text-red-600 rounded-lg"> 
+                Done
                 </button>
 
-                <a href="{{url('places')}}" class=" bg-slate-600  hover:bg-slate-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-xl">
-                Volver
+                <a href="{{url('places')}}" class=" b shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-full p-2 text-slate-400 rounded-lg">
+                Back
                 </a>
             </div>
                 

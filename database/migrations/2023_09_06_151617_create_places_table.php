@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('length', 7,5)->nullable();
             $table->string('address', 250);
             $table->string('description', 250);
-            $table->string('puntuation', 25);
+            $table->interger('puntuation', 25);
             $table->integer('control');           
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
