@@ -13,7 +13,9 @@ Enchanted Places - Place data
 @endsection
 
 @section('contenido')
-<a href="{{ url()->previous() }}" class=" shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-full p-2 text-red-600 rounded-lg">Back</a>
+<a href="{{ url()->previous() }}" class="ml-3 shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-full p-2 text-red-600 rounded-lg">Back</a>
+ 
+<!-- Contenido de la ficha -->
 
 <div class="mt-10 md:mt-16 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
 grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
@@ -30,7 +32,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                 <p class=" text-gray-700 text-base mb-2">Created at: <span class="text-gray-300">{{$place->created_at}}</span></p>
     
                 <!-- Temática -->
-                <p class="text-gray-700 text-base mb-2">Theme: <span class="text-cyan-700 border border-black p-1 rounded-md bg-gray-300">{{$place->theme->name}}</span></p>
+                <p class="text-gray-700 text-base mb-2">Theme: <span class="font-header text-cyan-700 border border-black p-1 rounded-md bg-gray-300">{{$place->theme->name}}</span></p>
     
                 <!-- Autor -->
                 <p class="text-gray-700 text-base">Author: <span class=" text-slate-300">{{$place->user->name}}</span></p>                
@@ -60,7 +62,9 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
              </button> 
             </div>           
            
-</div>   
+</div>  
+
+<!-- Contenido de Mapas -->
 
 <div id="map_content" class="hidden">
     <div  class="md:mt-20 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
@@ -92,12 +96,15 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
             </div> 
         </div>  
 </div>
+
+ <!-- Comentatios de la tarjeta -->
+
 <div class="md:mt-20 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
 grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
     <!-- Imagen -->
     <!-- <img src="{{asset('img/'.$place->theme->name.'.jpg')}}" alt="image card" class="lowercase w-auto p-1 rounded-full "> -->   
 
-    <!-- Contenido de la tarjeta -->
+    <!-- Comentatios de la tarjeta -->
     <div class="px-10 py-">
         <!-- Nombre -->       
         <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-1">Comments</div>
