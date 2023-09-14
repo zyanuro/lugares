@@ -113,7 +113,16 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
         <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-1">Comments</div>
         <p class="text-slate-200">Comentarios para {{ $place->nombre }}</p>
         @foreach ($comment as $comment)
-            <p class="text-slate-200 font-sans">{{ $comment->comment }}</p>
+           
+
+            <div class=" mx-auto bg-slate-300 rounded-md shadow-md p-4 mb-4">
+                <div class="flex justify-between items-center mb-2 text-red-600">
+                    
+                    <span class="font-semibold mr-1">Author: {{ $comment->user->name }}</span>
+                    <span class="text-gray-500 text-sm">Created_at: {{ $comment->created_at }}</span>
+                </div>
+                <p class="text-gray-800">{{ $comment->comment }}</p>
+            </div>
         @endforeach
        
         
