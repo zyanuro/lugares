@@ -86,3 +86,14 @@ btnMap.addEventListener('click', () => {
 
 
 //document.delete.submit()    
+
+
+    //<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
+
+
+    //<div id="map" style="height: 400px; width: 100%;"></div>
+
+
+        // Coordenadas de ejemplo (reemplaza con tus propias coordenadas)
+       
+    

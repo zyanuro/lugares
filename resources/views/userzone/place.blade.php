@@ -76,14 +76,14 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
             <div class="px-10 py-">
                 <!-- Nombre -->
                
-                <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-1">Location Map</div>
-                <hr>
+                <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">Location Map</div>
+              
                 <!-- Puntuación -->
-                
+                <div id="map" class=" border border-red-600" style="height: 400px; width: 100%;"></div>
     
                 <!-- Fecha de Creación -->
                 
-                <p class="text-gray-700 text-base">Extra address: <span class=" text-slate-300">{{$place->address}}</span></p>
+                <p class="text-gray-700 text-base mt-3">Extra address: <span class=" text-slate-300">{{$place->address}}</span></p>
                
                 <hr class="mt-3">
             </div>
@@ -134,7 +134,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                     <label for="comment" class="mb-2 block uppercase text-gray-500 font-bold">
                         Comment
                     </label>                    
-                    <textarea name="comment" id="comment" placeholder="Write a comment" value="{{old('comment')}}" rows="4" cols="50" class=" rounded-lg"></textarea>
+                    <textarea name="comment" id="comment" placeholder="Write a comment" value="{{old('comment')}}" rows="2" cols="50" class=" rounded-lg"></textarea>
                 </div>               
                 <div class="hidden mb-5">
                     <label for="user" class="mb-2 block  text-gray-500 font-bold text-center">
@@ -178,7 +178,26 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
 @endauth
 
 
-<!-- Pruebas formulario de votación -->
+<!-- Script para generar Mapas de google con las coordenadas -->
+<script>
+     var latitud = {{$place->latitude}};
+        var longitud = {{$place->length}};
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: latitud, lng: longitud },
+                zoom: 15 // Ajusta el nivel de zoom según tus necesidades
+            });
+
+            var marker = new google.maps.Marker({
+                position: { lat: latitud, lng: longitud },
+                map: map,
+                title: 'My Point' // Cambia el título del marcador según tus necesidades
+            });
+        }
+
+        initMap();
+</script>
 
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>

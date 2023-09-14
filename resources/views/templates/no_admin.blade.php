@@ -11,7 +11,8 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Homemade+Apple&family=Luckiest+Guy&display=swap" rel="stylesheet">       
+        <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Homemade+Apple&family=Luckiest+Guy&display=swap" rel="stylesheet">   
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxjgP79p2DUT7Zt2-Fqqbx7EJym4RGupc&callback=iniciarMap"></script>    
               
     </head>
  
