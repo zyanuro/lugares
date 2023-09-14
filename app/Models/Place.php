@@ -17,11 +17,6 @@ class Place extends Model
     public function theme(){
 
         return $this->belongsTo(Theme::class, 'theme_id', 'id');
-    }
-    public function comments(){
-
-        return $this->belongsToMany('App\Models\Comment');
-    }
-
+    }   
    
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\VotationController;
+use App\Models\Comment;
 use App\Models\Place;
 use App\Models\Theme;
 use Illuminate\Support\Facades\Route;
@@ -54,13 +55,19 @@ Route::get('/registeredzone.show/{id}', function($id) {
 });
 
 Route::get('/place/{id}', function ($id) {
+    $comment = Comment::where('place_id', $id)->get();    
     $place = Place::find($id);
-    $theme = Theme::all();
-    return view('userzone.place', ['place'=>$place]);
+    $theme = Theme::all();    
+    return view('userzone.place', ['place'=>$place, 'comment'=>$comment]);
 })->name('place');
 
 //Ruta para votaciones
 Route::resource('/votes', VotationController::class);
+
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

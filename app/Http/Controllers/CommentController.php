@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Place;
+use App\Models\Theme;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -33,32 +34,38 @@ class CommentController extends Controller
         $request->validate ([
             
             'user'=>'required|max:25',
+            'placeId'=>'required|max:25',
             'comment'=>'required|max:250',
             
         ]);
 
         $comment = new Comment();
+        $place = new Place();
         $comment->user_id = $request->input('user');
-        $comment->comment = $request->input('comment'); 
-        $commentario = $request->input('comment'); 
-        $comment->save(); 
+        $comment->place_id = $request->input('placeId');
+        $commentSend = $request->input('placeId');
+        $comment->comment = $request->input('comment');
+       
+        $comment->save();      
 
-        $placeId = $request->input('placeId');         
-
-        $place = Place::find($placeId);
-        $comment = new Comment(['comment' => $commentario]); // Reemplaza 'texto' con el nombre del campo en tu tabla 'comentarios'
-        $place->comment()->save($comment);
-
-
-        return view("registeredzone.msg", ['msg'=> "Saved Succesfully..."]);
+       
+        return view("userzone.msg", ['msg'=> "Comment Saved Succesfully...", 'place'=>$place]);
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $placeId)
     {
-        //
+        
+       // Realiza una consulta para obtener los comentarios relacionados con el lugar específico
+    $comment = Comment::where('place_id', $placeId)->get();
+    $place = Place::all();
+   
+      
+    // Puedes pasar los comentarios a tu vista para mostrarlos
+    return view('places', compact('comment'), compact('place'));
     }
 
     /**

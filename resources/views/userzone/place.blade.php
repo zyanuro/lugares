@@ -111,6 +111,10 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
     <div class="px-10 py-">
         <!-- Nombre -->       
         <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-1">Comments</div>
+        <p class="text-slate-200">Comentarios para {{ $place->nombre }}</p>
+        @foreach ($comment as $comment)
+            <p class="text-slate-200 font-sans">{{ $comment->comment }}</p>
+        @endforeach
        
         
         <!-- Formulario de mensajes -->

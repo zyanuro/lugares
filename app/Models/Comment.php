@@ -15,6 +15,6 @@ class Comment extends Model
 
     public function places(){
 
-        return $this->belongsToMany('App\Models\Place');
+        return $this->belongsTo(User::class, 'place_id', 'id');
     }
 }
