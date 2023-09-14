@@ -106,6 +106,7 @@ Create a new Enchanted Place
                 id="address"
                 name="address"
                 type="text"
+                maxlength="250"
                 placeholder="Explanation of the address"
                 class="border border-red-600 p-3 w-full rounded-lg"  
                 value="{{old('address')}}"                   
@@ -115,14 +116,15 @@ Create a new Enchanted Place
                 <label for="description" class="mb-2 block uppercase text-gray-500 font-bold">
                     Description of the phenomenon
                 </label>
-                <input 
+                <textarea 
                 id="description"
                 name="description"
                 type="text"
+                rows="2" cols="50" maxlength="250"
                 placeholder="Explanation of the phenomenon"
                 class="border border-red-600 p-3 w-full rounded-lg"  
-                value="{{old('description')}}"                   
-                />
+                value="{{old('description')}}">                   
+                </textarea>/>
             </div>
             <div class=" mb-5">
                 <label for="user" class="mb-2 block  text-gray-500 font-bold text-center">

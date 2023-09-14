@@ -17,7 +17,7 @@ Enchanted Places - Place data
  
 <!-- Contenido de la ficha -->
 
-<div class="mt-10 md:mt-16 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
+<div class="mt-10 md:mt-16 rounded-xl m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
 grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
             <!-- Imagen -->
             <img src="{{asset('img/'.$place->theme->name.'.jpg')}}" alt="image card" class="w-auto rounded-full shadow-white shadow-md">
@@ -37,7 +37,9 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                 <!-- Autor -->
                 <p class="text-gray-700 text-base">Author: <span class=" text-slate-300">{{$place->user->name}}</span></p>                
                 <p class="text-gray-700 text-base">Extra address: <span class=" text-slate-300">{{$place->address}}</span></p>
-                <p class="text-gray-700 text-base">Phenomenon: <span class=" text-slate-300">{{$place->description}}</span></p>
+                <p class="text-gray-700 text-base ">Phenomenon: <span class=" text-slate-300">{{$place->description}}</span></p>    
+               
+                
 
                 <hr class="mt-3">
 
@@ -50,19 +52,20 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                 </div>
                  <!-- Enlace de mapas -->
             </div>
-            <button id="btnMap" class=" hover:bg-white rounded-2xl">
-             <div class="grid grid-cols-1 bg-slate-400 text-center rounded-2xl m-4">                
+            <button id="btnMap" class=" rounded-2xl w-auto m-4">
+             <div class="grid grid-cols-1 bg-slate-400 hover:bg-amber-500 text-center rounded-2xl m-4 w-full">                
           
              <div class="flex mt-6">
                 <p class="text-gray-700 text-base">Latitude: <span class=" text-slate-300">{{$place->latitude}}</span></p>
                 <p class="text-gray-700 text-base">Length: <span class=" text-slate-300">{{$place->length}}</span></p>
              </div>
-                <img src="{{asset('img/map.jpg')}}" alt="image card" class="w-auto rounded-full p-3 ">
+                <img src="{{asset('img/map.jpg')}}" alt="image card" class="w-full rounded-full p-3 ">
                 <p class="text-red-700 text-base">PUSH HERE</p>
+             </div>
              </button> 
-            </div>           
+</div>           
            
-</div>  
+ 
 
 <!-- Contenido de Mapas -->
 
@@ -79,7 +82,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                 <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">Location Map</div>
               
                 <!-- Puntuación -->
-                <div id="map" class=" border border-red-600" style="height: 400px; width: 100%;"></div>
+                <div id="map" class=" border border-red-600 w-auto" style="height: 400px; width: 100%;"></div>
     
                 <!-- Fecha de Creación -->
                 
@@ -181,8 +184,8 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
 <!-- Script para generar Mapas de google con las coordenadas -->
 <script>
      var latitud = {{$place->latitude}};
-        var longitud = {{$place->length}};
-
+     var longitud = {{$place->length}};
+     var myPoint = 'Enchanted place';
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: latitud, lng: longitud },
@@ -192,7 +195,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
             var marker = new google.maps.Marker({
                 position: { lat: latitud, lng: longitud },
                 map: map,
-                title: 'My Point' // Cambia el título del marcador según tus necesidades
+                title: myPoint // Cambia el título del marcador según tus necesidades
             });
         }
 
