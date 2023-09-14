@@ -48,7 +48,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                     
                             
                 </div>
-                
+                 <!-- Enlace de mapas -->
             </div>
             <button id="btnMap" class=" hover:bg-white rounded-2xl">
              <div class="grid grid-cols-1 bg-slate-400 text-center rounded-2xl m-4">                
@@ -98,7 +98,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
 </div>
 
  <!-- Comentatios de la tarjeta -->
-
+   
 <div class="md:mt-20 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
 grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
     <!-- Imagen -->
@@ -108,15 +108,77 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
     <div class="px-10 py-">
         <!-- Nombre -->       
         <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-1">Comments</div>
-        <hr>    
        
-        <hr class="mt-3">
-    </div>
-    <div class="grid grid-cols-1 bg-slate-400 text-center rounded-2xl m-4"> 
         
+        <!-- Formulario de mensajes -->
+        @auth 
+        <div class=" bg-black">
+       
+            @if ($errors->any())
+            <div class=" font-sans bg-red-400 transition-colors cursor-pointer  font-bold w-auto p-3 text-white mb-3 rounded-lg">
+    
+            <ul>
+                @foreach ($errors->all() as $error)
+     
+                <li>{{ $error }}</li>
+                    
+                @endforeach
+            </ul>    
+            </div>        
+            @endif
+    
+            <form action="{{url('comment')}}" method="POST" class="border border-red-600 rounded-lg p-2">
+                @csrf
+    
+                <div class="mb-1">
+                    <label for="comment" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Comment
+                    </label>                    
+                    <textarea name="comment" id="comment" placeholder="Write a comment" value="{{old('comment')}}" rows="4" cols="50" class=" rounded-lg"></textarea>
+                </div>               
+                <div class="hidden mb-5">
+                    <label for="user" class="mb-2 block  text-gray-500 font-bold text-center">
+                        <p class=" text-teal-600 border border-red-600 p-3 w-full rounded-lg">User : {{ Auth::user()->email }}</p>
+                    </label>
+                    <input 
+                    id="user"
+                    name="user"
+                    type="text"
+                    placeholder=""
+                    class="hidden border border-red-600 p-3 w-full rounded-lg"  
+                    value="{{ Auth::user()->id }}"                   
+                    />
+                </div>
+                <div class="hidden mb-5">
+                    <label for="placeId" class="mb-2 block  text-gray-500 font-bold text-center">
+                        <p class=" text-teal-600 border border-red-600 p-3 w-full rounded-lg">Place id : {{ $place->id }}</p>
+                    </label>
+                    <input 
+                    id="placeId"
+                    name="placeId"
+                    type="text"
+                    placeholder=""
+                    class="hidden border border-red-600 p-3 w-full rounded-lg"  
+                    value="{{ $place->id }}"                   
+                    />
+                </div>
+               
+                <div class="flex gap-3 w-2/3  p-4 font-header text-2xl">
+                    <button 
+                    type="submit"                
+                    class=" shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-auto p-2 text-red-600 rounded-lg"> 
+                    Send
+                    </button>
       
-    </div>   
+                </div>
+         
+        </div>   
+    </div>
 </div>
+@endauth
+
+
+<!-- Pruebas formulario de votación -->
 
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\VotationController;
@@ -40,6 +41,9 @@ Route::get('/instructions', function () {
 })->name('instructions');
 
 Route::resource('/places', PlaceController::class);
+
+// Ruta para mostrar los coomentarios de usuario
+Route::resource('/comment', CommentController::class);
 
 // Ruta para mostrar los lugares por usuario
 Route::get('/registeredzone.show/{id}', function($id) { 
