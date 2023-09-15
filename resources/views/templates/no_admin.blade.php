@@ -29,7 +29,7 @@
                         </div>                          
                     </div>
                     <div class=" text-center">
-                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl font-bold hover:text-red-400 font-header text-center w-auto">Enchanted Places</a>
+                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl  hover:text-red-400 font-header text-center w-auto">Enchanted Places</a>
                     </div>
                     <div class="md:hidden">
                         <button id="nav-button" type="button" class=" text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
@@ -46,7 +46,7 @@
                         <a href="{{route('contact')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
                         @if(!Auth::check())  
                         <a href="{{route('register')}}" class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase font-bold text-lg text-red-600 hover:text-black border border-white rounded-md">Register</a>
+                        uppercase text-lg text-red-600 hover:text-black border border-white rounded-md">Register</a>
                         @endif
                         @auth
                          <a href="{{route('places.index')}}" class="text-blue-500 text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Management</a>
@@ -54,12 +54,12 @@
 
                             @if(!Auth::check())                       
                         <a href="{{url('dashboard')}}" class="mt-2 md:mt-0 md:ml-3 font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase font-bold text-lg text-amber-400 hover:text-black border border-white rounded-md">Login</a>
+                        uppercase  text-lg text-amber-400 hover:text-black border border-white rounded-md">Login</a>
                         @endif
                            
                         @auth  
                         <a class=" font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase font-bold text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        uppercase text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Log-out') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

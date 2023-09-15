@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -29,7 +30,21 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/');
+        $email = $request->input('email');
+        
+        $user = User::all();
+
+        foreach ($user as $user){
+            if ($user->email==$email){
+                $rol=$user->rol; 
+            }
+        }
+
+        if($rol==2){
+            return redirect('admin');
+        }else{
+            return redirect('/');
+        }
     }
 
     /**

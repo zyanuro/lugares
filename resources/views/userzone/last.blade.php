@@ -34,7 +34,7 @@ The Last...
             <div class="px-10 py-4">
                 <!-- Nombre -->
                
-                <div class="text-center font-bold text-slate-800 mb-1">{{$place->name}}</div>
+                <div class="text-center  text-slate-800 mb-1">{{$place->name}}</div>
                 <hr>
                 <!-- Puntuación -->
                 <div class="flex items-center my-2">

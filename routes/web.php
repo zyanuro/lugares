@@ -22,6 +22,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+/*****************************************************/
+// Admin
+/*****************************************************/
+Route::group(['middleware' => 'admin'], function () {  
+    // Poner aquí las vistas y rutas solo para admin
+});
+
+/*****************************************************/
+// Registrados
+/*****************************************************/
+Route::group(['middleware' => 'auth'], function () {  
+    // Poner aquí las vistas y rutas solo para usuarios registrados
+    Route::resource('/places', PlaceController::class);
+    // Ruta para mostrar los lugares por usuario
+
+Route::get('/registeredzone.show/{id}', function($id) { 
+       
+    $place = Place::all()->where('user_id', $id);                 
+  
+    return view('registeredzone.show', ['places'=>$place, 'mobile_places'=>$place]);
+});
+});
+
+//Mostrar los comentarios para cada lugar que sean propios
+Route::get('/place/{id}', function ($id) {
+    $comment = Comment::where('place_id', $id)->get();    
+    $place = Place::find($id);
+    $theme = Theme::all();    
+    return view('userzone.place', ['place'=>$place, 'comment'=>$comment, 'votes'=>Votation::all()]);
+})->name('place');
+
+//Ruta para votaciones
+Route::resource('/votation', VotationController::class);
+
+// Ruta para mostrar los coomentarios de usuario
+Route::resource('/comment', CommentController::class);
+
+/**************************************************/
+/** Rutas para usuarios no registrados y anónimos **/
+/**************************************************/
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -44,34 +86,11 @@ Route::get('/instructions', function () {
     return view('userzone/instructions');
 })->name('instructions');
 
-Route::resource('/places', PlaceController::class);
-
-// Ruta para mostrar los coomentarios de usuario
-Route::resource('/comment', CommentController::class);
-
-// Ruta para mostrar los lugares por usuario
-Route::get('/registeredzone.show/{id}', function($id) { 
-       
-    $place = Place::all()->where('user_id', $id);                 
-  
-    return view('registeredzone.show', ['places'=>$place, 'mobile_places'=>$place]);
-});
-
-//Mostrar los comentarios para cada lugar que sean propios
-Route::get('/place/{id}', function ($id) {
-    $comment = Comment::where('place_id', $id)->get();    
-    $place = Place::find($id);
-    $theme = Theme::all();    
-    return view('userzone.place', ['place'=>$place, 'comment'=>$comment, 'votes'=>Votation::all()]);
-})->name('place');
-
-//Ruta para votaciones
-Route::resource('/votation', VotationController::class);
 
 
-
-
-
+/*********************************************/
+// Rutas preinstaladas de Laravel para users
+/*********************************************/
 
 Route::get('/dashboard', function () {
     return view('dashboard');
