@@ -18,7 +18,7 @@ The Last...
 <div class="container mx-auto p-4">
     <div class="grid grid-cols-1 md:grid-cols-3 bg-black p-4 rounded-lg">
 
-        @foreach ($place as $place) 
+        @foreach ($places as $place) 
         <a href="{{asset('place/'.$place->id)}}" class="hover:bg-gray-600 hover:rounded-full hover:shadow-white hover:shadow-2xl">
             <div class="max-w-sm rounded-xl overflow-hidden mx-auto my-4
              @if ($place->theme->id == 5)
@@ -57,6 +57,7 @@ The Last...
         
         @endforeach
     </div>
+   
 </div>
 
 
@@ -66,7 +67,7 @@ The Last...
 
 
 
-
+{{ $places->links() }}
 
 
 

@@ -46,10 +46,26 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                  <!-- Puntuación -->
                  <div class="flex items-center my-2">
                     <svg class="w-4 h-4 fill-current text-white mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C5.47 2 1 7.17 1 12a9 9 0 0 0 9 9 8.93 8.93 0 0 0 6.38-2.63 1 1 0 0 0 .12-1.4l-1.85-2.1a1 1 0 0 0-1.4-.12A6.93 6.93 0 0 1 3 12c0-3.86 3.14-7 7-7a7 7 0 0 1 5.78 3H10a1 1 0 0 0-1 1v2h6.58a7 7 0 0 1-1.96 6.84l-3.69 3.68A1 1 0 0 0 10 20a1 1 0 0 0 .7-.29L14.4 16h1.2a7 7 0 0 1 .97-2.83l2.53-2.54a1 1 0 0 0 .3-.71 1 1 0 0 0-.29-.7A9 9 0 0 0 12 2zM3 12a7 7 0 0 1 .78-3H5a1 1 0 0 0-1 1v2h-.22A6.93 6.93 0 0 1 3 12zm9 8a1 1 0 0 0 .71-.29l2.53-2.53a7.03 7.03 0 0 1-2.83-1.96H10v-1.2l3.85-3.85A9 9 0 0 0 12 20z"/><path fill="none" d="M0 0h24v24H0z"/></svg>
-                    <span class="text-white">{{$place->puntuation}}  <span class="text-pink-500 ml-1">Likes</span></span>  
-                    
-                            
+                    <span class="text-white">{{$place->puntuation}}  <span class="text-pink-500 ml-1">Likes</span></span> 
+                    @auth
+                    <div class=" @foreach ($votes as $vote )                   
+                    @endforeach
+                    @if ($vote->place_id == $place->id && $vote->user_id == Auth::id() )
+                        hidden
+                        @else
+                        visible
+                    @endif">
+                    <form method="POST" action="{{ url('votation') }}">
+                        @csrf
+                        <input type="hidden" name="place_id" value="{{ $place->id }}">
+                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                        <input type="hidden" name="puntuation" value="{{ $place->puntuation }}">
+                        <button type="submit" class="ml-2 font-header text-amber-300 rounded-full border hover:text-red-600 border-white hover:border-red-600 p-1 px-2">Vote</button>
+                    </form>
                 </div>
+                    @endauth                           
+                </div>
+               
                  <!-- Enlace de mapas -->
             </div>
             <button id="btnMap" class=" rounded-2xl w-auto m-4">
@@ -108,20 +124,20 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
     <!-- <img src="{{asset('img/'.$place->theme->name.'.jpg')}}" alt="image card" class="lowercase w-auto p-1 rounded-full "> -->   
 
     <!-- Comentatios de la tarjeta -->
-    <div class="px-10 py-">
+    <div class="">
         <!-- Nombre -->       
-        <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-1">Comments</div>
-        <p class="text-slate-200">Comentarios para {{ $place->nombre }}</p>
+        <div class="text-center text-2xl md:text-2xl font-bold text-slate-300 mb-1">Comments</div>
+        
         @foreach ($comment as $comment)
            
 
-            <div class=" mx-auto bg-slate-300 rounded-md shadow-md p-4 mb-4">
+            <div class=" bg-slate-300 rounded-md shadow-red-600 shadow-md border-2 border-red-300 p-3 mx-16 mb-4 w-auto">
                 <div class="flex justify-between items-center mb-2 text-red-600">
                     
-                    <span class="font-semibold mr-1">Author: {{ $comment->user->name }}</span>
-                    <span class="text-gray-500 text-sm">Created_at: {{ $comment->created_at }}</span>
+                    <span class="font-semibold mr-1">Author: <span class=" text-indigo-800 rounded-md p-1 border border-indigo-800 bg-white">{{ $comment->user->name }}</span></span>
+                    <span class="text-gray-500 text-sm">Created_at: <span class=" text-indigo-800">{{ $comment->created_at }}</span></span>
                 </div>
-                <p class="text-gray-800">{{ $comment->comment }}</p>
+                <p class="text-gray-800 w-11/12">{{ $comment->comment }}</p>
             </div>
         @endforeach
        
@@ -143,14 +159,14 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
             </div>        
             @endif
     
-            <form action="{{url('comment')}}" method="POST" class="border border-red-600 rounded-lg p-2">
+            <form action="{{url('comment')}}" method="POST" class="border border-red-600 rounded-lg p-2 ">
                 @csrf
     
                 <div class="mb-1">
-                    <label for="comment" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Comment
+                    <label for="comment" class="mb-2 block text-xs text-gray-500 font-thin">
+                        What is your opinion?
                     </label>                    
-                    <textarea name="comment" id="comment" placeholder="Write a comment" value="{{old('comment')}}" rows="2" cols="50" class=" rounded-lg"></textarea>
+                    <textarea name="comment" id="comment" placeholder="Write a comment" value="{{old('comment')}}" rows="4" cols="35" class=" rounded-lg"></textarea>
                 </div>               
                 <div class="hidden mb-5">
                     <label for="user" class="mb-2 block  text-gray-500 font-bold text-center">
@@ -179,10 +195,10 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                     />
                 </div>
                
-                <div class="flex gap-3 w-2/3  p-4 font-header text-2xl">
+                <div class="flex gap-3 w-2/3  p-4 font-header text-xl">
                     <button 
                     type="submit"                
-                    class=" shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-auto p-2 text-red-600 rounded-lg"> 
+                    class="shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-auto p-2 text-red-600 rounded-lg"> 
                     Send
                     </button>
       

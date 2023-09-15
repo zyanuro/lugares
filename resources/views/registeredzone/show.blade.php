@@ -13,7 +13,7 @@ List of Places:
 @endsection
 
 @section('contenido')
-
+@use Illuminate\Pagination\Paginator
 
 <div class="hidden md:flex justify-center  bg-black place-content-center">
     
@@ -37,7 +37,7 @@ List of Places:
         <tbody>           
 
                 </form>
-                @foreach ($place as $place)
+                @foreach ($places as $place)
                 <tr class="border-b-red-600 border-b">
                     
                     <td class="p-5">{{ $place->name }}</td>
@@ -46,7 +46,7 @@ List of Places:
                     <td class="p-5">{{ $place->length }}</td>
                     <td class="p-5">{{ $place->address }}</td>
                     <td class="p-5">{{ $place->description }}</td>
-                    <td class="p-5"><a href="{{url('places/'.$place->id.'/edit')}}" class=" shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-amber-400 rounded-lg">Editar</a></td>
+                    <td class="p-5"><a href="{{url('places/'.$place->id.'/edit')}}" class=" shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-amber-400 rounded-lg">Edit</a></td>
                     <td class="p-5">
                         <form action="{{url('places/'.$place->id)}}" method="post" name="delete">
                         @method("DELETE")
@@ -58,14 +58,18 @@ List of Places:
                     </td>
                 </tr>                
                 @endforeach      
-            
+               
+                
                    
         </tbody>
     </div>
     
-    </table>         
+    </table>    
+         
     
 </div>
+
+
 
 <div class="flex md:hidden justify-center  bg-black place-content-center">
     
@@ -83,7 +87,7 @@ List of Places:
         <div>
         <tbody>
             
-                @foreach ($mobile_place as $place)
+                @foreach ($mobile_places as $place)
                 <tr class="border-b-red-600 border-b">
                     
                     <td class="p-5">{{ $place->name }}</td>

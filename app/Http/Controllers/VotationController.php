@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Place;
 use App\Models\Theme;
+use App\Models\Votation;
 use Illuminate\Http\Request;
 
 class VotationController extends Controller
@@ -29,7 +31,24 @@ class VotationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate ([
+            
+            'puntuation'=>'required|max:10',
+            
+        ]);
+       
+        $vote = new Votation();
+        $prepuntuation = 1;
+        $postpuntuation = $request->input('puntuation');
+        $vote->user_id = $request->input('user_id');
+        $vote->place_id = $request->input('place_id');
+        $vote->save();
+        $idPlace =  $request->input('place_id');
+        $place = Place::find($idPlace);
+        $place->puntuation = $prepuntuation + $postpuntuation;
+        $place->save();
+
+        return view("userzone.place", ['place'=>$place, 'theme'=>Theme::all(), 'comment'=>Comment::where('place_id', $idPlace)->get(), 'votes'=>Votation::all(), 'msg'=> "Updated Succesfully..."]);
     }
 
     /**
@@ -51,22 +70,10 @@ class VotationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
        // dd($id);
-        $request->validate ([
-            
-            'puntuation'=>'required|max:10',
-            
-        ]);
-       
-        $place = Place::find($id);
-        $prepuntuation = 1;
-        $postpuntuation = $request->input('puntuation');
-        $place->puntuation = $prepuntuation + $postpuntuation;
-        $place->save();
-
-        return view("userzone.place", ['place'=>$place, 'theme'=>Theme::all(), 'msg'=> "Updated Succesfully..."]);
+      
     }
 
     /**

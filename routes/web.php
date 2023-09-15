@@ -7,7 +7,9 @@ use App\Http\Controllers\VotationController;
 use App\Models\Comment;
 use App\Models\Place;
 use App\Models\Theme;
+use App\Models\Votation;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +27,13 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/last', function () {
-    $place = Place::all();
-    return view('userzone.last', ['place'=>$place, 'mobile_place'=>$place]);
+    $place = Place::orderBy('created_at', 'desc')->paginate(6);
+    return view('userzone.last', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('last');
 
 Route::get('/ranking', function () {
-    return view('userzone/ranking');
+    $place = Place::orderBy('puntuation', 'desc')->paginate(12);
+    return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('ranking');
 
 Route::get('/contact', function () {
@@ -51,18 +54,19 @@ Route::get('/registeredzone.show/{id}', function($id) {
        
     $place = Place::all()->where('user_id', $id);                 
   
-    return view('registeredzone.show', ['place'=>$place, 'mobile_place'=>$place]);
+    return view('registeredzone.show', ['places'=>$place, 'mobile_places'=>$place]);
 });
 
+//Mostrar los comentarios para cada lugar que sean propios
 Route::get('/place/{id}', function ($id) {
     $comment = Comment::where('place_id', $id)->get();    
     $place = Place::find($id);
     $theme = Theme::all();    
-    return view('userzone.place', ['place'=>$place, 'comment'=>$comment]);
+    return view('userzone.place', ['place'=>$place, 'comment'=>$comment, 'votes'=>Votation::all()]);
 })->name('place');
 
 //Ruta para votaciones
-Route::resource('/votes', VotationController::class);
+Route::resource('/votation', VotationController::class);
 
 
 

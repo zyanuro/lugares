@@ -25,7 +25,7 @@
                     <!-- left section -->
                     <div class=" bg-black">
                         <div class="w-auto">
-                            <a href="{{route('welcome')}}"><img src="{{asset('img/logo_lugares_encantados.png')}}" alt='logo image'></a>
+                            <a href="{{route('welcome')}}"><img src="{{asset('img/logo_lugares_encantados.png')}}" alt='logo image' class="hover:border-l-4 hover:border-r-4 rounded-full hover:border-red-600"></a>
                         </div>                          
                     </div>
                     <div class=" text-center">
@@ -40,10 +40,10 @@
                     </div>
                 </div>
                     <!-- right section -->
-                    <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block items-center">
-                        <a href="{{route('last')}}" class="{{request()-> is('last') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
-                        <a href="{{route('ranking')}}" class="{{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
-                        <a href="{{route('contact')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}} text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Contact</a>
+                    <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block  items-start md:gap-3">
+                        <a href="{{route('last')}}" class="{{request()-> is('last') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
+                        <a href="{{route('ranking')}}" class="{{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
+                        <a href="{{route('contact')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
                         @if(!Auth::check())  
                         <a href="{{route('register')}}" class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                         uppercase font-bold text-lg text-red-600 hover:text-black border border-white rounded-md">Register</a>
@@ -72,7 +72,7 @@
             </div>
         </nav>
         @auth
-        <a href="{{route('profile.edit')}}"><p class="mr-10 font-header text-right text-3xl text-white">Hello <span class="uppercase">{{ Auth::user()->name }}</span></p></a>     
+        <a href="{{route('profile.edit')}}"><p class="mr-10 font-header text-right text-3xl text-white hover:border-r-4 hover:border-red-600 p-2">Hello <span class="uppercase">{{ Auth::user()->name }}</span></p></a>     
         @endauth
                 
         <main class="container mx-auto">
