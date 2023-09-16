@@ -113,8 +113,8 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                 <p class="text-gray-700 text-base">Length: <span class=" text-slate-300">{{$place->length}}</span></p></div>
                 <img src="{{asset('img/map.jpg')}}" alt="image card" class="w-auto rounded-full p-3 "></div>
             </div> 
-        </div>  
-</div>
+</div>  
+
 
  <!-- Comentatios de la tarjeta -->
    
@@ -237,4 +237,6 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>
+
+
 @endsection

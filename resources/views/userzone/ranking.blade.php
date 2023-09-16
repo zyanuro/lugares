@@ -15,6 +15,21 @@ Ranking...
 @section('contenido')
 
 <div class="container mx-auto p-4">
+    <div><form action="{{ url('/seleccionarVista') }}" method="POST">
+        @csrf
+        <label for="vistaSelector" class=" font-sans font-bold text-xl text-cyan-300 mr-2">Select a filter:</label>
+        <select id="vistaSelector" name="view" class=" rounded-xl font-header bg-slate-300">
+            <option value="favourites">Favourites</option>
+            <option value="abandoned">Abandoned Places</option>
+            <option value="creatures">Creatures</option>
+            <option value="ufo">UFO / Ovni</option>
+            <option value="haunted">Haunted House</option>
+            <option value="mystery">Mystery</option>
+            <option value="others">Others</option>
+        </select>
+        <input type="submit" value="Show" class="bg-red-600 border border-gray-400 shadow-red-600 shadow-md text-slate-200 font-bold text-xl p-1 px-4 rounded-xl hover:bg-black hover:text-white">
+    </form></div>
+
     <div class="grid grid-cols-1 md:grid-cols-3  bg-black    p-4 rounded-lg">
 
         @foreach ($places as $place) 

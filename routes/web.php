@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ViewController;
 use App\Http\Controllers\VotationController;
 use App\Models\Comment;
 use App\Models\Place;
@@ -77,13 +78,25 @@ Route::get('/', function () {
 
 Route::get('/last', function () {
     $place = Place::where('control', '=', 0)
-    ->orderBy('created_at', 'asc')
+    ->orderBy('created_at', 'desc')
     ->orderBy('control', 'asc')
     ->paginate(6);
    
    
     return view('userzone.last', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('last');
+
+Route::get('/contact', function () {
+    return view('userzone/contact');
+})->name('contact');
+
+Route::get('/instructions', function () {
+    return view('userzone/instructions');
+})->name('instructions');
+
+/******************************************** */
+//  Rutas para la sección de Rankings y filtros
+/******************************************** */
 
 Route::get('/ranking', function () {
     $place = Place::where('control', '=', 0)
@@ -93,13 +106,8 @@ Route::get('/ranking', function () {
     return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('ranking');
 
-Route::get('/contact', function () {
-    return view('userzone/contact');
-})->name('contact');
+Route::post('/seleccionarVista', [ViewController::class, 'seleccionarVista']);
 
-Route::get('/instructions', function () {
-    return view('userzone/instructions');
-})->name('instructions');
 
 
 
