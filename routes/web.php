@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlaceController;
@@ -28,6 +29,12 @@ use Illuminate\Support\Facades\Route;
 /*****************************************************/
 Route::group(['middleware' => 'admin'], function () {  
     // Poner aquí las vistas y rutas solo para admin
+    Route::get('admin', function () {
+        return view('adminzone.index');
+    })->name('admin');
+
+    //Ruta para moderaciones
+Route::resource('adminzone', AdminController::class);
 });
 
 /*****************************************************/
@@ -69,12 +76,20 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/last', function () {
-    $place = Place::orderBy('created_at', 'desc')->paginate(6);
+    $place = Place::where('control', '=', 0)
+    ->orderBy('created_at', 'asc')
+    ->orderBy('control', 'asc')
+    ->paginate(6);
+   
+   
     return view('userzone.last', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('last');
 
 Route::get('/ranking', function () {
-    $place = Place::orderBy('puntuation', 'desc')->paginate(12);
+    $place = Place::where('control', '=', 0)
+    ->orderBy('puntuation', 'desc')
+    ->orderBy('control', 'asc')
+    ->paginate(9);
     return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('ranking');
 

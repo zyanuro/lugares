@@ -54,7 +54,7 @@ class PlaceController extends Controller
         $place->description = $request->input('description');          
         $place->photo_theme = $request->input('theme');
         $place->user_id = $request->input('user');
-        $place->control = 0;        
+        $place->control = 1;        
         $place->puntuation = 0;  
 
 
@@ -109,7 +109,7 @@ class PlaceController extends Controller
         $place->description = $request->input('description');          
         $place->photo_theme = $request->input('theme');
         $place->user_id = $request->input('user');
-        $place->control = 0;        
+        $place->control = 1;        
         $place->puntuation = 0;  
 
 
