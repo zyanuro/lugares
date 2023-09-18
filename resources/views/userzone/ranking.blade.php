@@ -15,6 +15,7 @@ Ranking...
 @section('contenido')
 
 <div class="container mx-auto p-4">
+    <div></div>
     <div><form action="{{ url('/seleccionarVista') }}" method="POST">
         @csrf
         <label for="vistaSelector" class=" font-sans font-bold text-xl text-cyan-300 mr-2">Select a filter:</label>

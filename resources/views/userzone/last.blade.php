@@ -60,19 +60,9 @@ The Last...
    
 </div>
 
-
-
-
 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
-
-
 {{ $places->links() }}
-
-
-
-
-
 
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>

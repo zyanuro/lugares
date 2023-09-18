@@ -1,4 +1,4 @@
-@extends('templates.no_admin') 
+@extends('templates.register_user') 
 
 @section('titulo')
 
@@ -36,23 +36,27 @@ Contact us
 
             <div class="@auth hidden @endauth">
                 <label for="name" class=" text-gray-800 text-sm font-medium mb-2">Name:</label>
-                <input type="text" name="name" id="name" class="w-full px-3 py-2 border rounded-md" required>
+                <input type="text" name="name" id="name" class="w-full px-3 py-2 border rounded-md" required
+                value="{{ Auth::user()->name }}">                
             </div>
 
             <div class="@auth hidden @endauth">
                 <label for="email" class="block text-gray-800 text-sm font-medium mb-2">Email:</label>
-                <input type="text" name="email" id="email" class="w-full px-3 py-2 border rounded-md" required>
+                <input type="text" name="email" id="email" class="w-full px-3 py-2 border rounded-md" required
+                value="{{ Auth::user()->email }}">
+                
             </div>
 
             <div class="mb-4">
                 <label for="suggestion" class="block text-gray-800 text-sm font-medium mb-2">Message:</label>
-                <textarea name="suggestion" id="suggestion" rows="4" maxlength="250" class="w-full px-3 py-2 border rounded-md" required></textarea>
+                <textarea name="suggestion" id="suggestion" rows="4" maxlength="250" class="w-full px-3 py-2 border rounded-md" required                >
+                </textarea>
             </div>
                        
                         
             <div class="mb-5">
                 <label for="user_id" class="mb-2 block  text-gray-500 font-bold text-center">
-                    <p class=" font-sans text-teal-600 border border-red-600 p-3 w-full rounded-lg">User Anonymous @auth                        
+                    <p class=" font-sans text-teal-600 border border-red-600 p-3 w-full rounded-lg">"User : @auth                        
                     {{ Auth::user()->email }}  @endauth</p>
                 </label>
                 <input 

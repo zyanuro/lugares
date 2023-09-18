@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\VotationController;
+use App\Http\Controllers\SuggestionController;
 use App\Models\Comment;
 use App\Models\Place;
 use App\Models\Theme;
@@ -24,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 /*****************************************************/
 // Admin
 /*****************************************************/
@@ -34,9 +34,13 @@ Route::group(['middleware' => 'admin'], function () {
         return view('adminzone.index');
     })->name('admin');
 
+Route::get('adminzone.inbox', [SuggestionController::class, 'index'])->name('suggestions.index');
+
     //Ruta para moderaciones
 Route::resource('adminzone', AdminController::class);
 });
+
+
 
 /*****************************************************/
 // Registrados
@@ -68,6 +72,12 @@ Route::resource('/votation', VotationController::class);
 // Ruta para mostrar los coomentarios de usuario
 Route::resource('/comment', CommentController::class);
 
+//Ruta para formulario de contacto de autentificados
+
+Route::get('/contact_auth', function () {
+    return view('registeredzone/contact');
+})->name('contact_auth');
+
 /**************************************************/
 /** Rutas para usuarios no registrados y anónimos **/
 /**************************************************/
@@ -94,9 +104,8 @@ Route::get('/instructions', function () {
     return view('userzone/instructions');
 })->name('instructions');
 
-/******************************************** */
+
 //  Rutas para la sección de Rankings y filtros
-/******************************************** */
 
 Route::get('/ranking', function () {
     $place = Place::where('control', '=', 0)
@@ -107,6 +116,9 @@ Route::get('/ranking', function () {
 })->name('ranking');
 
 Route::post('/seleccionarVista', [ViewController::class, 'seleccionarVista']);
+
+//Ruta para sugerencias 
+Route::get('/suggestions', [SuggestionController::class, 'store']);
 
 
 
