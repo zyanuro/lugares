@@ -92,13 +92,13 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
             <img src="{{asset('img/'.$place->theme->name.'.jpg')}}" alt="image card" class="lowercase w-auto p-1 rounded-full ">
     
             <!-- Contenido de la tarjeta -->
-            <div class="px-10 py-">
+            <div class="px-10">
                 <!-- Nombre -->
                
                 <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">Location Map</div>
               
                 <!-- Puntuación -->
-                <div id="map" class=" border border-red-600 w-auto" style="height: 400px; width: 100%;"></div>
+                <div id="map" class="border border-red-600 w-auto" style="height: 400px; width: 100%;"></div>
     
                 <!-- Fecha de Creación -->
                 

@@ -19,7 +19,7 @@
     <body class="bg-black">        
      
         <!-- Navbar is here -->
-		<nav class="bg-black shadow border-t-4  border-t-red-600 border-b-gray-600 w-auto fixed top-0 sticky">
+		<nav class="bg-black shadow border-t-4  border-t-red-600 border-b-gray-600 w-auto fixed top-0 sticky z-10">
             <div class="container px-6 mx-auto">
                 <div class="md:flex flex row justify-between items-center">
                     <!-- left section -->
