@@ -65,6 +65,8 @@ Ranking...
     
                 <!-- Autor -->
                 <p class="text-gray-700 text-base">Author: <span class=" text-slate-300">{{$place->user->name}}</span></p>
+                <p class="text-gray-700 text-base">Location: <span class=" text-slate-300">{{$place->location}}</span></p>
+
                 <hr class="mt-3">
             </div>
              </div>

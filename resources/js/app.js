@@ -83,6 +83,12 @@ btnMap.addEventListener('click', () => {
     map_content.classList.toggle("hidden");
 });
 
+// Select anidado en vista Last.
+
+ // Función para actualizar el segundo select en función de la selección en el primero
+ 
+       
+   
 
 
 //document.delete.submit()    

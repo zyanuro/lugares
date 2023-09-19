@@ -41,8 +41,10 @@ class PlaceController extends Controller
             'theme'=>'required|max:50',
             'latitude'=>'decimal:2,5|nullable',
             'length'=>'decimal:2,5|nullable',
+            'location'=>'required|max:250',
             'address'=>'required|max:250',
             'description'=>'required|max:250',
+            
         ]);
 
         $place = new Place();
@@ -50,14 +52,14 @@ class PlaceController extends Controller
         $place->theme_id = $request->input('theme'); 
         $place->latitude = $request->input('latitude');
         $place->length = $request->input('length');
+        $place->location = $request->input('location');
         $place->address = $request->input('address');  
         $place->description = $request->input('description');          
         $place->photo_theme = $request->input('theme');
         $place->user_id = $request->input('user');
         $place->control = 1;        
         $place->puntuation = 0;  
-
-
+        
 
         $place->save();
 
@@ -98,6 +100,7 @@ class PlaceController extends Controller
             'length'=>'decimal:2,5|nullable',
             'address'=>'required|max:250',
             'description'=>'required|max:250',
+            'location'=>'required|max:250',
         ]);
 
         $place = Place::find($id);
@@ -109,8 +112,9 @@ class PlaceController extends Controller
         $place->description = $request->input('description');          
         $place->photo_theme = $request->input('theme');
         $place->user_id = $request->input('user');
-        $place->control = 1;        
-        $place->puntuation = 0;  
+        $place->control = 1;    
+        $place->name = $request->input('location');    
+        //$place->puntuation = 0;  
 
 
 

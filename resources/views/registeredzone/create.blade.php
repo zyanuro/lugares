@@ -98,6 +98,22 @@ Create a new Enchanted Place
                 value="{{old('length')}}"                   
                 />
             </div>
+            <div class="ml-5 mb-3">                
+            <label for="select1" class="font-sans font-bold text-xl text-cyan-300 mr-2 hidden md:visible">Select a filter:</label>
+            <select name="select1" id="select1" onchange="actualizarSelect2()" class="rounded-xl font-header bg-slate-300 text-gray-600">
+                <option value="opcion0"> --- Select --- </option>
+                <option value="opcion5">-> Spain</option>
+                <option value="opcion4">Europe</option>
+                <option value="opcion1">Africa</option>
+                <option value="opcion2">America</option> 
+                <option value="opcion3">Asia</option>       
+                <option value="opcion6">Oceania</option>
+            </select>   
+            <select name="location" id="select2" class="rounded-xl font-header bg-slate-300">
+                <!-- Este select se actualizará dinámicamente -->
+            </select>            
+            
+            </div> 
             <div class="mb-5">
                 <label for="address" class="mb-2 block uppercase text-gray-500 font-bold">
                     Address
@@ -159,7 +175,42 @@ Create a new Enchanted Place
     <p class=" invisible">.</p>
     <p class=" invisible">.</p>
         
-    </div>    
+    </div>   
+    <script>
+        function actualizarSelect2() {
+          var select1 = document.getElementById("select1");
+          var select2 = document.getElementById("select2");
+          var select1Value = select1.value;
+        
+          // Borramos todas las opciones del segundo select
+          select2.innerHTML = "";
+        
+          // Agregamos las opciones correspondientes al valor seleccionado en el primer select
+          if (select1Value === "opcion1") {
+              var opciones = ["Africa"];
+          } else if (select1Value === "opcion2") {
+              var opciones = ["America"];
+          } else if (select1Value === "opcion3") {
+              var opciones = ["Asia"];
+          } else if (select1Value === "opcion4") {
+              var opciones = ["Europe"];
+          } else if (select1Value === "opcion5") {
+              var opciones = ["Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real",
+              "Córdoba", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Islas Balears", "Jaén", "La Coruña", "La Rioja", "Las Palmas", "León", "Lérida", "Lugo",
+              "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo",
+              "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"];
+          } else if (select1Value === "opcion6") {
+              var opciones = ["Oceania"];
+          }
+          // Agregamos las nuevas opciones al segundo select
+          for (var i = 0; i < opciones.length; i++) {
+              var opcion = document.createElement("option");
+              opcion.text = opciones[i];
+              opcion.value = opciones[i];
+              select2.add(opcion);
+          }
+        }
+        </script> 
     
 </div>
 

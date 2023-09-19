@@ -14,13 +14,34 @@ The Last...
 
 @section('contenido')
 
+<div class=" fixed ml-5 ">
+    <form action="{{ url('/selectLocation') }}" method="POST">
+        @csrf
+<label for="select1" class="font-sans font-bold text-xl text-cyan-300 mr-2 hidden md:visible">Select a filter:</label>
+<select name="select1" id="select1" onchange="actualizarSelect2()" class="rounded-xl font-header bg-slate-300 text-gray-600">
+    <option value="opcion0"> --- Select --- </option>
+    <option value="opcion5">-> Spain</option>
+    <option value="opcion4">Europe</option>
+    <option value="opcion1">Africa</option>
+    <option value="opcion2">America</option> 
+    <option value="opcion3">Asia</option>       
+    <option value="opcion6">Oceania</option>
+</select>   
+<select name="location" id="select2" class="rounded-xl font-header bg-slate-300">
+    <!-- Este select se actualizará dinámicamente -->
+</select>
+<input type="submit" value="Show" class="bg-red-600 border border-gray-400 shadow-red-600 shadow-md text-slate-200 font-bold text-xl p-1 px-4 rounded-xl hover:bg-black hover:text-white">
 
-<div class="container mx-auto p-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 bg-black p-4 rounded-lg">
+</form>
+</div> 
+
+<div class="container mx-auto p-4 mt-5"> 
+
+    <div class="grid grid-cols-1 md:grid-cols-3 bg-black p-4 rounded-lg ">
 
         @foreach ($places as $place) 
         <a href="{{asset('place/'.$place->id)}}" class="hover:bg-gray-600 hover:rounded-full hover:shadow-white hover:shadow-2xl">
-            <div class="max-w-sm rounded-xl overflow-hidden mx-auto my-4
+            <div class=" max-w-xs rounded-xl overflow-hidden mx-auto my-4
              @if ($place->theme->id == 5)
               bg-slate-400 
               @else 
@@ -50,6 +71,9 @@ The Last...
     
                 <!-- Autor -->
                 <p class="text-gray-700 text-base">Author: <span class=" text-slate-300">{{$place->user->name}}</span></p>
+                 <!-- Location -->
+                <p class="text-gray-700 text-base">Location: <span class=" text-slate-300">{{$place->location}}</span></p>
+
                 <hr class="mt-3">
             </div>
              </div>
@@ -58,11 +82,47 @@ The Last...
         @endforeach
     </div>
    
-</div>
+    </div>
 
 <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
 {{ $places->links() }}
+
+<script>
+function actualizarSelect2() {
+  var select1 = document.getElementById("select1");
+  var select2 = document.getElementById("select2");
+  var select1Value = select1.value;
+
+  // Borramos todas las opciones del segundo select
+  select2.innerHTML = "";
+
+  // Agregamos las opciones correspondientes al valor seleccionado en el primer select
+  if (select1Value === "opcion1") {
+      var opciones = ["Africa"];
+  } else if (select1Value === "opcion2") {
+      var opciones = ["America"];
+  } else if (select1Value === "opcion3") {
+      var opciones = ["Asia"];
+  } else if (select1Value === "opcion4") {
+      var opciones = ["Europe"];
+  } else if (select1Value === "opcion5") {
+      var opciones = ["Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real",
+      "Córdoba", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Islas Balears", "Jaén", "La Coruña", "La Rioja", "Las Palmas", "León", "Lérida", "Lugo",
+      "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo",
+      "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"];
+  } else if (select1Value === "opcion6") {
+      var opciones = ["Oceania"];
+  }
+  // Agregamos las nuevas opciones al segundo select
+  for (var i = 0; i < opciones.length; i++) {
+      var opcion = document.createElement("option");
+      opcion.text = opciones[i];
+      opcion.value = opciones[i];
+      select2.add(opcion);
+  }
+}
+</script>
 
 <p class=" invisible">.</p>
 <p class=" invisible">.</p>

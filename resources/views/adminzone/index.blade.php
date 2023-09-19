@@ -14,7 +14,7 @@ Admin Area
 
 @section('contenido')
 
-<div class="grid grid-cols-1 text-center place-items-center md:flex bg-black md:place-content-center md:mt-28">
+<div class="grid grid-cols-1 text-center place-items-center md:flex bg-black md:place-content-center md:mt-10">
     
 
      <div class="grid grid-cols-2 place-content-center gap-1 mx-10 bg-black   rounded-md  font-header text-2xl items-center">

@@ -115,7 +115,11 @@ Route::get('/ranking', function () {
     return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('ranking');
 
+//Ruta para elegir filtro en la vista de rankings
 Route::post('/seleccionarVista', [ViewController::class, 'seleccionarVista']);
+
+//Ruta para elegir filtro en la vista de last
+Route::post('/selectLocation', [ViewController::class, 'selectLocation']);
 
 //Ruta para sugerencias 
 Route::get('/suggestions', [SuggestionController::class, 'store']);

@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('address', 250);
             $table->string('description', 250);
             $table->interger('puntuation', 25);
-            $table->integer('control');           
+            $table->integer('control'); 
+            $table->string('location', 250);
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('theme_id');            
