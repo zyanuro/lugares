@@ -14,12 +14,12 @@ The Last...
 
 @section('contenido')
 
-<div class=" fixed ml-5 ">
+<div class="  ml-5 ">
     <form action="{{ url('/selectLocation') }}" method="POST">
         @csrf
 <label for="select1" class="font-sans font-bold text-xl text-cyan-300 mr-2 hidden md:visible">Select a filter:</label>
-<select name="select1" id="select1" onchange="actualizarSelect2()" class="rounded-xl font-header bg-slate-300 text-gray-600">
-    <option value="opcion0"> --- Select --- </option>
+<select name="select1" id="select1" onchange="actualizarSelect2()" class="rounded-xl font-sans font-extrabold uppercase bg-slate-300 text-gray-600">
+    <option value="opcion0">  Select  </option>
     <option value="opcion5">-> Spain</option>
     <option value="opcion4">Europe</option>
     <option value="opcion1">Africa</option>
@@ -27,7 +27,7 @@ The Last...
     <option value="opcion3">Asia</option>       
     <option value="opcion6">Oceania</option>
 </select>   
-<select name="location" id="select2" class="rounded-xl font-header bg-slate-300">
+<select name="location" id="select2" class="rounded-xl font-sans font-extrabold uppercase bg-slate-300">
     <!-- Este select se actualizará dinámicamente -->
 </select>
 <input type="submit" value="Show" class="bg-red-600 border border-gray-400 shadow-red-600 shadow-md text-slate-200 font-bold text-xl p-1 px-4 rounded-xl hover:bg-black hover:text-white">
@@ -35,27 +35,36 @@ The Last...
 </form>
 </div> 
 
-<div class="container mx-auto p-4 mt-5"> 
+<div class="container mx-auto p-4 mt-5 shadow-2xl"> 
 
-    <div class="grid grid-cols-1 md:grid-cols-3 bg-black p-4 rounded-lg ">
+    <div class="grid grid-cols-1 md:grid-cols-3 bg-black p-4 rounded-lg">
 
         @foreach ($places as $place) 
-        <a href="{{asset('place/'.$place->id)}}" class="hover:bg-gray-600 hover:rounded-full hover:shadow-white hover:shadow-2xl">
-            <div class=" max-w-xs rounded-xl overflow-hidden mx-auto my-4
+        <a href="{{asset('place/'.$place->id)}}" class="">
+            <div class="hover:bg-red-900 transition-colors max-w-xs rounded-xl overflow-hidden mx-auto my-4
              @if ($place->theme->id == 5)
               bg-slate-400 
-              @else 
-              bg-red-400
+              @elseif ($place->theme->id == 4)
+               bg-zinc-400
+              @elseif ($place->theme->id == 3)
+               bg-orange-800
+               @elseif ($place->theme->id == 2)
+             bg-indigo-300 
+               @elseif ($place->theme->id == 1)
+               bg-slate-800
+               @elseif ($place->theme->id == 6)
+               bg-teal-900
              @endif              
-              font-header shadow-white shadow-md border-2 border-red-800">
+              font-header  ">
             <!-- Imagen -->
             <img src="{{asset('img/'.$place->theme->name.'.jpg')}}" alt="image card" class="lowercase w-full p-1 rounded-xl ">
     
             <!-- Contenido de la tarjeta -->
-            <div class="px-10 py-4">
+            <div class="px-10 py-4 ">
                 <!-- Nombre -->
                
-                <div class="text-center  text-slate-800 mb-1">{{$place->name}}</div>
+                <div class=" text-center  @if ($place->theme->id == 1)
+                    text-white @else text-slate-800 mb-1 @endif">{{$place->name}}</div>
                 <hr>
                 <!-- Puntuación -->
                 <div class="flex items-center my-2">

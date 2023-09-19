@@ -18,8 +18,8 @@ Ranking...
     <div></div>
     <div><form action="{{ url('/seleccionarVista') }}" method="POST">
         @csrf
-        <label for="vistaSelector" class=" font-sans font-bold text-xl text-cyan-300 mr-2">Select a filter:</label>
-        <select id="vistaSelector" name="view" class=" rounded-xl font-header bg-slate-300">
+        <label for="vistaSelector" class=" font-sans font-bold text-xl text-cyan-300 mr-2"></label>
+        <select id="vistaSelector" name="view" class=" rounded-xl font-sans font-extrabold uppercase bg-slate-300">
             <option value="favourites">Favourites</option>
             <option value="abandoned">Abandoned Places</option>
             <option value="creatures">Creatures</option>
@@ -34,14 +34,22 @@ Ranking...
     <div class="grid grid-cols-1 md:grid-cols-3  bg-black    p-4 rounded-lg">
 
         @foreach ($places as $place) 
-        <a href="{{asset('place/'.$place->id)}}" class="hover:bg-gray-600 hover:rounded-full hover:shadow-white hover:shadow-2xl">
-            <div class="max-w-sm rounded-xl overflow-hidden mx-auto my-4
-             @if ($place->theme->id == 5)
+        <a href="{{asset('place/'.$place->id)}}" class="">
+            <div class="hover:bg-red-900 transition-colors max-w-xs rounded-xl overflow-hidden mx-auto my-4
+            @if ($place->theme->id == 5)
               bg-slate-400 
-              @else 
-              bg-red-400
-             @endif              
-              font-header shadow-white shadow-md border-2 border-red-800">
+              @elseif ($place->theme->id == 4)
+               bg-zinc-400
+              @elseif ($place->theme->id == 3)
+               bg-orange-800
+               @elseif ($place->theme->id == 2)
+             bg-indigo-300 
+               @elseif ($place->theme->id == 1)
+               bg-slate-800
+               @elseif ($place->theme->id == 6)
+               bg-teal-900
+             @endif            
+              font-header  ">
             <!-- Imagen -->
             <img src="{{asset('img/'.$place->theme->name.'.jpg')}}" alt="image card" class="lowercase w-full p-1 rounded-xl ">
     

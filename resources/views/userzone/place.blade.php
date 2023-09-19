@@ -85,7 +85,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
 
 <!-- Contenido de Mapas -->
 
-<div id="map_content" class="hidden">
+<div id="map_content" class="">
     <div  class="md:mt-20 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
     grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
             <!-- Imagen -->

@@ -65,7 +65,7 @@
 
                             @if(!Auth::check())                       
                         <a href="{{url('dashboard')}}" class="mt-2 md:mt-0 md:ml-3 font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase  text-lg text-amber-400 hover:text-black border border-white rounded-md">Login</a>
+                        uppercase  text-lg text-orange-500 hover:text-black border border-white rounded-md">Login</a>
                         @endif
                            
                         @auth  
@@ -97,9 +97,10 @@
 
     </body>
 
-    <footer class="bg-inherit w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">
+    <footer class=" bg-inherit  w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">
+
        <div class="p-3 bg-black border-t-2 border-b-4 border-red-600"><span class=" text-red-600">Enchanted Places</span> - All rights reserved - {{now()->year}}</div>
-              
+ 
     </footer> 
 
 </html>
