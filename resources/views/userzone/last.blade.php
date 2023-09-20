@@ -41,7 +41,7 @@ The Last...
 
         @foreach ($places as $place) 
         <a href="{{asset('place/'.$place->id)}}" class="">
-            <div class="hover:bg-red-900 transition-colors max-w-xs rounded-xl overflow-hidden mx-auto my-4
+            <div class="hover:bg-red-900 transition-colors duration-500 ease-in-out max-w-xs rounded-xl overflow-hidden mx-auto my-4
              @if ($place->theme->id == 5)
               bg-slate-400 
               @elseif ($place->theme->id == 4)

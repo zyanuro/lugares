@@ -29,10 +29,10 @@
                         </div>                          
                     </div>
                     <div class=" text-center">
-                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl  hover:text-red-400 font-header text-center w-auto">Enchanted Places</a>
+                        <a href="{{route('welcome')}}" class="  text-red-600 text-4xl md:text-8xl  hover:text-red-400 font-header duration-500 ease-in-out text-center w-auto">Enchanted Places</a>
                     </div>
                     <div class="md:hidden">
-                        <button id="nav-button" type="button" class=" text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
+                        <button id="nav-button" type="button" class="duration-500 ease-in-out text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
                             <svg viewBox="0 0 24 24" class="h-8 w-8 fill-current">
                                 <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
                             </svg>  
@@ -41,23 +41,23 @@
                 </div>
                     <!-- right section -->
                     <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block  items-start md:gap-3">
-                        <a href="{{route('last')}}" class="{{request()-> is('last') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
-                        <a href="{{route('ranking')}}" class="{{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
-                        <a href="{{route('contact')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4
+                        <a href="{{route('last')}}" class="{{request()-> is('last') ? 'text-red-600' : 'text-gray-200'}} duration-300 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
+                        <a href="{{route('ranking')}}" class="{{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}} duration-300 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
+                        <a href="{{route('contact')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}} duration-300 ease-in-out text-lg hover:font-medium md:mx-4
                             @auth
                                 hidden
                             @endauth hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
                         @if(!Auth::check())  
-                        <a href="{{route('register')}}" class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <a href="{{route('register')}}" class="duration-300 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                         uppercase text-lg text-red-600 hover:text-black border border-white rounded-md">Register</a>
                         @endif
                         @auth
-                         <a href="{{route('places.index')}}" class="text-blue-500 text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Management</a>
+                         <a href="{{route('places.index')}}" class="text-blue-500 duration-300 ease-in-out text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Management</a>
                         @endauth
 
                         @auth
                         @if (Auth::user()->rol == 2)
-                            <a href="{{ URL('admin') }}"><span class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                            <a href="{{ URL('admin') }}"><span class="duration-500 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                                 uppercase text-lg text-red-600 hover:text-black border border-white rounded-md">Admin Zone</span></a>
                         @endif
                         @endauth
@@ -65,11 +65,11 @@
 
                             @if(!Auth::check())                       
                         <a href="{{url('dashboard')}}" class="mt-2 md:mt-0 md:ml-3 font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase  text-lg text-orange-500 hover:text-black border border-white rounded-md">Login</a>
+                        uppercase  text-lg text-orange-500 hover:text-black border border-white rounded-md duration-500 ease-in-out">Login</a>
                         @endif
                            
                         @auth  
-                        <a class=" font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <a class="duration-500 ease-in-out font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                         uppercase text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Log-out') }}
                         </a>
@@ -83,7 +83,7 @@
             </div>
         </nav>
         @auth
-        <a href="{{route('profile.edit')}}"><p class="mr-10 font-header text-right text-3xl text-white hover:border-r-4 hover:border-red-600 p-2">Hello <span class="uppercase">{{ Auth::user()->name }}</span></p></a>     
+        <a href="{{route('profile.edit')}}"><p class=" duration-500 ease-in-out mr-10 font-header text-right text-3xl text-white hover:border-r-4 hover:border-red-600 p-2">Hello <span class="uppercase">{{ Auth::user()->name }}</span></p></a>     
         @endauth
                 
         <main class="container mx-auto">

@@ -113,7 +113,7 @@ class PlaceController extends Controller
         $place->photo_theme = $request->input('theme');
         $place->user_id = $request->input('user');
         $place->control = 1;    
-        $place->name = $request->input('location');    
+        $place->location = $request->input('location');    
         //$place->puntuation = 0;  
 
 

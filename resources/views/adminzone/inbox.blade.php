@@ -17,7 +17,7 @@ Admin Area - Inbox
 <a href="{{ url()->previous() }}" class="ml-3 shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-full p-2 text-red-600 rounded-lg">Back</a>
 
 
-<div class="md:flex justify-center mt-10 bg-black place-content-center">
+<div class="md:flex justify-center mt-10 mx-5 bg-black place-content-center rounded-xl pb-5">
     
     <table class=" text-white text-center">
         <div>

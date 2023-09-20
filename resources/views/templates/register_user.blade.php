@@ -28,11 +28,11 @@
                         </div>                          
                     </div>
                     <div class=" text-center">
-                        <a href="{{route('welcome')}}" class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <a href="{{route('welcome')}}" class="duration-500 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                         uppercase font-bold text-lg text-amber-400 hover:text-black border border-white rounded-full">Home</a>
                     </div>
                     <div class="md:hidden">
-                        <button id="nav-button" type="button" class=" text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
+                        <button id="nav-button" type="button" class="duration-500 ease-in-out text-white hover:text-red-600 focus:text-red-600 focus:outline-none">
                             <svg viewBox="0 0 24 24" class="h-8 w-8 fill-current">
                                 <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
                             </svg>  
@@ -41,24 +41,24 @@
                 </div>
                     <!-- right section -->
                     <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row md:mt-0 md:block items-start gap-4 md:gap-0 ">
-                        <a href="{{url('registeredzone.show/'.Auth::user()->id)}}" class="{{request()-> is('this') ? 'text-red-600' : 'text-gray-200'}} text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">MyPlaces</a>
-                        <a href="{{route('places.create')}}" class="{{request()-> is('create') ? 'text-red-600' : 'text-gray-200'}} text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">New</a>                        
-                        <a href="{{route('contact_auth')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}}  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
+                        <a href="{{url('registeredzone.show/'.Auth::user()->id)}}" class="{{request()-> is('this') ? 'text-red-600' : 'text-gray-200'}} duration-500 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">MyPlaces</a>
+                        <a href="{{route('places.create')}}" class="{{request()-> is('create') ? 'text-red-600' : 'text-gray-200'}} duration-500 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">New</a>                        
+                        <a href="{{route('contact_auth')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}} duration-500 ease-in-out  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
 
                         @auth
                         @if (Auth::user()->rol == 2)
-                            <a href="{{ URL('admin') }}"><span class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                            <a href="{{ URL('admin') }}"><span class="duration-500 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                                 uppercase text-lg text-red-600 hover:text-black border border-white rounded-md mr-3">Admin Zone</span></a>
                         @endif
                         @endauth
 
                             @if(!Auth::check())                       
-                        <a href="{{url('dashboard')}}" class="font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <a href="{{url('dashboard')}}" class="duration-500 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                         uppercase font-bold text-lg text-amber-400 hover:text-black border border-white rounded-md">Login</a>
                         @endif
                            
                         @auth  
-                        <a class="mb-3 font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        <a class="duration-500 ease-in-out mb-3 font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
                         uppercase font-thin text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Log-out') }}
                         </a>
@@ -71,7 +71,7 @@
                
             </div>
         </nav>
-        <a href="{{route('profile.edit')}}"><p class=" font-header text-white hover:border-b-2 hover:border-b-white hover:text-red-600 text-right mr-32 md:text-2xl items-center">{{ Auth::user()->name }}<span class=" text-red-600 hover:text-white">'s private area</span></p></a>
+        <a href="{{route('profile.edit')}}"><p class="duration-500 ease-in-out font-header text-white hover:border-b-2 hover:border-b-white hover:text-red-600 text-right mr-32 md:text-2xl items-center">{{ Auth::user()->name }}<span class="duration-500 ease-in-out text-red-600 hover:text-white">'s private area</span></p></a>
        
                 
         <main class="container mx-auto">
