@@ -1,5 +1,7 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <a href="{{ url()->previous() }}" class="ml-3 shadow-red-600 shadow-md border bg-gray-800 border-slate-200  hover:bg-gray-400 transition-colors cursor-pointer w-full p-2 text-white rounded-lg">Back</a>
+
+    <form method="POST" action="{{ route('register') }}" class="mt-5">
         @csrf
 
         <!-- Name -->
