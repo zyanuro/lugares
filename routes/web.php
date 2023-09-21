@@ -55,7 +55,7 @@ Route::get('/registeredzone.show/{id}', function($id) {
     $place = Place::all()->where('user_id', $id);                 
   
     return view('registeredzone.show', ['places'=>$place, 'mobile_places'=>$place]);
-});
+})->name('list');
 });
 
 //Mostrar los comentarios para cada lugar que sean propios
