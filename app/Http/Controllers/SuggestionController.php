@@ -13,10 +13,9 @@ class SuggestionController extends Controller
      */
     public function index()
     {
-        $suggestion = Suggestion::where('control', '=', 1)
-        ->orderBy('created_at', 'desc')
+        $suggestions = Suggestion::orderBy('created_at', 'desc')
         ->paginate(6);
-        return view('adminzone.inbox', ['suggestions'=>$suggestion]);
+        return view('adminzone.inbox', ['suggestions'=>$suggestions]);
     }    
    
     
@@ -48,10 +47,46 @@ class SuggestionController extends Controller
         }else {
             return view("registeredzone.contact", ['msg'=> "Suggestion Sent Succesfully... Thanks!"]);
 
-        }
+        }     
+        
+        
+    }
 
+    public function update(Request $request)
+    {
+        $request->validate ([
+
+                        
+        ]);
+        $id = $request->input('control');
+        //dd($id);
+        $suggestion = Suggestion::find($id); 
+        //dd($suggestion);
+        if ($suggestion) {
+            // Si la sugerencia se encontró, asigna el valor 0
+            //dd('que pasa?');
+            $suggestion->control = 0;
+            $suggestion->save();
+        } else {
+            // Manejar el caso en el que la sugerencia no se encontró
+            // Puedes redirigir o mostrar un mensaje de error
+           // dd('en serio?');
+        };
+       
+       
+       // $suggestions = Place::where('control', 1)->get();  
+        $suggestions = Suggestion::find($id);  
+        return view('adminzone.one_suggestion', ['suggestion'=>$suggestions]);
+    }
+
+    public function destroy(string $id)
+    {
         
-        
-        
+        $suggestions = Suggestion::find($id);
+        $suggestions->delete();
+        $suggestions = Suggestion::all();
+        $suggestions = Suggestion::orderBy('created_at', 'desc')
+        ->paginate(6);
+        return view('adminzone.inbox', ['suggestions'=>$suggestions]);
     }
 }

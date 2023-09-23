@@ -52,14 +52,14 @@ Moderation zone
                     <td class="p-5">{{ $place->description }}</td>
 
                     <td class="p-5"><form action="{{route('adminzone.update', $place->id)}}" method="post">
-        @csrf
-        @method("PUT")
-    <!-- Campo de entrada oculto -->
-    <input type="hidden" id="campoOculto" name="campoOculto" value="Valor oculto que se enviará al servidor">
+                     @csrf
+                     @method("PUT")
+                         <!-- Campo de entrada oculto -->
+                         <input type="hidden" id="campoOculto" name="campoOculto" value="Valor oculto que se enviará al servidor">
 
-    <!-- Botón de envío -->
-    <input type="submit" value="Activate" class=" shadow-red-600 shadow-md border border-amber-400 bg-green-500  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-slate-900 font-header rounded-lg">
-    </form></td>
+                         <!-- Botón de envío -->
+                          <input type="submit" value="Activate" class=" shadow-red-600 shadow-md border border-amber-400 bg-green-500  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-slate-900 font-header rounded-lg">
+                     </form></td>
 
                     <td class="p-5">
                         <form action="{{url('places/'.$place->id)}}" method="post" name="delete">
@@ -71,9 +71,7 @@ Moderation zone
                         </form>
                     </td>
                 </tr>                
-                @endforeach      
-               
-                
+                @endforeach                 
                    
         </tbody>
       

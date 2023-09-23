@@ -42,7 +42,12 @@ class AuthenticatedSessionController extends Controller
 
         if($rol==2){
             return redirect('admin');
-        }else{
+        }else if($rol==1){
+            return redirect('/');
+        }else if($rol==0) {
+            Auth::logout();
+            return redirect('block');
+        }else {
             return redirect('/');
         }
     }

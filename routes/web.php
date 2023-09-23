@@ -7,8 +7,11 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\VotationController;
 use App\Http\Controllers\SuggestionController;
+use App\Http\Controllers\ThemeController;
+
 use App\Models\Comment;
 use App\Models\Place;
+use App\Models\Suggestion;
 use App\Models\Theme;
 use App\Models\Votation;
 use Illuminate\Support\Facades\Route;
@@ -34,12 +37,30 @@ Route::group(['middleware' => 'admin'], function () {
         return view('adminzone.index');
     })->name('admin');
 
+//controlador para acceder a indice de sugerencias dentro de user admin
 Route::get('adminzone.inbox', [SuggestionController::class, 'index'])->name('suggestions.index');
 
-    //Ruta para moderaciones
-Route::resource('adminzone', AdminController::class);
-});
+//controlador para acceder a una de las sugerencias dentro de user admin
+Route::put('adminzone.one_suggestion', [SuggestionController::class, 'update'])->name('suggestions.update');
 
+Route::get('adminzone/one_suggestion', [SuggestionController::class, 'update'])->name('admin.one_suggestion');
+
+Route::delete('delete_suggestion/{id}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
+
+
+//Acceso a la sugerencia seleccionada de la lista para leerla
+/* Route::get('adminzone/one_suggestion/{id}', function ($id) {        
+    $suggestion = Suggestion::find($id);   
+    return view('adminzone/one_suggestion', ['suggestion'=>$suggestion]);
+})->name('one'); */
+
+//Ruta para moderaciones   
+Route::resource('adminzone', AdminController::class);
+
+//Ruta para la gestión de las temáticas
+Route::resource('adminzone/thematics', ThemeController::class);
+
+});
 
 
 /*****************************************************/
@@ -48,8 +69,8 @@ Route::resource('adminzone', AdminController::class);
 Route::group(['middleware' => 'auth'], function () {  
     // Poner aquí las vistas y rutas solo para usuarios registrados
     Route::resource('/places', PlaceController::class);
-    // Ruta para mostrar los lugares por usuario
-
+    
+    // Ruta para mostrar los lugares por usuario    
 Route::get('/registeredzone.show/{id}', function($id) { 
        
     $place = Place::all()->where('user_id', $id);                 
@@ -90,7 +111,7 @@ Route::get('/last', function () {
     $place = Place::where('control', '=', 0)
     ->orderBy('created_at', 'desc')
     ->orderBy('control', 'asc')
-    ->paginate(6);
+    ->paginate(8);
    
    
     return view('userzone.last', ['places'=>$place, 'mobile_place'=>$place]);
@@ -104,6 +125,10 @@ Route::get('/instructions', function () {
     return view('userzone/instructions');
 })->name('instructions');
 
+Route::get('/block', function () {
+    return view('userzone/block');
+})->name('block');
+
 
 //  Rutas para la sección de Rankings y filtros
 
@@ -111,7 +136,7 @@ Route::get('/ranking', function () {
     $place = Place::where('control', '=', 0)
     ->orderBy('puntuation', 'desc')
     ->orderBy('control', 'asc')
-    ->paginate(9);
+    ->paginate(12);
     return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
 })->name('ranking');
 

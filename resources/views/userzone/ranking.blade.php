@@ -31,7 +31,7 @@ Ranking...
         <input type="submit" value="Show" class="bg-red-600 border border-gray-400 shadow-red-600 shadow-md text-slate-200 font-bold text-xl p-1 px-4 rounded-xl hover:bg-black hover:text-white">
     </form></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3  bg-black    p-4 rounded-lg">
+    <div class="grid grid-cols-1 md:grid-cols-4  bg-black    p-4 rounded-lg">
 
         @foreach ($places as $place) 
         <a href="{{asset('place/'.$place->id)}}" class="">

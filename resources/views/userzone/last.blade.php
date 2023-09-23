@@ -37,7 +37,7 @@ The Last...
 
 <div class="container mx-auto p-4 mt-5 shadow-2xl"> 
 
-    <div class="grid grid-cols-1 md:grid-cols-3 bg-black p-4 rounded-lg">
+    <div class="grid grid-cols-1 md:grid-cols-4 bg-black p-4 rounded-lg">
 
         @foreach ($places as $place) 
         <a href="{{asset('place/'.$place->id)}}" class="">
