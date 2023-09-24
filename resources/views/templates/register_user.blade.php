@@ -40,7 +40,7 @@
                     </div>
                 </div>
                     <!-- right section -->
-                    <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row md:mt-0 md:block items-start gap-4 md:gap-0 ">
+                    <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row md:mt-0 md:block items-start gap-2 md:gap-0 ">
                         <a href="{{url('registeredzone.show/'.Auth::user()->id)}}" class="{{ Route::currentRouteName() === 'list' ? ' text-red-600' : 'text-gray-200'}} duration-500 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">MyPlaces</a>
                         <a href="{{route('places.create')}}" class="{{request()-> is('places*') ? 'text-red-600' : 'text-gray-200'}} duration-500 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">New</a>                        
                         <a href="{{route('contact_auth')}}" class="{{request()-> is('contact*') ? 'text-red-600' : 'text-gray-200'}} duration-500 ease-in-out  text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
@@ -48,7 +48,7 @@
                         @auth
                         @if (Auth::user()->rol == 2)
                             <a href="{{ URL('admin') }}"><span class="duration-500 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                                uppercase text-lg text-red-600 hover:text-black border border-white rounded-md mr-3">Admin Zone</span></a>
+                                uppercase text-lg text-rose-400 hover:text-black  rounded-md mr-3">Admin Zone</span></a>
                         @endif
                         @endauth
 
@@ -58,8 +58,8 @@
                         @endif
                            
                         @auth  
-                        <a class="duration-500 ease-in-out mb-3 font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase font-thin text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a class="duration-500 ease-in-out mb-3 font-header shadow-md shadow-white bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        uppercase font-thin text-lg text-amber-600 hover:text-black  rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Log-out') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

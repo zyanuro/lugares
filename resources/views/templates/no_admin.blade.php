@@ -40,7 +40,7 @@
                     </div>
                 </div>
                     <!-- right section -->
-                    <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block  items-start md:gap-3">
+                    <div id="nav-menu" class=" bg-black font-header  flex flex-col mt-3 hidden lg:flex lg:flex-row :mt-0 md:block gap-2 items-start md:gap-0">
                         <a href="{{route('last')}}" class="{{request()-> is('last') ? 'text-red-600' : 'text-gray-200'}} duration-300 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Last</a>
                         <a href="{{route('ranking')}}" class="{{request()-> is('ranking') ? 'text-red-600' : 'text-gray-200'}} duration-300 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Ranking</a>
                         <a href="{{route('contact')}}" class="{{request()-> is('contact') ? 'text-red-600' : 'text-gray-200'}} duration-300 ease-in-out text-lg hover:font-medium md:mx-4
@@ -52,13 +52,13 @@
                         uppercase text-lg text-red-600 hover:text-black border border-white rounded-md">Register</a>
                         @endif
                         @auth
-                         <a href="{{route('places.index')}}" class="text-blue-500 duration-300 ease-in-out text-sm hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Management</a>
+                         <a href="{{route('places.index')}}" class="text-blue-500 duration-300 ease-in-out text-lg hover:font-medium md:mx-4 hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">User Area</a>
                         @endauth
 
                         @auth
                         @if (Auth::user()->rol == 2)
                             <a href="{{ URL('admin') }}"><span class="duration-500 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                                uppercase text-lg text-red-600 hover:text-black border border-white rounded-md">Admin Zone</span></a>
+                                uppercase text-lg text-rose-400 hover:text-black  rounded-md mr-3">Admin Zone</span></a>
                         @endif
                         @endauth
                         
@@ -69,8 +69,8 @@
                         @endif
                            
                         @auth  
-                        <a class="duration-500 ease-in-out font-header shadow-md shadow-white p-2 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
-                        uppercase text-lg text-white hover:text-black border border-red-600 rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a class="duration-500 ease-in-out mb-3 font-header shadow-md shadow-white bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 
+                        uppercase font-thin text-lg text-amber-600 hover:text-black  rounded-md" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Log-out') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

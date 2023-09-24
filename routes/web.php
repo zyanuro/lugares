@@ -8,6 +8,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\VotationController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\ModerateUserController;
 
 use App\Models\Comment;
 use App\Models\Place;
@@ -47,6 +48,7 @@ Route::get('adminzone/one_suggestion', [SuggestionController::class, 'update'])-
 
 Route::delete('delete_suggestion/{id}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
 
+Route::put('adminzone/users/update/{id}', [ModerateUserController::class, 'update'])->name('users.update');
 
 //Acceso a la sugerencia seleccionada de la lista para leerla
 /* Route::get('adminzone/one_suggestion/{id}', function ($id) {        
@@ -54,11 +56,18 @@ Route::delete('delete_suggestion/{id}', [SuggestionController::class, 'destroy']
     return view('adminzone/one_suggestion', ['suggestion'=>$suggestion]);
 })->name('one'); */
 
+
+
 //Ruta para moderaciones   
 Route::resource('adminzone', AdminController::class);
 
 //Ruta para la gestión de las temáticas
 Route::resource('adminzone/thematics', ThemeController::class);
+
+//Ruta para moderar usuarios y gestionar su rol 
+Route::resource('adminzone/users', ModerateUserController::class);
+
+
 
 });
 
@@ -66,6 +75,7 @@ Route::resource('adminzone/thematics', ThemeController::class);
 /*****************************************************/
 // Registrados
 /*****************************************************/
+
 Route::group(['middleware' => 'auth'], function () {  
     // Poner aquí las vistas y rutas solo para usuarios registrados
     Route::resource('/places', PlaceController::class);
