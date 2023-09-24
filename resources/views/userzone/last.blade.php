@@ -8,7 +8,7 @@ The Last...
 
 @section('titulo2')
 
-<p class=" font-caro">Welcome to the Last... </p>
+<p class=" font-caro">the Last ... </p>
 
 @endsection
 
@@ -35,7 +35,7 @@ The Last...
 </form>
 </div> 
 
-<div class="container mx-auto p-4 mt-5 shadow-2xl"> 
+<div class="container mx-auto p-4 mt-0 shadow-2xl"> 
 
     <div class="grid grid-cols-1 md:grid-cols-4 bg-black p-4 rounded-lg">
 

@@ -21,8 +21,10 @@
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
             </div>
-            <p class="text-red-600 font-sans font-bold">User Register</p>
+            <p class="text-red-600 font-sans font-bold uppercase">User Register & Login area</p>            
+            
             <div class="md:w-full w-3/4 sm:max-w-md mt-6 px-6 py-4 bg-white overflow-hidden sm:rounded-lg border-2 shadow-white shadow-2xl border-red-600">
+                
                 {{ $slot }}
             </div>
         </div>

@@ -31,6 +31,7 @@ Moderation zone
                 <th class="p-2">Length</th>
                 <th class="p-2">Address</th>
                 <th class="p-2">Description</th>
+                <th class="p-2">User</th>
                 <th class="p-2"></th>
                 <th class="p-2"></th>
             </tr>
@@ -50,6 +51,8 @@ Moderation zone
                     <td class="p-5">{{ $place->length }}</td>
                     <td class="p-5">{{ $place->address }}</td>
                     <td class="p-5">{{ $place->description }}</td>
+                    <td class="p-5">{{ $place->user->email }}</td>
+
 
                     <td class="p-5"><form action="{{route('adminzone.update', $place->id)}}" method="post">
                      @csrf

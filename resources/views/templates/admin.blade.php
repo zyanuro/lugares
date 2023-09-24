@@ -76,8 +76,8 @@
        
     </body>
 
-    <footer class="bg-inherit w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">
-       <div class="p-3 bg-black border-t-2 border-b-4 border-red-600"><span class=" text-red-600">Enchanted Places</span> - All rights reserved - {{now()->year}}</div>
+    <footer class="bg-gray-900/50 w-full md:text-xl text-xs text-center text-gray-400 font-bold  max-h-screen fixed bottom-0">
+       <div class="p-3 border-t-2 border-b-4 border-red-600"><span class=" text-red-600">Enchanted Places</span> - All rights reserved - {{now()->year}}</div>
               
     </footer> 
 

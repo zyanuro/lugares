@@ -96,11 +96,34 @@
         </main>
 
     </body>
-
-    <footer class=" bg-inherit  w-full md:text-xl text-xs text-center text-gray-400 font-bold uppercase max-h-screen fixed bottom-0">
-
-       <div class="p-3 bg-black border-t-2 border-b-4 border-red-600"><span class=" text-red-600">Enchanted Places</span> - All rights reserved - {{now()->year}}</div>
- 
-    </footer> 
-
+    <footer class="bg-gray-900/50 text-white py-0 border-t border-b-4 border-red-600 text-center fixed bottom-0 w-full">
+        <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
+            <div class="hidden mb-4 lg:mb-0">
+                <h4 class="text-2xl font-semibold">Zyanuro productions</h4>
+                <p class="text-gray-300"...</p>
+            </div>                  
+            <div>
+                <h4 class="hidden text-2xl font-semibold">Quik links</h4>
+                <div class="mt-2 font-header">
+                    <a href="{{route('welcome')}}" class="text-red-600 hover:text-white mr-4">Home</a>
+                    <a href="#" class="text-white hover:text-red-600 mr-4">About us</a>
+                    @if(!Auth::check())
+                    <a href="{{route('login')}}" class=" text-red-600 hover:text-white mr-4">Login</a>
+                    <a href="{{route('register')}}" class=" text-gray-300 hover:text-red-600 mr-4">Register</a>  
+                    @endauth 
+                </div>
+            </div>
+            <div>
+                <h4 class="hidden text-2xl font-semibold">Follow us</h4>
+                <div class="mt-2 font-header">
+                    <a href="#" class="text-gray-300 hover:text-red-600 mr-4">Facebook</a>
+                    <a href="#" class="text-gray-300 hover:text-red-600 mr-4">Twitter-X</a>
+                    <a href="#" class="text-gray-300 hover:text-red-600">Instagram</a>
+                </div>
+            </div>
+            <div>
+                <div class="p-3"><span class=" text-red-600">Enchanted Places</span> - All rights reserved - {{now()->year}}</div>
+            </div>
+        </div>
+    </footer>
 </html>
