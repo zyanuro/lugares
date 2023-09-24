@@ -9,6 +9,8 @@ use App\Http\Controllers\VotationController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ModerateUserController;
+use App\Http\Controllers\CookieController;
+
 
 use App\Models\Comment;
 use App\Models\Place;
@@ -138,6 +140,10 @@ Route::get('/instructions', function () {
 Route::get('/block', function () {
     return view('userzone/block');
 })->name('block');
+
+Route::get('/cookies', [CookieController::class, 'index'])->name('cookies');
+Route::post('/accept-cookies', [CookieController::class, 'cookiesAccept' ])->name('acceptCookies');
+
 
 
 //  Rutas para la sección de Rankings y filtros

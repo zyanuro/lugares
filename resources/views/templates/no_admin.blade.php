@@ -126,4 +126,23 @@
             </div>
         </div>
     </footer>
+    <!-- politica de aceptación de cookies -->
+    @if (!request()->cookie('accept_cookies'))
+    <div class="relative min-h-screen">
+        <!-- Contenido de tu sitio web -->        
+        <!-- Aviso de cookies (superpuesto) -->
+        <div class="fixed bottom-0 left-0 w-full bg-red-900/80 text-white py-32">
+            <div class="container mx-auto flex flex-col items-center justify-center h-full">
+                <!-- Contenido del aviso de cookies -->                
+                <p class="mx -5 mb-2 text-center">This website uses cookies. By continuing to browse, you accept our use of cookies</p>
+                <p class="mx -5 mb-2 text-center">Legal Notice and Cookie Policy <a href="{{route('cookies')}}" class=" text-cyan-300 border-y border-cyan-200">- Read -</a></p>
+                <form method="post" action="{{ route('acceptCookies') }}">
+                    @csrf
+                    <!-- Otros campos o botones aquí -->
+                    <button type="submit" class="duration-500 ease-in-out mb-3 font-header shadow-md shadow-white bg-slate-300/50 hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer uppercase font-thin text-lg p-1 text-amber-400 hover:text-black rounded-md w-30">Accept</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+    @endif
 </html>
