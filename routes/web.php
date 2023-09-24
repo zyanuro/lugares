@@ -34,25 +34,25 @@ use Illuminate\Support\Facades\Route;
 /*****************************************************/
 // Admin
 /*****************************************************/
-Route::group(['middleware' => 'admin'], function () {  
+Route::group(['middleware' => 'admin'], function () {
     // Poner aquí las vistas y rutas solo para admin
     Route::get('admin', function () {
         return view('adminzone.index');
     })->name('admin');
 
-//controlador para acceder a indice de sugerencias dentro de user admin
-Route::get('adminzone.inbox', [SuggestionController::class, 'index'])->name('suggestions.index');
+    //controlador para acceder a indice de sugerencias dentro de user admin
+    Route::get('adminzone.inbox', [SuggestionController::class, 'index'])->name('suggestions.index');
 
-//controlador para acceder a una de las sugerencias dentro de user admin
-Route::put('adminzone.one_suggestion', [SuggestionController::class, 'update'])->name('suggestions.update');
+    //controlador para acceder a una de las sugerencias dentro de user admin
+    Route::put('adminzone.one_suggestion', [SuggestionController::class, 'update'])->name('suggestions.update');
 
-Route::get('adminzone/one_suggestion', [SuggestionController::class, 'update'])->name('admin.one_suggestion');
+    Route::get('adminzone/one_suggestion', [SuggestionController::class, 'update'])->name('admin.one_suggestion');
 
-Route::delete('delete_suggestion/{id}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
+    Route::delete('delete_suggestion/{id}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
 
-Route::put('adminzone/users/update/{id}', [ModerateUserController::class, 'update'])->name('users.update');
+    Route::put('adminzone/users/update/{id}', [ModerateUserController::class, 'update'])->name('users.update');
 
-//Acceso a la sugerencia seleccionada de la lista para leerla
+    //Acceso a la sugerencia seleccionada de la lista para leerla
 /* Route::get('adminzone/one_suggestion/{id}', function ($id) {        
     $suggestion = Suggestion::find($id);   
     return view('adminzone/one_suggestion', ['suggestion'=>$suggestion]);
@@ -60,14 +60,14 @@ Route::put('adminzone/users/update/{id}', [ModerateUserController::class, 'updat
 
 
 
-//Ruta para moderaciones   
-Route::resource('adminzone', AdminController::class);
+    //Ruta para moderaciones   
+    Route::resource('adminzone', AdminController::class);
 
-//Ruta para la gestión de las temáticas
-Route::resource('adminzone/thematics', ThemeController::class);
+    //Ruta para la gestión de las temáticas
+    Route::resource('adminzone/thematics', ThemeController::class);
 
-//Ruta para moderar usuarios y gestionar su rol 
-Route::resource('adminzone/users', ModerateUserController::class);
+    //Ruta para moderar usuarios y gestionar su rol 
+    Route::resource('adminzone/users', ModerateUserController::class);
 
 
 
@@ -78,25 +78,25 @@ Route::resource('adminzone/users', ModerateUserController::class);
 // Registrados
 /*****************************************************/
 
-Route::group(['middleware' => 'auth'], function () {  
+Route::group(['middleware' => 'auth'], function () {
     // Poner aquí las vistas y rutas solo para usuarios registrados
     Route::resource('/places', PlaceController::class);
-    
+
     // Ruta para mostrar los lugares por usuario    
-Route::get('/registeredzone.show/{id}', function($id) { 
-       
-    $place = Place::all()->where('user_id', $id);                 
-  
-    return view('registeredzone.show', ['places'=>$place, 'mobile_places'=>$place]);
-})->name('list');
+    Route::get('/registeredzone.show/{id}', function ($id) {
+
+        $place = Place::all()->where('user_id', $id);
+
+        return view('registeredzone.show', ['places' => $place, 'mobile_places' => $place]);
+    })->name('list');
 });
 
 //Mostrar los comentarios para cada lugar que sean propios
 Route::get('/place/{id}', function ($id) {
-    $comment = Comment::where('place_id', $id)->get();    
+    $comment = Comment::where('place_id', $id)->get();
     $place = Place::find($id);
-    $theme = Theme::all();    
-    return view('userzone.place', ['place'=>$place, 'comment'=>$comment, 'votes'=>Votation::all()]);
+    $theme = Theme::all();
+    return view('userzone.place', ['place' => $place, 'comment' => $comment, 'votes' => Votation::all()]);
 })->name('place');
 
 //Ruta para votaciones
@@ -121,12 +121,12 @@ Route::get('/', function () {
 
 Route::get('/last', function () {
     $place = Place::where('control', '=', 0)
-    ->orderBy('created_at', 'desc')
-    ->orderBy('control', 'asc')
-    ->paginate(8);
-   
-   
-    return view('userzone.last', ['places'=>$place, 'mobile_place'=>$place]);
+        ->orderBy('created_at', 'desc')
+        ->orderBy('control', 'asc')
+        ->paginate(8);
+
+
+    return view('userzone.last', ['places' => $place, 'mobile_place' => $place]);
 })->name('last');
 
 Route::get('/contact', function () {
@@ -142,7 +142,7 @@ Route::get('/block', function () {
 })->name('block');
 
 Route::get('/cookies', [CookieController::class, 'index'])->name('cookies');
-Route::post('/accept-cookies', [CookieController::class, 'cookiesAccept' ])->name('acceptCookies');
+Route::post('/accept-cookies', [CookieController::class, 'cookiesAccept'])->name('acceptCookies');
 
 
 
@@ -150,10 +150,10 @@ Route::post('/accept-cookies', [CookieController::class, 'cookiesAccept' ])->nam
 
 Route::get('/ranking', function () {
     $place = Place::where('control', '=', 0)
-    ->orderBy('puntuation', 'desc')
-    ->orderBy('control', 'asc')
-    ->paginate(12);
-    return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
+        ->orderBy('puntuation', 'desc')
+        ->orderBy('control', 'asc')
+        ->paginate(12);
+    return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
 })->name('ranking');
 
 //Ruta para elegir filtro en la vista de rankings
@@ -182,4 +182,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

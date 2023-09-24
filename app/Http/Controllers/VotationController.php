@@ -31,24 +31,24 @@ class VotationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ([
-            
-            'puntuation'=>'required|max:10',
-            
+        $request->validate([
+
+            'puntuation' => 'required|max:10',
+
         ]);
-       
+
         $vote = new Votation();
         $prepuntuation = 1;
         $postpuntuation = $request->input('puntuation');
         $vote->user_id = $request->input('user_id');
         $vote->place_id = $request->input('place_id');
         $vote->save();
-        $idPlace =  $request->input('place_id');
+        $idPlace = $request->input('place_id');
         $place = Place::find($idPlace);
         $place->puntuation = $prepuntuation + $postpuntuation;
         $place->save();
 
-        return view("userzone.place", ['place'=>$place, 'theme'=>Theme::all(), 'comment'=>Comment::where('place_id', $idPlace)->get(), 'votes'=>Votation::all(), 'msg'=> "Updated Succesfully..."]);
+        return view("userzone.place", ['place' => $place, 'theme' => Theme::all(), 'comment' => Comment::where('place_id', $idPlace)->get(), 'votes' => Votation::all(), 'msg' => "Updated Succesfully..."]);
     }
 
     /**
@@ -64,7 +64,7 @@ class VotationController extends Controller
      */
     public function edit(string $id)
     {
-         
+
     }
 
     /**
@@ -72,8 +72,8 @@ class VotationController extends Controller
      */
     public function update(Request $request)
     {
-       // dd($id);
-      
+        // dd($id);
+
     }
 
     /**

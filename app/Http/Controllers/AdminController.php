@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function index()
     {
         $place = Place::all();
-        return view('adminzone.index', ['places'=>$place]);
+        return view('adminzone.index', ['places' => $place]);
     }
 
     /**
@@ -37,8 +37,8 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        $place = Place::where('control', 1)->get();        
-        return view('adminzone.moderate', ['places'=>$place]);
+        $place = Place::where('control', 1)->get();
+        return view('adminzone.moderate', ['places' => $place]);
     }
 
     /**
@@ -54,16 +54,16 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate ([
-                        
+        $request->validate([
+
         ]);
 
-        $place = Place::find($id);       
-        $place->control = 0;        
-       
+        $place = Place::find($id);
+        $place->control = 0;
+
         $place->save();
-        $place = Place::where('control', 1)->get();    
-        return view('adminzone.moderate', ['places'=>$place]);
+        $place = Place::where('control', 1)->get();
+        return view('adminzone.moderate', ['places' => $place]);
     }
 
     /**

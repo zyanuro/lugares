@@ -10,69 +10,69 @@ class ViewController extends Controller
     public function seleccionarVista(Request $request)
     {
         $option = $request->input('view');
-      
+
         // Utilizando una estructura switch para determinar la vista
         switch ($option) {
             case 'favourites':
                 $place = Place::where('control', '=', 0)
-                ->orderBy('puntuation', 'desc')
-                ->orderBy('control', 'asc')
-                ->paginate(15);
-                return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('control', 'asc')
+                    ->paginate(15);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
                 break;
 
             case 'abandoned':
                 $place = Place::where('theme_id', '=', 6)
-                ->where('control', '=', 0)
-                ->orderBy('puntuation', 'desc')
-                ->orderBy('theme_id', 'asc')
-                ->paginate(9);
-                return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
+                    ->where('control', '=', 0)
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('theme_id', 'asc')
+                    ->paginate(9);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
                 break;
 
             case 'creatures':
                 $place = Place::where('theme_id', '=', 3)
-                ->where('control', '=', 0)
-                ->orderBy('puntuation', 'desc')
-                ->orderBy('theme_id', 'asc')
-                ->paginate(9);
-                return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
+                    ->where('control', '=', 0)
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('theme_id', 'asc')
+                    ->paginate(9);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
                 break;
 
             case 'ufo':
                 $place = Place::where('theme_id', '=', 1)
-                ->where('control', '=', 0)
-                ->orderBy('puntuation', 'desc')
-                ->orderBy('theme_id', 'asc')
-                ->paginate(9);
-                return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]); 
+                    ->where('control', '=', 0)
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('theme_id', 'asc')
+                    ->paginate(9);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
                 break;
 
             case 'haunted':
                 $place = Place::where('theme_id', '=', 4)
-                ->where('control', '=', 0)
-                ->orderBy('puntuation', 'desc')
-                ->orderBy('theme_id', 'asc')
-                ->paginate(9);
-                return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
+                    ->where('control', '=', 0)
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('theme_id', 'asc')
+                    ->paginate(9);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
                 break;
 
             case 'mystery':
                 $place = Place::where('theme_id', '=', 2)
-                ->where('control', '=', 0)
-                ->orderBy('puntuation', 'desc')
-                ->orderBy('theme_id', 'asc')
-                ->paginate(9);
-                return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
+                    ->where('control', '=', 0)
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('theme_id', 'asc')
+                    ->paginate(9);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
                 break;
 
             case 'others':
                 $place = Place::where('theme_id', '=', 5)
-                ->where('control', '=', 0)
-                ->orderBy('puntuation', 'desc')
-                ->orderBy('theme_id', 'asc')
-                ->paginate(9);
-                return view('userzone/ranking', ['places'=>$place, 'mobile_place'=>$place]);
+                    ->where('control', '=', 0)
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('theme_id', 'asc')
+                    ->paginate(9);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
                 break;
 
             default:
@@ -80,29 +80,28 @@ class ViewController extends Controller
                 return view('Error, doesnt exist result for this query - Error sin resultado');
                 break;
         }
-    }    
+    }
 
     public function selectLocation(Request $request)
     {
-        
+
         $optionZone = $request->input('location');
-//dd($optionZone);
+        //dd($optionZone);
         $place = $this->location($optionZone);
         return $place;
-       
+
     }
 
     public function location($optionZone)
-       
+
     // Función para devolver la vista seleccionada por localizaciones
-        {
-            $place = Place::where('control', '=', 0)           
+    {
+        $place = Place::where('control', '=', 0)
             ->where('location', '=', $optionZone)
             ->orderBy('puntuation', 'desc')
             ->orderBy('control', 'asc')
             ->paginate(15);
-            return view('userzone/last', ['places'=>$place, 'mobile_place'=>$place]);
-        }
-  
-}
+        return view('userzone/last', ['places' => $place, 'mobile_place' => $place]);
+    }
 
+}

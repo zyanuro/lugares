@@ -1,21 +1,15 @@
-@extends('templates.no_admin') 
+@extends('templates.no_admin')
 
 @section('titulo')
-
-Instructions
-
+    Instructions
 @endsection
 
 @section('titulo2')
-
-<p class=" font-caro">User guide</p>
-
+    <p class=" font-caro">User guide</p>
 @endsection
 
 @section('contenido')
+    <div class="md:flex justify-center md:items-center">
 
-<div class="md:flex justify-center md:items-center">
-   
-</div>
-
+    </div>
 @endsection

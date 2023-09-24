@@ -13,7 +13,7 @@ class ModerateUserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('adminzoneBis.users', ['users'=>$users]);
+        return view('adminzoneBis.users', ['users' => $users]);
     }
 
     /**
@@ -38,7 +38,7 @@ class ModerateUserController extends Controller
     public function show(string $id)
     {
         $users = User::all();
-        return view('adminzone.users.show', ['users'=>$users]);
+        return view('adminzone.users.show', ['users' => $users]);
     }
 
     /**
@@ -54,16 +54,16 @@ class ModerateUserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate ([
-                    
+        $request->validate([
+
         ]);
 
-        $idReceive = $request->input('rol'); 
-        $user = User::find($id);       
-        $user->rol = $idReceive;        
+        $idReceive = $request->input('rol');
+        $user = User::find($id);
+        $user->rol = $idReceive;
         $user->save();
-        
-        return view('adminzone.msg', ['msg'=>"Rol Update Succesfully..."]);
+
+        return view('adminzone.msg', ['msg' => "Rol Update Succesfully..."]);
     }
 
     /**
@@ -73,9 +73,9 @@ class ModerateUserController extends Controller
     {
         //dd($id);
         $user = User::find($id);
-       // dd($user);
+        // dd($user);
         $user->delete();
-       
-        return view("adminzone.msg", ['msg'=> "User Deleted Succesfully..."]);
+
+        return view("adminzone.msg", ['msg' => "User Deleted Succesfully..."]);
     }
 }

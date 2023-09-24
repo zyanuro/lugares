@@ -18,5 +18,5 @@ class CookieController extends Controller
         $cookie = cookie('accept_cookies', 'yes', 1); // Validez de 30 días
         return redirect()->route('welcome')->withCookie($cookie);
     }
-    
+
 }

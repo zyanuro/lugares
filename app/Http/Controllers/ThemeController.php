@@ -20,9 +20,9 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        $themes=Theme::all();        
-       
-    return view('adminzone.thematics.create', ['themes'=>$themes]);
+        $themes = Theme::all();
+
+        return view('adminzone.thematics.create', ['themes' => $themes]);
     }
 
     /**
@@ -30,19 +30,19 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ([
-            
-            'name'=>'required|unique:themes|max:250',
-                        
+        $request->validate([
+
+            'name' => 'required|unique:themes|max:250',
+
         ]);
 
         $theme = new Theme();
         $theme->name = $request->input('name');
-          
+
 
         $theme->save();
 
-        return view("adminzone.thematics.msg", ['msg'=> "Saved Succesfully..."]);
+        return view("adminzone.thematics.msg", ['msg' => "Saved Succesfully..."]);
     }
 
     /**
@@ -51,8 +51,8 @@ class ThemeController extends Controller
     public function show(string $id)
     {
         $themes = Theme::all();
-       // dd($themes);
-        return view('adminzone.thematics.show', ['themes'=>$themes]);
+        // dd($themes);
+        return view('adminzone.thematics.show', ['themes' => $themes]);
     }
 
     /**
@@ -61,7 +61,7 @@ class ThemeController extends Controller
     public function edit(string $id)
     {
         $theme = Theme::find($id);
-        return view('adminzone.thematics.edit',['theme'=>$theme]);
+        return view('adminzone.thematics.edit', ['theme' => $theme]);
     }
 
     /**
@@ -69,17 +69,18 @@ class ThemeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate ([
-            
-            'name'=>'required|max:250|unique:themes', $id,           
+        $request->validate([
+
+            'name' => 'required|max:250|unique:themes',
+            $id,
         ]);
 
         $theme = Theme::find($id);
         $theme->name = $request->input('name');
-       
+
         $theme->save();
 
-        return view("adminzone.thematics.msg", ['msg'=> "Updated Succesfully..."]);
+        return view("adminzone.thematics.msg", ['msg' => "Updated Succesfully..."]);
     }
 
     /**
@@ -90,7 +91,7 @@ class ThemeController extends Controller
         $theme = Theme::find($id);
         //dd($theme);
         $theme->delete();
-        
-        return view("adminzone.thematics.msg", ['msg'=> "Deleted Succesfully..."]);
+
+        return view("adminzone.thematics.msg", ['msg' => "Deleted Succesfully..."]);
     }
 }

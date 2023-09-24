@@ -15,7 +15,7 @@ class PlaceController extends Controller
     public function index()
     {
         $place = Place::all();
-        return view('registeredzone.index', ['place'=>$place]);
+        return view('registeredzone.index', ['place' => $place]);
     }
 
     /**
@@ -23,10 +23,10 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        $place=Place::all();
-        $theme=Theme::all();
-       
-    return view('registeredzone.create', ['place'=>$place, 'theme'=>$theme]);
+        $place = Place::all();
+        $theme = Theme::all();
+
+        return view('registeredzone.create', ['place' => $place, 'theme' => $theme]);
     }
 
     /**
@@ -34,36 +34,36 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-     
-        $request->validate ([
-            
-            'name'=>'required|max:250',
-            'theme'=>'required|max:50',
-            'latitude'=>'decimal:2,5|nullable',
-            'length'=>'decimal:2,5|nullable',
-            'location'=>'required|max:250',
-            'address'=>'required|max:250',
-            'description'=>'required|max:250',
-            
+
+        $request->validate([
+
+            'name' => 'required|max:250',
+            'theme' => 'required|max:50',
+            'latitude' => 'decimal:2,5|nullable',
+            'length' => 'decimal:2,5|nullable',
+            'location' => 'required|max:250',
+            'address' => 'required|max:250',
+            'description' => 'required|max:250',
+
         ]);
 
         $place = new Place();
         $place->name = $request->input('name');
-        $place->theme_id = $request->input('theme'); 
+        $place->theme_id = $request->input('theme');
         $place->latitude = $request->input('latitude');
         $place->length = $request->input('length');
         $place->location = $request->input('location');
-        $place->address = $request->input('address');  
-        $place->description = $request->input('description');          
+        $place->address = $request->input('address');
+        $place->description = $request->input('description');
         $place->photo_theme = $request->input('theme');
         $place->user_id = $request->input('user');
-        $place->control = 1;        
-        $place->puntuation = 0;  
-        
+        $place->control = 1;
+        $place->puntuation = 0;
+
 
         $place->save();
 
-        return view("registeredzone.msg", ['msg'=> "Saved Succesfully..."]);
+        return view("registeredzone.msg", ['msg' => "Saved Succesfully..."]);
     }
 
     /**
@@ -71,11 +71,11 @@ class PlaceController extends Controller
      */
     public function show()
     {
-         
+
         $place = Place::paginate(5);
         dd($place);
-        return view('registeredzone.show', ['place'=>$place, 'mobile_place'=>$place]);
-        
+        return view('registeredzone.show', ['place' => $place, 'mobile_place' => $place]);
+
     }
 
     /**
@@ -84,7 +84,7 @@ class PlaceController extends Controller
     public function edit(string $id)
     {
         $place = Place::find($id);
-        return view('registeredzone.edit',['place'=>$place, 'theme'=>Theme::all()]);
+        return view('registeredzone.edit', ['place' => $place, 'theme' => Theme::all()]);
     }
 
     /**
@@ -92,35 +92,35 @@ class PlaceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate ([
-            
-            'name'=>'required|max:250',
-            'theme'=>'required|max:50',
-            'latitude'=>'decimal:2,5|nullable',
-            'length'=>'decimal:2,5|nullable',
-            'address'=>'required|max:250',
-            'description'=>'required|max:250',
-            'location'=>'required|max:250',
+        $request->validate([
+
+            'name' => 'required|max:250',
+            'theme' => 'required|max:50',
+            'latitude' => 'decimal:2,5|nullable',
+            'length' => 'decimal:2,5|nullable',
+            'address' => 'required|max:250',
+            'description' => 'required|max:250',
+            'location' => 'required|max:250',
         ]);
 
         $place = Place::find($id);
         $place->name = $request->input('name');
-        $place->theme_id = $request->input('theme'); 
+        $place->theme_id = $request->input('theme');
         $place->latitude = $request->input('latitude');
         $place->length = $request->input('length');
-        $place->address = $request->input('address');  
-        $place->description = $request->input('description');          
+        $place->address = $request->input('address');
+        $place->description = $request->input('description');
         $place->photo_theme = $request->input('theme');
         $place->user_id = $request->input('user');
-        $place->control = 1;    
-        $place->location = $request->input('location');    
+        $place->control = 1;
+        $place->location = $request->input('location');
         //$place->puntuation = 0;  
 
 
 
         $place->save();
 
-        return view("registeredzone.msg", ['msg'=> "Updated Succesfully..."]);
+        return view("registeredzone.msg", ['msg' => "Updated Succesfully..."]);
     }
 
     /**
@@ -132,6 +132,6 @@ class PlaceController extends Controller
         $placeToDelete->delete();
         $place = Place::all();
         $mobile_place = Place::all();
-        return view("registeredzone.msg", ['msg'=> "Deleted Succesfully..."]);
+        return view("registeredzone.msg", ['msg' => "Deleted Succesfully..."]);
     }
 }

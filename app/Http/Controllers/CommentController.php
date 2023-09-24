@@ -31,12 +31,12 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate ([
-            
-            'user'=>'required|max:25',
-            'placeId'=>'required|max:25',
-            'comment'=>'required|max:250',
-            
+        $request->validate([
+
+            'user' => 'required|max:25',
+            'placeId' => 'required|max:25',
+            'comment' => 'required|max:250',
+
         ]);
 
         $comment = new Comment();
@@ -45,12 +45,12 @@ class CommentController extends Controller
         $comment->place_id = $request->input('placeId');
         $commentSend = $request->input('placeId');
         $comment->comment = $request->input('comment');
-       
-        $comment->save();      
 
-       
-        return view("userzone.msg", ['msg'=> "Comment Saved Succesfully...", 'place'=>$place]);
-        
+        $comment->save();
+
+
+        return view("userzone.msg", ['msg' => "Comment Saved Succesfully...", 'place' => $place]);
+
     }
 
     /**
@@ -58,14 +58,14 @@ class CommentController extends Controller
      */
     public function show(string $placeId)
     {
-        
-       // Realiza una consulta para obtener los comentarios relacionados con el lugar específico
-    $comment = Comment::where('place_id', $placeId)->get();
-    $place = Place::all();
-   
-      
-    // Puedes pasar los comentarios a tu vista para mostrarlos
-    return view('places', compact('comment'), compact('place'));
+
+        // Realiza una consulta para obtener los comentarios relacionados con el lugar específico
+        $comment = Comment::where('place_id', $placeId)->get();
+        $place = Place::all();
+
+
+        // Puedes pasar los comentarios a tu vista para mostrarlos
+        return view('places', compact('comment'), compact('place'));
     }
 
     /**
