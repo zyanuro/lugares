@@ -50,6 +50,8 @@
              bg-indigo-300 
                @elseif ($place->theme->id == 1)
                bg-slate-800
+               @elseif ($place->theme->id == 26)
+                bg-fuchsia-200
                @elseif ($place->theme->id == 6)
                bg-teal-900 @endif              
               font-header  ">

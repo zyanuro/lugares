@@ -60,7 +60,7 @@
                 <a href="{{ route('contact') }}"
                     class="{{ request()->is('contact') ? 'text-red-600' : 'text-gray-200' }} duration-300 ease-in-out text-lg hover:font-medium md:mx-4
                             @auth
-hidden @endauth hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
+                            hidden @endauth hover:text-red-600 hover:border hover:border-red-600 hover:rounded-md hover:p-1 hover:shadow-white hover:shadow-lg">Write</a>
                 @if (!Auth::check())
                     <a href="{{ route('register') }}"
                         class="duration-300 ease-in-out font-header shadow-md shadow-white hover:shadow-lg hover:shadow-white p-1 bg-transparent hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer 

@@ -5,7 +5,7 @@
 @endsection
 
 @section('titulo2')
-    Admin Area
+   Dashboard
 @endsection
 
 @section('contenido')

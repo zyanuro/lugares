@@ -14,9 +14,9 @@ Welcome to the mistery...
 
 @section('contenido')
 
-<div class="md:flex justify-center md:items-center">
-    <div class="md:w-auto shadow-2xl">
-       <a href="{{route('last')}}"><img src="{{asset('img/big_moon.webp')}}" alt='welcome image' class="shadow-red-600 shadow-2xl  rounded-full"></a>        
+<div class="md:flex justify-center md:items-center mx-8">
+    <div class="md:w-2/6 shadow-2xl">
+       <a href="{{route('last')}}"><img src="{{asset('img/big_moon.jpg')}}" alt='welcome image' class="shadow-red-600 shadow-2xl  rounded-full"></a>        
     </div> 
 </div>
 

@@ -5,6 +5,7 @@
 @endsection
 
 @section('titulo2')
+User Private Area
 @endsection
 
 @section('contenido')

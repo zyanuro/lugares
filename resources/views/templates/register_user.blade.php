@@ -107,18 +107,6 @@
 
 </body>
 
-<!-- politica de aceptación de cookies -->
-@if (request()->cookie('accept_cookies'))
-    <!-- Mostrar el aviso de cookies aquí -->
-    <p class="text-white p-10 font-bold">ESTO ES UN AVISO DE COOKIES</p>
-
-    <div class="aviso-cookies">
-        <!-- ContenESTO ES UN AVISO DE COOKIESido del aviso de cookies -->
-        ESTO ES UN AVISO DE COOKIESESTO ES UN AVISO DE COOKIESESTO ES UN AVISO DE COOKIES
-        <a href="{{ route('aceptarCookies') }}">Aceptar cookies</a>
-    </div>
-@endif
-
 <footer class="bg-gray-900/50 text-white py-0 border-t border-b-4 border-red-600 text-center fixed bottom-0 w-full">
     <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
         <div class="hidden mb-4 lg:mb-0">
@@ -149,21 +137,7 @@
         </div>
     </div>
 </footer>
-@if (!request()->cookie('accept_cookies'))
-    <div class="relative min-h-screen">
-        <!-- Contenido de tu sitio web -->
-        <!-- Aviso de cookies (superpuesto) -->
-        <div class="fixed bottom-0 left-0 w-full bg-red-900/50 text-white py-32">
-            <div class="container mx-auto flex flex-col items-center justify-center h-full">
-                <!-- Contenido del aviso de cookies -->
-                <p class="mx -5 mb-2 text-center">This website uses cookies. By continuing to browse, you accept our use
-                    of cookies</p>
-                <a href=""
-                    class="duration-500 ease-in-out mb-3 font-header shadow-md shadow-white bg-slate-300/50 hover:visited:border-x-gray-400 hover:bg-gray-100 transition-colors cursor-pointer uppercase font-thin text-lg p-1 text-amber-600 hover:text-black rounded-md w-30">Read</a>
-            </div>
-        </div>
-    </div>
-@endif
+
 @if (!request()->cookie('accept_cookies'))
     <div class="relative min-h-screen">
         <!-- Contenido de tu sitio web -->
