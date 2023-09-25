@@ -10,6 +10,7 @@ use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ModerateUserController;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\ImageController;
 
 
 use App\Models\Comment;
@@ -145,8 +146,12 @@ Route::get('/about', function () {
     return view('userzone/about');
 })->name('about');
 
+//Manejo de cookies
 Route::get('/cookies', [CookieController::class, 'index'])->name('cookies');
 Route::post('/accept-cookies', [CookieController::class, 'cookiesAccept'])->name('acceptCookies');
+
+//Manejo de photos
+Route::post('/upload-image', [ImageController::class, 'uploadImage'])->name('upload-image');
 
 
 

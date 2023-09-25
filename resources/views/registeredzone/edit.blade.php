@@ -30,7 +30,7 @@
                 </div>
             @endif
 
-            <form action="{{ url('places/' . $place->id . 'edit/') }}" method="POST" class="border border-red-600 rounded-lg p-5">
+            <form action="{{ url('places/' . $place->id . 'edit/') }}" method="POST" class="border border-red-600 rounded-lg p-5" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
 
@@ -92,6 +92,12 @@
                             class="text-red-600 text-lg">{{ $place->location }}</span></p>
 
                 </div>
+
+                <div class="text-white p-4">
+                    <label for="image">Image:</label>
+                    <input type="file" name="image" id="image" accept="image/*" class="border border-red-600 bg-blue-500">
+                </div>
+
                 <div class="mb-5">
                     <label for="address" class="mb-2 block uppercase text-gray-500 font-bold">
                         Address

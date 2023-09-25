@@ -44,6 +44,8 @@ class PlaceController extends Controller
             'location' => 'required|max:250',
             'address' => 'required|max:250',
             'description' => 'required|max:250',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048|nullable',
+            // Ejemplo de reglas de validación para la imagen
 
         ]);
 
@@ -59,8 +61,19 @@ class PlaceController extends Controller
         $place->user_id = $request->input('user');
         $place->control = 1;
         $place->puntuation = 0;
+        
+        // Subir la imagen al servidor
+        
+            $image = $request->file('image');
+           // dd($image);
+            $routeImage = $image->store('images', 'public');
+            $place->image = $routeImage;
+        
+        // Crear una nueva instancia del modelo y asignar la ubicación de la imagen
+         // Asignar la ubicación de la imagen
 
-
+        // Guardar el registro en la base de datos
+       
         $place->save();
 
         return view("registeredzone.msg", ['msg' => "Saved Succesfully..."]);
@@ -101,6 +114,8 @@ class PlaceController extends Controller
             'address' => 'required|max:250',
             'description' => 'required|max:250',
             'location' => 'required|max:250',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048|nullable',
+            // Ejemplo de reglas de validación para la imagen
         ]);
 
         $place = Place::find($id);
@@ -115,6 +130,12 @@ class PlaceController extends Controller
         $place->control = 1;
         $place->location = $request->input('location');
         //$place->puntuation = 0;  
+         // Subir la imagen al servidor
+        
+         $image = $request->file('image');
+          //dd($image);
+          $routeImage = $image->store('images', 'public');
+          $place->image = $routeImage;
 
 
 

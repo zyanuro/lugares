@@ -72,7 +72,7 @@
 
             <!-- Enlace de mapas -->
         </div>
-        <button id="btnMap" class="hidden rounded-2xl w-auto m-4">
+        <button id="" class="hidden rounded-2xl w-auto m-4">
             <div class="grid grid-cols-1 bg-slate-400 hover:bg-amber-500 text-center rounded-2xl m-4 w-full">
 
                 <div class="flex mt-6">
@@ -85,19 +85,33 @@
                 <p class="text-red-700 text-base">PUSH HERE</p>
             </div>
         </button>
-        <div class="w-auto m-4">
-            <img src="{{ asset('img/stars_background.jpg') }}" alt="image card" class=" w-52 rounded-full">
-        </div>
+        <button id="btnMap" class="hover:bg-red-800 rounded-lg">
+        <div class="flex flex-col items-center border border-lime-400 rounded-md">
+            <div class="text-slate-300">
+                <p> View Photograph</p>
+            </div>
+            
+                <div class="w-auto m-1">
+                    <img src="{{ asset('/storage/' . $place->image) }}" alt="image card" class=" w-96 rounded-lg">
+                </div>            
+            </div>
+        </button>
+    </div>
+
+    <!-- Contenido de fotografía -->
+
+    <div  id="map_content" class="hidden flex flex-col items-center m-1 w-auto ">
+        <img src="{{ asset('/storage/' . $place->image) }}" alt="image card" class=" w-auto rounded-lg">
     </div>
 
     <!-- Contenido de Mapas -->
 
-    <div id="map_content" class="w-auto">
+    <div  class="w-auto">
         <div
             class="md:mt-20 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
     grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
             <!-- Imagen -->
-            
+
 
             <!-- Contenido de la tarjeta -->
             <div class="flex flex-col items-center px-10 text-center w-full">
@@ -124,12 +138,12 @@
                 <hr class="mt-3">
             </div>
             <div class="grid grid-cols-1 bg-slate-400 border-4 border-lime-200 text-center rounded-2xl mr-4 p-10">
-                
-                    <p class="text-gray-700 text-base">Latitude: <span
-                            class=" text-slate-300">{{ $place->latitude }}</span></p>
-                    <p class="text-gray-700 text-base">Length: <span class=" text-slate-300">{{ $place->length }}</span>
-                    </p>                
-               
+
+                <p class="text-gray-700 text-base">Latitude: <span class=" text-slate-300">{{ $place->latitude }}</span>
+                </p>
+                <p class="text-gray-700 text-base">Length: <span class=" text-slate-300">{{ $place->length }}</span>
+                </p>
+
             </div>
         </div>
     </div>
@@ -160,7 +174,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                     <p class="text-gray-800 w-11/12">{{ $comment->comment }}</p>
                 </div>
             @endforeach
-             
+
             <!-- Formulario de mensajes -->
             @auth
                 <div class="id="myForm" bg-black w-auto text-start">
@@ -177,7 +191,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                         </div>
                     @endif
 
-                    <form  action="{{ url('comment') }}" method="POST" class=" p-2 ">
+                    <form action="{{ url('comment') }}" method="POST" class=" p-2 ">
                         @csrf
 
                         <div class="mb-1">
@@ -213,21 +227,21 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                 </div>
             </div>
         </div>
-      @endauth
+    @endauth
     @guest
-            </div> 
-      </div> 
-    @endguest       
-    
-        <div>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
         </div>
-    
+        </div>
+    @endguest
+
+    <div>
+        <p class=" invisible">.</p>
+        <p class=" invisible">.</p>
+        <p class=" invisible">.</p>
+        <p class=" invisible">.</p>
+        <p class=" invisible">.</p>
+        <p class=" invisible">.</p>
+    </div>
+
 
     <!-- Script para generar Mapas de google con las coordenadas -->
     <script>
@@ -255,6 +269,5 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
         }
 
         initMap();
-    </script>    
-
+    </script>
 @endsection

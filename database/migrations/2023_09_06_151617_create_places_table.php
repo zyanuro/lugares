@@ -16,13 +16,14 @@ return new class extends Migration
             $table->id();
             $table->string('name', 150);            
             $table->string('photo_theme', 150);
-            $table->decimal('latitude', 7,5)->nullable();
-            $table->decimal('length', 7,5)->nullable();
+            $table->decimal('latitude', 7,5)->nullable()->default(1.00);
+            $table->decimal('length', 7,5)->nullable()->default(1.00);
             $table->string('address', 250);
             $table->string('description', 250);
             $table->interger('puntuation', 25);
             $table->integer('control'); 
             $table->string('location', 250);
+            $table->string('image', 250)->nullable()->default('images/default.jpg');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('theme_id');            

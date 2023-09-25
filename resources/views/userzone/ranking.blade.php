@@ -22,6 +22,7 @@
                     <option value="ufo">UFO / Ovni</option>
                     <option value="haunted">Haunted House</option>
                     <option value="mystery">Mystery</option>
+                    <option value="apparitions">Apparitions</option>
                     <option value="others">Others</option>
                 </select>
                 <input type="submit" value="Show"

@@ -14,8 +14,8 @@ class ViewController extends Controller
         // Utilizando una estructura switch para determinar la vista
         switch ($option) {
             case 'favourites':
-                $url = route('ranking');   
-                return redirect($url);                
+                $url = route('ranking');
+                return redirect($url);
                 break;
 
             case 'abandoned':
@@ -56,6 +56,15 @@ class ViewController extends Controller
 
             case 'mystery':
                 $place = Place::where('theme_id', '=', 2)
+                    ->where('control', '=', 0)
+                    ->orderBy('puntuation', 'desc')
+                    ->orderBy('theme_id', 'asc')
+                    ->paginate(9);
+                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
+                break;
+
+            case 'apparitions':
+                $place = Place::where('theme_id', '=', 26)
                     ->where('control', '=', 0)
                     ->orderBy('puntuation', 'desc')
                     ->orderBy('theme_id', 'asc')
