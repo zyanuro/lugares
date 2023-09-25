@@ -141,6 +141,10 @@ Route::get('/block', function () {
     return view('userzone/block');
 })->name('block');
 
+Route::get('/about', function () {
+    return view('userzone/about');
+})->name('about');
+
 Route::get('/cookies', [CookieController::class, 'index'])->name('cookies');
 Route::post('/accept-cookies', [CookieController::class, 'cookiesAccept'])->name('acceptCookies');
 

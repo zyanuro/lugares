@@ -14,11 +14,8 @@ class ViewController extends Controller
         // Utilizando una estructura switch para determinar la vista
         switch ($option) {
             case 'favourites':
-                $place = Place::where('control', '=', 0)
-                    ->orderBy('puntuation', 'desc')
-                    ->orderBy('control', 'asc')
-                    ->paginate(15);
-                return view('userzone/ranking', ['places' => $place, 'mobile_place' => $place]);
+                $url = route('ranking');   
+                return redirect($url);                
                 break;
 
             case 'abandoned':

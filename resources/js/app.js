@@ -83,23 +83,8 @@ btnMap.addEventListener('click', () => {
     map_content.classList.toggle("hidden");
 });
 
-// Select anidado en vista Last.
-
- // Función para actualizar el segundo select en función de la selección en el primero
- 
-       
-   
+//Mantener la vista al recargar la página 
 
 
-//document.delete.submit()    
 
-
-    //<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY"></script>
-
-
-    //<div id="map" style="height: 400px; width: 100%;"></div>
-
-
-        // Coordenadas de ejemplo (reemplaza con tus propias coordenadas)
-       
     

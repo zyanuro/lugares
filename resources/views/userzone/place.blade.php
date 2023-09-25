@@ -16,33 +16,31 @@
 
     <div
         class="mt-10 md:mt-16 rounded-xl m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
-grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
+               grid grid-cols-1 place-items-center md:flex gap-14 md:justify-center items-center">
         <!-- Imagen -->
         <img src="{{ asset('img/' . $place->theme->name . '.jpg') }}" alt="image card"
-            class="w-auto rounded-full shadow-white shadow-md">
+            class=" w-56 rounded-full shadow-white shadow-md">
 
         <!-- Contenido de la tarjeta -->
-        <div class="w-auto font-sans">
+        <div class="w-full font-sans">
             <!-- Nombre -->
             <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">{{ $place->name }}</div>
             <hr class="mb-3">
 
             <!-- Fecha de Creación -->
-            <p class=" text-gray-700 text-base mb-2">Created at: <span class="text-gray-300">{{ $place->created_at }}</span>
+            <p class=" text-sky-300 text-base mb-2">Created at: <span class="text-gray-300">{{ $place->created_at }}</span>
             </p>
 
             <!-- Temática -->
-            <p class="text-gray-700 text-base mb-2">Theme: <span
+            <p class="text-sky-300 text-base mb-2">Theme: <span
                     class="font-header text-cyan-700 border border-black p-1 rounded-md bg-gray-300">{{ $place->theme->name }}</span>
             </p>
 
             <!-- Autor -->
-            <p class="text-gray-700 text-base">Author: <span class=" text-slate-300">{{ $place->user->name }}</span></p>
-            <p class="text-gray-700 text-base">Extra address: <span class=" text-slate-300">{{ $place->address }}</span></p>
-            <p class="text-gray-700 text-base ">Phenomenon: <span class=" text-slate-300">{{ $place->description }}</span>
+            <p class="text-sky-300 text-base">Author: <span class=" text-slate-300">{{ $place->user->name }}</span></p>
+            <p class="text-sky-300 text-base">Extra address: <span class=" text-slate-300">{{ $place->address }}</span></p>
+            <p class="text-sky-300 text-base ">Phenomenon: <span class=" text-slate-300">{{ $place->description }}</span>
             </p>
-
-
 
             <hr class="mt-3">
 
@@ -74,7 +72,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
 
             <!-- Enlace de mapas -->
         </div>
-        <button id="btnMap" class=" rounded-2xl w-auto m-4">
+        <button id="btnMap" class="hidden rounded-2xl w-auto m-4">
             <div class="grid grid-cols-1 bg-slate-400 hover:bg-amber-500 text-center rounded-2xl m-4 w-full">
 
                 <div class="flex mt-6">
@@ -87,52 +85,54 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                 <p class="text-red-700 text-base">PUSH HERE</p>
             </div>
         </button>
+        <div class="w-auto m-4">
+            <img src="{{ asset('img/stars_background.jpg') }}" alt="image card" class=" w-52 rounded-full">
+        </div>
     </div>
-
-
 
     <!-- Contenido de Mapas -->
 
-    <div id="map_content" class="">
+    <div id="map_content" class="w-auto">
         <div
             class="md:mt-20 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
     grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
             <!-- Imagen -->
-            <img src="{{ asset('img/' . $place->theme->name . '.jpg') }}" alt="image card"
-                class="lowercase w-auto p-1 rounded-full ">
+            
 
             <!-- Contenido de la tarjeta -->
-            <div class="px-10">
+            <div class="flex flex-col items-center px-10 text-center w-full">
                 <!-- Nombre -->
 
                 <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">Location Map</div>
 
-                <!-- Puntuación -->
-                <div id="map" class="border border-red-600 w-auto" style="height: 400px; width: 100%;"></div>
+                <!-- Mapa Google -->
+                @if ($place->latitude != 1 && $place->length != 1)
+                    <div id="map" class="border border-red-600 w-full" style="height: 400px; width: 100%;"></div>
+                @else
+                    <img src="{{ asset('img/enchanted_map.jpg') }}" alt="image card"
+                        class="lowercase w-80 p-1 rounded-2xl ">
+                    <p class=" text-red-500 font-extrabold font-mono text-center">Whithout Coordenates</p>
+                    <p class=" text-red-500 font-extrabold font-mono text-center">Map Generation Not Available</p>
+                @endif
 
                 <!-- Fecha de Creación -->
-
-                <p class="text-gray-700 text-base mt-3">Extra address: <span
+                <p class="text-sky-300 text-base mt-3">Extra address: <span
                         class=" text-slate-300">{{ $place->address }}</span></p>
-                <p class="text-gray-700 text-base mt-3">Location: <span
+                <p class="text-sky-300 text-base mt-3">Location: <span
                         class=" text-slate-300">{{ $place->location }}</span></p>
-
 
                 <hr class="mt-3">
             </div>
-            <div class="grid grid-cols-1 bg-slate-400 text-center rounded-2xl m-4">
-
-                <div class="flex mt-6">
+            <div class="grid grid-cols-1 bg-slate-400 border-4 border-lime-200 text-center rounded-2xl mr-4 p-10">
+                
                     <p class="text-gray-700 text-base">Latitude: <span
                             class=" text-slate-300">{{ $place->latitude }}</span></p>
                     <p class="text-gray-700 text-base">Length: <span class=" text-slate-300">{{ $place->length }}</span>
-                    </p>
-                </div>
-                <img src="{{ asset('img/map.jpg') }}" alt="image card" class="w-auto rounded-full p-3 ">
+                    </p>                
+               
             </div>
         </div>
     </div>
-
 
     <!-- Comentatios de la tarjeta -->
 
@@ -143,7 +143,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
         <!-- <img src="{{ asset('img/' . $place->theme->name . '.jpg') }}" alt="image card" class="lowercase w-auto p-1 rounded-full "> -->
 
         <!-- Comentatios de la tarjeta -->
-        <div class="">
+        <div class="w-full">
             <!-- Nombre -->
             <div class="text-center text-2xl md:text-2xl font-bold text-slate-300 mb-1">Comments</div>
 
@@ -160,11 +160,10 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                     <p class="text-gray-800 w-11/12">{{ $comment->comment }}</p>
                 </div>
             @endforeach
-
-
+             
             <!-- Formulario de mensajes -->
             @auth
-                <div class=" bg-black">
+                <div class="id="myForm" bg-black w-auto text-start">
 
                     @if ($errors->any())
                         <div
@@ -178,7 +177,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                         </div>
                     @endif
 
-                    <form action="{{ url('comment') }}" method="POST" class="border border-red-600 rounded-lg p-2 ">
+                    <form  action="{{ url('comment') }}" method="POST" class=" p-2 ">
                         @csrf
 
                         <div class="mb-1">
@@ -186,7 +185,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                                 What is your opinion?
                             </label>
                             <textarea name="comment" id="comment" placeholder="Write a comment" value="{{ old('comment') }}" rows="4"
-                                cols="35" class=" rounded-lg"></textarea>
+                                cols="35" maxlength="250" class=" rounded-lg"></textarea>
                         </div>
                         <div class="hidden mb-5">
                             <label for="user" class="mb-2 block  text-gray-500 font-bold text-center">
@@ -210,14 +209,25 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
                                 class="shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-auto p-2 text-red-600 rounded-lg">
                                 Send
                             </button>
-
                         </div>
-
                 </div>
             </div>
         </div>
-    @endauth
-
+      @endauth
+    @guest
+            </div> 
+      </div> 
+    @endguest       
+    
+        <div>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+        </div>
+    
 
     <!-- Script para generar Mapas de google con las coordenadas -->
     <script>
@@ -245,12 +255,6 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
         }
 
         initMap();
-    </script>
+    </script>    
 
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
-    <p class=" invisible">.</p>
 @endsection

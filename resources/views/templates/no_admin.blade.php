@@ -131,7 +131,7 @@
             <h4 class="hidden text-2xl font-semibold">Quik links</h4>
             <div class="mt-2 font-header">
                 <a href="{{ route('welcome') }}" class="text-red-600 hover:text-white mr-4">Home</a>
-                <a href="#" class="text-white hover:text-red-600 mr-4">About us</a>
+                <a href="{{ route('about') }}" class="text-white hover:text-red-600 mr-4">About</a>
                 @if (!Auth::check())
                     <a href="{{ route('login') }}" class=" text-red-600 hover:text-white mr-4">Login</a>
                     <a href="{{ route('register') }}" class=" text-gray-300 hover:text-red-600 mr-4">Register</a>
