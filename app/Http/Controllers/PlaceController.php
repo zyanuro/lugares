@@ -39,8 +39,8 @@ class PlaceController extends Controller
 
             'name' => 'required|max:250',
             'theme' => 'required|max:50',
-            'latitude' => 'decimal:2,5|nullable',
-            'length' => 'decimal:2,5|nullable',
+            'latitude' => 'decimal:2,10|nullable',
+            'length' => 'decimal:2,20|nullable',
             'location' => 'required|max:250',
             'address' => 'required|max:250',
             'description' => 'required|max:250',
@@ -51,9 +51,7 @@ class PlaceController extends Controller
 
         $place = new Place();
         $place->name = $request->input('name');
-        $place->theme_id = $request->input('theme');
-        $place->latitude = $request->input('latitude');
-        $place->length = $request->input('length');
+        $place->theme_id = $request->input('theme');       
         $place->location = $request->input('location');
         $place->address = $request->input('address');
         $place->description = $request->input('description');
@@ -61,16 +59,32 @@ class PlaceController extends Controller
         $place->user_id = $request->input('user');
         $place->control = 1;
         $place->puntuation = 0;
-        
-        // Subir la imagen al servidor
-        
-            $image = $request->file('image');
-           // dd($image);
+        $image = $request->file('image');
+
+        $latitude = $request->input('latitude');
+        $length = $request->input('length');
+
+        if ($length == null || $latitude == null) {
+
+             $place->latitude = 1.00;
+            $place->length = 1.00;
+
+        } else {
+            $place->latitude = $request->input('latitude');
+            $place->length = $request->input('length');
+        }
+
+
+
+
+        if ($image !== null) {
+            // Se ha enviado una imagen en la solicitud
+            
             $routeImage = $image->store('images', 'public');
             $place->image = $routeImage;
-        
-        // Crear una nueva instancia del modelo y asignar la ubicación de la imagen
-         // Asignar la ubicación de la imagen
+        } else {
+           //
+        }         
 
         // Guardar el registro en la base de datos
        

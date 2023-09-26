@@ -120,7 +120,7 @@
                 <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">Location Map</div>
 
                 <!-- Mapa Google -->
-                @if ($place->latitude != 1 && $place->length != 1)
+                @if ($place->latitude != 1.00000 && $place->length != 1.00000)
                     <div id="map" class="border border-red-600 w-full" style="height: 400px; width: 100%;"></div>
                 @else
                     <img src="{{ asset('img/enchanted_map.jpg') }}" alt="image card"
