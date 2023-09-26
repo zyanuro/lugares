@@ -97,6 +97,9 @@
                     <label for="image">Image:</label>
                     <input type="file" name="image" id="image" accept="image/*" class="border border-red-600 bg-blue-500">
                 </div>
+                <div class="flex flex-col items-center w-auto m-1">
+                    <img src="{{ asset('/storage/' . $place->image) }}" alt="image card" class=" w-24 border rounded-lg">
+                </div> 
 
                 <div class="mb-5">
                     <label for="address" class="mb-2 block uppercase text-gray-500 font-bold">

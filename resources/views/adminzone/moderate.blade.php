@@ -20,6 +20,7 @@
                 <thead>
                     <tr class="text-red-600 uppercase border-b-white border-b">
 
+                        <th class="p-2">Image</th>
                         <th class="p-2 text-green-700">State</th>
                         <th class="p-2">Name</th>
                         <th class="p-2">Theme</th>
@@ -40,6 +41,9 @@
                     @foreach ($places as $place)
                         <tr class="border-b-red-600 border-b">
 
+                            <td <div class="w-auto m-1">
+                                <img src="{{ asset('/storage/' . $place->image) }}" alt="image card" class=" w-96 rounded-lg">
+                            </div></td>
                             <td class="p-5">On Hold -{{ $place->control }}-</td>
                             <td class="p-5">{{ $place->name }}</td>
                             <td class="p-5">{{ $place->theme->name }}</td>

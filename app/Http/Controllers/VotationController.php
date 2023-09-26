@@ -48,7 +48,8 @@ class VotationController extends Controller
         $place->puntuation = $prepuntuation + $postpuntuation;
         $place->save();
 
-        return view("userzone.place", ['place' => $place, 'theme' => Theme::all(), 'comment' => Comment::where('place_id', $idPlace)->get(), 'votes' => Votation::all(), 'msg' => "Updated Succesfully..."]);
+        return back();
+        //return view("userzone.place", ['place' => $place, 'theme' => Theme::all(), 'comment' => Comment::where('place_id', $idPlace)->get(), 'votes' => Votation::all(), 'msg' => "Updated Succesfully..."]);
     }
 
     /**
