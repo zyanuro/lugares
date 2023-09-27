@@ -11,7 +11,7 @@
 @section('contenido')
     @use Illuminate\Pagination\Paginator
 
-    <div class="hidden md:flex justify-center  bg-black place-content-center">
+    <div class="hidden 2xl:flex justify-center mb-3 bg-black place-content-center">
 
         <table class=" text-white text-center">
             <div>
@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
             </div>
-            <div>
+            <div >
                 <tbody>
 
                     </form>
@@ -82,12 +82,13 @@
 
         </table>
 
-
+       
     </div>
 
+    
 
 
-    <div class="flex md:hidden justify-center  bg-black place-content-center">
+    <div class="flex 2xl:hidden justify-center mb-3  bg-black place-content-center">
 
         <table class=" text-white text-center">
             <div>
@@ -129,6 +130,8 @@
         </table>
 
     </div>
+
+    <div class="">{{ $places->links() }}</div>
 
     <p class=" invisible">.</p>
     <p class=" invisible">.</p>

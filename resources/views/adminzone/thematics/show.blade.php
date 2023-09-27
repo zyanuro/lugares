@@ -20,8 +20,9 @@
                 <thead>
                     <tr class="text-red-600 uppercase border-b-white border-b">
 
-                        <th class="p-2">#</th>
+                        <th class="p-2 hidden sm:block">#</th>
                         <th class="p-2">Name</th>
+                        <th class="p-2 hidden md:block">Created at</th>
                         <th class="p-2"></th>
                         <th class="p-2"></th>
                     </tr>
@@ -36,9 +37,9 @@
                     @foreach ($themes as $theme)
                         <tr class="border-b-red-600 border-b">
 
-                            <td class="p-5">{{ $theme->id }}</td>
+                            <td class="p-5 hidden sm:block">{{ $theme->id }}</td>
                             <td class="p-5">{{ $theme->name }}</td>
-                            <td class="p-5">{{ $theme->created_at }}</td>
+                            <td class="p-5 hidden md:block">{{ $theme->created_at }}</td>
                             <td class="p-5"><a href="{{ url('adminzone/thematics/' . $theme->id . '/edit') }}"
                                     class=" shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-amber-400 rounded-lg">Edit</a>
                             </td>
@@ -65,8 +66,10 @@
                 class=" font-bold text-xl
                  mx-10 shadow-red-600 shadow-md border border-teal-500  hover:bg-teal-800 transition-colors cursor-pointer w-full p-2 text-teal-500 rounded-lg">New</a>
         </div>
+        
 
     </div>
+    
 
     <p class=" invisible">.</p>
     <p class=" invisible">.</p>

@@ -37,7 +37,7 @@ class ModerateUserController extends Controller
      */
     public function show(string $id)
     {
-        $users = User::all();
+        $users = User::paginate(5);
         return view('adminzone.users.show', ['users' => $users]);
     }
 

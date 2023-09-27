@@ -46,11 +46,11 @@ Route::group(['middleware' => 'admin'], function () {
 
     //controlador para acceder a una de las sugerencias dentro de user admin
     Route::put('adminzone.one_suggestion', [SuggestionController::class, 'update'])->name('suggestions.update');
-
+    //controlador para acceder a una de las sugerencias dentro de user admin
     Route::get('adminzone/one_suggestion', [SuggestionController::class, 'update'])->name('admin.one_suggestion');
-
+    //Borrado de sugerencias
     Route::delete('delete_suggestion/{id}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
-
+    //Moderado de lugares
     Route::put('adminzone/users/update/{id}', [ModerateUserController::class, 'update'])->name('users.update');
 
     //Acceso a la sugerencia seleccionada de la lista para leerla
@@ -86,8 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Ruta para mostrar los lugares por usuario    
     Route::get('/registeredzone.show/{id}', function ($id) {
 
-        $place = Place::all()->where('user_id', $id);
-
+        $place = Place::where('user_id', $id)->paginate(5);
         return view('registeredzone.show', ['places' => $place, 'mobile_places' => $place]);
     })->name('list');
 });

@@ -14,7 +14,7 @@
         Back</a>
 
 
-    <div class="md:flex justify-center mt-10 mx-5 bg-black place-content-center rounded-xl pb-5">
+    <div class="hidden sm:flex justify-center mt-10 mx-5 bg-black place-content-center rounded-xl pb-5">
 
         <table class=" text-white text-center">
             <div>
@@ -100,6 +100,70 @@
                     @endforeach
 
 
+
+                </tbody>
+
+            </div>
+
+        </table>
+
+    </div>
+
+    <!-- Mobile Screen -->
+    <div class="flex sm:hidden justify-center mt-10 mx-5 bg-black place-content-center rounded-xl pb-5">
+
+        <table class=" text-white text-center">
+            <div>
+                <thead>
+                    <tr class="text-red-600 uppercase border-b-white border-b">
+
+                       
+                        
+                        <th class="p-2">Sent at</th>
+
+
+                    </tr>
+                </thead>
+            </div>
+            <div>
+                <tbody>
+
+                    </form>
+                    @foreach ($suggestions as $suggestion)
+                        @if ($suggestion->control == 1)
+                            <tr class="border-b-red-600 border-b "> 
+                            @else
+                            <tr class="border-b-red-600 border-b text-gray-700">
+                        @endif
+                        
+                        
+                        <td class="border-r border-red-600 p-0 sm:p-5">{{ $suggestion->created_at }}</td>
+
+                        <td class="p-5 sm:p-0">
+                            <form action="{{ route('suggestions.update') }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <!-- Campo de entrada oculto -->
+                                <input type="hidden" id="campoOculto" name="control" value="{{ $suggestion->id }}">
+
+                                <!-- Botón de envío -->
+                                <input type="submit" value="Read"
+                                    class=" shadow-red-600 shadow-md border border-amber-400 bg-gray-500  hover:bg-sky-700 transition-colors cursor-pointer w-auto p-2 text-slate-900 font-mono rounded-lg">
+                            </form>
+                        </td>
+                        <td class="p-5 hidden md:block">
+                            <form action="{{ url('delete_suggestion/' . $suggestion->id) }}" method="post" name="delete">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit"
+                                    class="btnDelete shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer
+                             w-auto p- text-red-600 rounded-lg">Delete</button>
+
+                            </form>
+                        </td>
+
+                        </tr>
+                    @endforeach
 
                 </tbody>
 

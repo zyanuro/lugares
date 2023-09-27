@@ -37,8 +37,9 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        $place = Place::where('control', 1)->get();
-        return view('adminzone.moderate', ['places' => $place]);
+        $places = Place::where('control', 1)->paginate(4);
+        return view('adminzone.moderate', ['places' => $places]);
+        
     }
 
     /**

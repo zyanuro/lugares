@@ -40,7 +40,7 @@
 
 
 
-                            <td class="p-5">{{ $user->email }}</td>
+                            <td class="sm:p-5 p-0">{{ $user->email }}</td>
                             <td
                                 class="p-5 hidden md:block 
                         @if ($user->rol === 0) border border-red-600 text-red-600 
@@ -100,6 +100,8 @@
 
 
     </div>
+    <div class="mt-4">{{ $users->links() }}</div>
+
 
     <p class=" invisible">.</p>
     <p class=" invisible">.</p>

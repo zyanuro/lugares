@@ -17,7 +17,7 @@
             <hr />
         </div>
 
-        <div class="md:w-4/12 bg-black">
+        <div class="md:w-auto bg-black">
 
             @if ($errors->any())
                 <div class=" bg-red-400 transition-colors cursor-pointer  font-bold w-auto p-3 text-white mb-3 rounded-lg">
@@ -30,21 +30,21 @@
                 </div>
             @endif
 
-            <form action="{{ url('places/' . $place->id . 'edit/') }}" method="POST" class="border border-red-600 rounded-lg p-5" enctype="multipart/form-data">
+            <form action="{{ url('places/' . $place->id . 'edit/') }}" method="POST" class="md:grid md:grid-cols-2 gap-4 border border-red-600 rounded-lg p-5" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
 
 
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Name of the place
+                        Name of the place <span class=" text-red-600 font-mono">*</span>
                     </label>
                     <input id="name" name="name" type="text" placeholder="Name of the place"
                         class="border border-red-600 p-3 w-full rounded-lg" value="{{ $place->name }}" />
                 </div>
                 <div class="mb-5">
                     <label for="theme" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Theme
+                        Theme <span class=" text-red-600 font-mono">*</span>
                     </label>
                     <select name="theme" id="theme" class="border border-red-600 p-3 w-full rounded-lg bg-red-200"
                         value="{{ $place->theme->name }}">
@@ -72,12 +72,21 @@
                     <input id="length" name="length" type="text" placeholder="Length"
                         class="border border-red-600 p-3 w-full rounded-lg" value="{{ $place->length }}" />
                 </div>
-                <div class="ml-5 mb-3">
-                    <label for="select1" class="font-sans font-bold text-xl text-cyan-300 mr-2 hidden md:visible">Select a
-                        filter:</label>
+                
+
+                <div class="text-white p-4 text-left">
+                    <label for="image">Image:</label>
+                    <input type="file" name="image" id="image" accept="image/*" class="border border-red-600 bg-blue-500">
+                </div>
+                <div class="flex flex-col items-center w-auto m-1">
+                    <img src="{{ asset('/storage/' . $place->image) }}" alt="image card" class=" w-24 border rounded-lg mb-4">
+                </div> 
+                <div class="ml-5 mb-3 text-center">
+                    <label for="select1" class="font-mono font-bold  text-cyan-300 mr-2  md:visible">Select a
+                        filter <span class=" text-red-600 font-mono">*</span></label>
                     <select name="select1" id="select1" onchange="actualizarSelect2()"
-                        class="rounded-xl font-header bg-slate-300 text-gray-600">
-                        <option value="opcion0"> --- Select --- </option>
+                        class="rounded-xl font-mono bg-slate-300 text-gray-600">
+                        <option value="opcion0">Select</option>
                         <option value="opcion5">-> Spain</option>
                         <option value="opcion4">Europe</option>
                         <option value="opcion1">Africa</option>
@@ -88,22 +97,15 @@
                     <select name="location" id="select2" class="rounded-xl font-header bg-slate-300">
                         <!-- Este select se actualizará dinámicamente -->
                     </select>
-                    <p class="text-cyan-400">Location by now: <span
-                            class="text-red-600 text-lg">{{ $place->location }}</span></p>
-
+                  
+                            
                 </div>
-
-                <div class="text-white p-4">
-                    <label for="image">Image:</label>
-                    <input type="file" name="image" id="image" accept="image/*" class="border border-red-600 bg-blue-500">
-                </div>
-                <div class="flex flex-col items-center w-auto m-1">
-                    <img src="{{ asset('/storage/' . $place->image) }}" alt="image card" class=" w-24 border rounded-lg">
-                </div> 
+                <div class="text-center"><p class="text-cyan-400 font-mono mb-4">Location by now: <span
+                    class="text-red-600 text-lg">{{ $place->location }}</span></p></div>  
 
                 <div class="mb-5">
                     <label for="address" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Address
+                        Address <span class=" text-red-600 font-mono">*</span>
                     </label>
                     <input id="address" name="address" type="text" maxlength="250"
                         placeholder="Explanation of the address" class="border border-red-600 p-3 w-full rounded-lg"
@@ -111,7 +113,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="description" class="mb-2 block uppercase text-gray-500 font-bold">
-                        Description of the phenomenon
+                        Description of the phenomenon <span class=" text-red-600 font-mono">*</span>
                     </label>
                     <input id="description" name="description" type="text" maxlength="250"
                         placeholder="Explanation of the phenomenon" class="border border-red-600 p-3 w-full rounded-lg"
@@ -131,11 +133,13 @@
                         Update
                     </button>
 
-                    <a href="{{ url('places/show') }}"
+                    <a href="{{ url()->previous() }};
+                        "
                         class=" ml-3 shadow-red-600 shadow-md border border-slate-200 uppercase hover:bg-white transition-colors cursor-pointer w-full p-3 text-red-600 rounded-lg">
                         Back
                     </a>
                 </div>
+                <p class=" text-slate-200"><span class=" text-red-600 font-mono">*</span> Mandatory</p>
 
             </form>
             <p class=" invisible">.</p>
