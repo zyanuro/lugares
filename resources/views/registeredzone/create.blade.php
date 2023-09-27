@@ -74,7 +74,7 @@
                         filter:</label>
                     <select name="select1" id="select1" onchange="actualizarSelect2()"
                         class="rounded-xl font-header bg-slate-300 text-gray-600">
-                        <option value="opcion0"> --- Select --- </option>
+                        <option value="opcion0">Select Place</option>
                         <option value="opcion5">-> Spain</option>
                         <option value="opcion4">Europe</option>
                         <option value="opcion1">Africa</option>
@@ -87,9 +87,9 @@
                     </select>
                 </div>
 
-                <div class="text-white p-4">
-                    <label for="image">Image:</label>
-                    <input type="file" name="image" id="image" accept="image/*" class="border border-red-600 bg-blue-500">
+                <div class="text-white font-bold p-4">
+                    <label for="image" class="text-gray-500 uppercase">Select Image:</label>
+                    <input type="file" name="image" id="image" accept="image/*" placeholder="Selecciona una imagen" class="border border-red-600 bg-blue-500 hover:bg-red-600" title="Select a image">
                 </div>
 
                 <div class="mb-5">
@@ -118,7 +118,8 @@
                         class="hidden border border-red-600 p-3 w-full rounded-lg" value="{{ Auth::user()->id }}" />
                 </div>
 
-                <div class="flex gap-3 text-center p-4 font-header text-2xl"><button type="submit"
+                <div class="flex gap-3 text-center p-4 font-header text-2xl">
+                    <button type="submit"
                         class=" shadow-red-600 shadow-md border border-slate-200  hover:bg-white transition-colors cursor-pointer w-full p-2 text-red-600 rounded-lg">
                         Done
                     </button>

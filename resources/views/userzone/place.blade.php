@@ -22,7 +22,7 @@
             class=" w-56 rounded-full shadow-white shadow-md">
 
         <!-- Contenido de la tarjeta -->
-        <div class="w-full font-sans">
+        <div class="w-full font-mono">
             <!-- Nombre -->
             <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">{{ $place->name }}</div>
             <hr class="mb-3">
@@ -114,7 +114,7 @@
 
 
             <!-- Contenido de la tarjeta -->
-            <div class="flex flex-col items-center px-10 text-center w-full">
+            <div class="flex flex-col items-center px-1 text-center font-mono w-full">
                 <!-- Nombre -->
 
                 <div class="text-center text-2xl md:text-4xl font-bold text-slate-300 mb-3">Location Map</div>
@@ -151,8 +151,8 @@
     <!-- Comentatios de la tarjeta -->
 
     <div
-        class="md:mt-20 rounded-xl overflow-hidden  m-4 px-5 py-6 bg-indigo-400 bg-opacity-20 font-header shadow-white shadow-md border-2 border-red-800 
-grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-center">
+        class="md:mt-20 rounded-xl overflow-hidden m-1 py-6 bg-indigo-400 bg-opacity-20 font-mono shadow-white shadow-md border-2 border-red-800 
+grid grid-cols-1 place-items-center md:flex md:justify-center items-center">
         <!-- Imagen -->
         <!-- <img src="{{ asset('img/' . $place->theme->name . '.jpg') }}" alt="image card" class="lowercase w-auto p-1 rounded-full "> -->
 
@@ -163,7 +163,7 @@ grid grid-cols-1 place-items-center md:flex gap-10 md:justify-center items-cente
 
             @foreach ($comment as $comment)
                 <div
-                    class=" bg-slate-300 rounded-md shadow-red-600 shadow-md border-2 border-red-300 p-3 mx-16 mb-4 w-auto">
+                    class=" bg-slate-300 rounded-md shadow-red-600 shadow-md border-2 border-red-300 p-3 mx-4 md:mx-24 mb-4 w-auto">
                     <div class="flex justify-between items-center mb-2 text-red-600">
 
                         <span class="font-semibold mr-1">Author: <span

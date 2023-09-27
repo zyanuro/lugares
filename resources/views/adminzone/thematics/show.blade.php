@@ -62,7 +62,8 @@
         </table>
         <div>
             <a href="{{ url('adminzone/thematics/create') }}"
-                class=" font-bold mx-10 shadow-red-600 shadow-md border border-teal-500  hover:bg-teal-800 transition-colors cursor-pointer w-full p-2 text-teal-500 rounded-lg">New</a>
+                class=" font-bold text-xl
+                 mx-10 shadow-red-600 shadow-md border border-teal-500  hover:bg-teal-800 transition-colors cursor-pointer w-full p-2 text-teal-500 rounded-lg">New</a>
         </div>
 
     </div>

@@ -127,13 +127,13 @@
                 </div>
 
                 <div><button type="submit"
-                        class=" bg-red-600  hover:bg-red-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-lg">
-                        Grabar
+                        class=" bg-transparent  hover:bg-teal-600 border transition-colors  shadow-teal-600 shadow-md cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-lg">
+                        Update
                     </button>
 
                     <a href="{{ url('places/show') }}"
-                        class=" bg-slate-600  hover:bg-slate-300 transition-colors cursor-pointer uppercase font-bold w-auto p-3 text-white rounded-xl">
-                        Volver
+                        class=" ml-3 shadow-red-600 shadow-md border border-slate-200 uppercase hover:bg-white transition-colors cursor-pointer w-full p-3 text-red-600 rounded-lg">
+                        Back
                     </a>
                 </div>
 

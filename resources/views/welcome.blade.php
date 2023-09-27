@@ -19,5 +19,10 @@ Welcome to the mistery...
        <a href="{{route('last')}}"><img src="{{asset('img/big_moon.jpg')}}" alt='welcome image' class="shadow-red-600 shadow-2xl  rounded-full"></a>        
     </div> 
 </div>
-
+<p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
+    <p class=" invisible">.</p>
 @endsection

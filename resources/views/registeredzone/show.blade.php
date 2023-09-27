@@ -112,17 +112,16 @@
                                     class="shadow-red-600 shadow-md border border-amber-400  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-amber-400 rounded-lg">Editar</a>
                             </td>
                             <td class="p-5">
-                                <form action="{{ url('places/' . $place->id) }}" method="post" name="delete">
+                                <form action="{{ url('places/' . $place->id) }}" method="post" name="delete" class="shadow-amber-600 shadow-md border border-red-600  hover:bg-sky-700 transition-colors cursor-pointer w-full p-1 text-red-600 rounded-lg">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btnDelete type="submit"
-                                        class=" shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer   w-full p-1 text-red-600 rounded-lg ">Delete</button>
+                                        >Delete</button>
 
                                 </form>
                             </td>
                         </tr>
                     @endforeach
-
 
                 </tbody>
             </div>

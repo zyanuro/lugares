@@ -13,7 +13,7 @@
 
 
         <div
-            class="grid grid-cols-2 place-content-center gap-1 mx-10 bg-black   rounded-md  font-header text-2xl items-center">
+            class="grid grid-cols-1 md:grid md:grid-cols-2 place-content-center gap-1 mx-10 bg-black   rounded-md  font-header text-2xl items-center">
             <!-- Fila 1 -->
             <a href="{{ url('adminzone/show') }}">
                 <div
