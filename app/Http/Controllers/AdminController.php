@@ -63,7 +63,7 @@ class AdminController extends Controller
         $place->control = 0;
 
         $place->save();
-        $place = Place::where('control', 1)->get();
+        $place = Place::where('control', 1)->paginate(5);
         return view('adminzone.moderate', ['places' => $place]);
     }
 

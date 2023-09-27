@@ -66,7 +66,7 @@
 
                     <!-- Botón de envío -->
                     <input type="submit" value="Activate"
-                        class=" shadow-red-600 shadow-md border border-amber-400 bg-green-500  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-slate-900 font-header rounded-lg">
+                        class="btnModerate shadow-red-600 shadow-md border border-amber-400 bg-green-500  hover:bg-sky-700 transition-colors cursor-pointer w-full p-2 text-slate-900 font-header rounded-lg">
                 </form>
             </td>
 
@@ -127,14 +127,15 @@
                         value="Valor oculto que se enviará al servidor">
 
                     <!-- Botón de envío -->
-                    <input type="submit" value="Activate"
-                        class=" shadow-red-600 shadow-md border border-amber-400 bg-green-500  hover:bg-sky-700 transition-colors cursor-pointer w-auto p-2 text-slate-900 font-header rounded-full">
+                    <button  type="submit" value="Activate" 
+                        class="btnModerate shadow-red-600 shadow-md border border-amber-400 bg-green-500  hover:bg-sky-700 transition-colors
+                         cursor-pointer w-auto p-2 text-slate-900 font-header rounded-full">Activate</button>
                 </form>
                 <form action="{{ url('places/' . $place->id) }}" method="post" name="delete">
                     @method('DELETE')
                     @csrf
                     <button type="submit"
-                        class=" w-auto btnDelete shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer
+                        class="btnDelete w-auto  shadow-amber-400 shadow-md border border-red-600 hover:bg-white transition-colors cursor-pointer
                           p-2 text-red-600 rounded-lg">Delete</button>
 
 
@@ -152,7 +153,7 @@
     </table>
     </div>
 
-    <div class="mt-4">{{ $places->links() }}</div>
+    <div class="mt-4">{{ $places->links() }}</div>    
 
     <p class=" invisible">.</p>
     <p class=" invisible">.</p>

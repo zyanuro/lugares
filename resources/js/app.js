@@ -21,6 +21,40 @@ import Swal from "sweetalert2";
 window.Swal = Swal
 
 
+//Notificación que confirma la moderación positiva de lugar
+const btnModerateElements = document.querySelectorAll('.btnModerate');
+
+btnModerateElements.forEach(function (element) {
+  element.addEventListener('click', function (event) {
+    // Detiene el comportamiento predeterminado del botón
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Muestra la primera confirmación SweetAlert2 antes de eliminar el elemento
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: true,
+      timer: null
+    }).then(() => {
+      // En este punto, la segunda ventana modal se ha mostrado
+      // Puedes enviar el formulario de eliminación aquí
+      const form = element.closest('form'); // Encuentra el formulario más cercano al botón
+      if (form) {
+        form.submit(); // Envía el formulario
+      } else {
+        console.error('No se pudo encontrar el formulario asociado al botón');
+      }
+    });
+    })
+  });
+
+  
+
+
+
+
 // Selecciona todos los botones con la clase "btnDelete"
 const btnDeleteElements = document.querySelectorAll('.btnDelete');
 
@@ -75,7 +109,7 @@ btnDeleteElements.forEach(function (element) {
   });
 });
 
-// Maps burtton
+// Photo hidden button
 let btnMap = document.getElementById('btnMap');
 let map_content = document.getElementById('map_content');
 
@@ -83,7 +117,15 @@ btnMap.addEventListener('click', () => {
     map_content.classList.toggle("hidden");
 });
 
-//Mantener la vista al recargar la página 
+
+
+
+
+
+
+
+
+
 
 
 
