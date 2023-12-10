@@ -143,14 +143,19 @@ class PlaceController extends Controller
         $place->user_id = $request->input('user');
         $place->control = 1;
         $place->location = $request->input('location');
-        //$place->puntuation = 0;  
-         // Subir la imagen al servidor
+           // Subir la imagen al servidor
         
          $image = $request->file('image');
           //dd($image);
-          $routeImage = $image->store('images', 'public');
-          $place->image = $routeImage;
-
+       
+         if ($image !== null) {
+            $routeImage = $image->store('images', 'public');
+            $place->image = $routeImage;
+        } else {
+            $place->image = 'default.jpg';
+            // Manejo de caso en el que $image es nulo
+            // Puedes mostrar un mensaje de error o realizar alguna otra acción apropiada.
+        }
 
 
         $place->save();
